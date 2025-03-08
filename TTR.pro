@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -39,3 +39,13 @@ HEADERS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+# SFML
+INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include
+LIBS += -L/usr/local/Cellar/sfml/3.0.0_1/lib
+LIBS += -lsfml-graphics -lsfml-window -lsfml-system
+
+# QT version 6.8.2
+QTDIR = /usr/local/Cellar/qt/6.8.2
+LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+
