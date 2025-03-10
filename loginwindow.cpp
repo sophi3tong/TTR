@@ -1,4 +1,5 @@
 #include "loginwindow.h"
+#include "mainwindow.h"
 
 LoginWindow::LoginWindow(QWidget *parent):QMainWindow{parent}{
     setupUI(0); //0 for Login setup, 1 for Register setup
@@ -212,6 +213,10 @@ bool LoginWindow::authenticateUser(const QString& username, const QString& passw
         if (dbPass==password){
             qDebug() << "Login successful!";
             login_error->setText("Success! You are logged in.");
+
+            // MainWindow w;
+            // w.showMaximized();
+            // this->hide();
         } else {
             qDebug() << "Login failed!";
             login_error->setText("Username and password do not match.");
