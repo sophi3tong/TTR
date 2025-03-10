@@ -149,11 +149,11 @@ void LoginWindow::checkDrivers() {
 void LoginWindow::connectDatabase(){
     QCoreApplication::addLibraryPath("/usr/local/share/qt/plugins");
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
+    db.setHostName("ttr-database.cnm8mega2y8r.us-east-2.rds.amazonaws.com");
     db.setPort(3306);
     db.setDatabaseName("ttr_db");
-    db.setUserName("root");
-    db.setPassword("EA_dolls090699");
+    db.setUserName("admin");
+    db.setPassword("TTR**db123");
 
     checkDrivers();
 
