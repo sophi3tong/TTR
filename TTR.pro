@@ -13,6 +13,7 @@ SOURCES += \
     gamewindow.cpp \
     genrewindow.cpp \
     inputhandler.cpp \
+    levelwindow.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     gamewindow.h \
     genrewindow.h \
     inputhandler.h \
+    levelwindow.h \
     loginwindow.h \
     mainwindow.h \
     music.h \
