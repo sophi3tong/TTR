@@ -18,10 +18,13 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     music.cpp \
+    musicfactory.cpp \
     note.cpp \
     scoremanager.cpp \
     song.cpp \
-    user.cpp
+    songfactory.cpp \
+    user.cpp \
+    userfactory.cpp
 
 HEADERS += \
     gamelogic.h \
@@ -32,10 +35,13 @@ HEADERS += \
     loginwindow.h \
     mainwindow.h \
     music.h \
+    musicfactory.h \
     note.h \
     scoremanager.h \
     song.h \
-    user.h
+    songfactory.h \
+    user.h \
+    userfactory.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
