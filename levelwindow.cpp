@@ -4,12 +4,14 @@
 
 LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
     layout = new QVBoxLayout(this);
+    setStyleSheet("background-color: #F5EFFF;");
 
     // Add spacer at top
     layout->addSpacerItem(new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding));
 
     // Creating title
     title = new QLabel("Select Level", this);
+    title->setStyleSheet("QLabel { color: #924AEB; }");
     title->setAlignment(Qt::AlignCenter);
     layout->addWidget(title);
     layout->addSpacerItem(new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Fixed));
@@ -30,6 +32,26 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
     levelButton3->setFixedSize(300, 50);
     levelButton3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
+    // Apply styles to buttons
+    QString buttonStyle = "QPushButton {"
+                          "background-color: #E9A5F1;"
+                          "border-radius: 15px;"
+                          "color: white;"
+                          "border: 2px solid #DD8DF5;"
+                          "padding: 10px;"
+                          "font-size: 16px;"
+                          "font-weight: bold;"
+                          "min-width: 300px;"
+                          "min-height: 50px;"
+                          "}"
+                          "QPushButton:hover {"
+                          "background-color: #C68EFD;"
+                          "border: 2px solid #924AEB;"
+                          "}";
+    // Apply styles to each button
+    levelButton1->setStyleSheet(buttonStyle);
+    levelButton2->setStyleSheet(buttonStyle);
+    levelButton3->setStyleSheet(buttonStyle);
 
     // Set alignment for all widgets
     layout->setAlignment(Qt::AlignCenter);
