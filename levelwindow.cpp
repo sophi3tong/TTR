@@ -165,22 +165,22 @@ void LevelWindow::playFullSong(QPushButton *button){
 // Pause the song
 void LevelWindow::pausePlayback(){
     // Pause the song
-    if (musicPlayer.getStatus() == sf::Music::Playing)
+    if (musicPlayer.getStatus() == sf::Music::Status::Playing)
         musicPlayer.pause();
     // resume the song
-    if (musicPlayer.getStatus() == sf::Music::Paused)
+    if (musicPlayer.getStatus() == sf::Music::Status::Paused)
         musicPlayer.play();
 }
 
 // Stop the song
 void LevelWindow::stopPlayback(){
-    if (musicPlayer.getStatus() == sf::Music::Playing || musicPlayer.getStatus() == sf::Music::Paused)
+    if (musicPlayer.getStatus() == sf::Music::Status::Playing || musicPlayer.getStatus() == sf::Music::Status::Paused)
         musicPlayer.stop();
 }
 
 // Restart play
 void LevelWindow::restartPlayback(){
-    if (musicPlayer.getStatus() == sf::Music::Playing || musicPlayer.getStatus() == sf::Music::Paused) {
+    if (musicPlayer.getStatus() == sf::Music::Status::Playing || musicPlayer.getStatus() == sf::Music::Status::Paused) {
         stopPlayback();
 
         // Restart the same song if one was playing
