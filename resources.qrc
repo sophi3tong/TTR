@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/audio">
+        <file>easysong.mp3</file>
+        <file>hardsong.mp3</file>
+        <file>mediumsong.mp3</file>
+    </qresource>
+</RCC>
