@@ -6,12 +6,10 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QSqlDatabase>
-#include <QSqlError>
-#include <QSqlQuery>
-#include <QCoreApplication>
 #include <levelwindow.h>
 #include <userfactory.h>
+
+#include <databasemanager.h>
 
 class LoginWindow : public QMainWindow
 {
@@ -24,8 +22,6 @@ private slots:
     void handleBackToLogin();
     void handleLogin();
     void handleCreate();
-    void connectDatabase();
-    void checkDrivers();
     bool insertUser(const QString& firstname, const QString& lastname, const QString& username, const QString& password);
     bool authenticateUser(const QString& username, const QString& password);
 private:

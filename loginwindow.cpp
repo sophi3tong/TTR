@@ -1,5 +1,5 @@
 #include "loginwindow.h"
-#include "mainwindow.h"
+#include <databasemanager.h>
 
 LoginWindow::LoginWindow(QWidget *parent):QMainWindow{parent}{
     setupUI(0); //0 for Login setup, 1 for Register setup
@@ -7,7 +7,6 @@ LoginWindow::LoginWindow(QWidget *parent):QMainWindow{parent}{
 
 void LoginWindow::setupUI(int isLogin){
     LoginWindow::setWindowTitle("Login/Register");
-    connectDatabase();
 
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);  // Set the central widget for the main window
@@ -114,6 +113,9 @@ void LoginWindow::handleBackToLogin(){
 }
 
 void LoginWindow::handleLogin(){
+    DatabaseManager dm;
+    dm.connectDatabase();
+
     QString username = usernameInput->text();
     QString password = passwordInput->text();
 
@@ -133,6 +135,9 @@ void LoginWindow::handleLogin(){
 }
 
 void LoginWindow::handleRegister(){
+    DatabaseManager dm;
+    dm.connectDatabase();
+
     QString firstname = firstnameInput->text();
     QString lastname = lastnameInput->text();
     QString username = usernameInput->text();
@@ -144,31 +149,11 @@ void LoginWindow::handleRegister(){
         lastnameInput->setText("");
         usernameInput->setText("");
         passwordInput->setText("");
+
+        setupUI(0); //back to login
     } else {
         login_error->setText("User registration failed.");
     }
-}
-
-void LoginWindow::checkDrivers() {
-    qDebug() << "Available drivers: " << QSqlDatabase::drivers();
-}
-
-void LoginWindow::connectDatabase(){
-    QCoreApplication::addLibraryPath("/usr/local/share/qt/plugins");
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("ttr-database.cnm8mega2y8r.us-east-2.rds.amazonaws.com");
-    db.setPort(3306);
-    db.setDatabaseName("ttr_db");
-    db.setUserName("admin");
-    db.setPassword("TTR**db123");
-
-    checkDrivers();
-
-    if (!db.open()) {
-        qDebug() << "Error: Could not open database!" << db.lastError().text();
-        return;
-    }
-    qDebug() << "Database connected successfully!";
 }
 
 bool LoginWindow::insertUser(const QString& firstname, const QString& lastname, const QString& username, const QString& password) {
