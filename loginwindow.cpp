@@ -8,10 +8,29 @@ LoginWindow::LoginWindow(QWidget *parent):QMainWindow{parent}{
 void LoginWindow::setupUI(int isLogin){
     LoginWindow::setWindowTitle("Login/Register");
 
+    setStyleSheet("background-color: #F5EFFF;");
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);  // Set the central widget for the main window
 
+    // Apply styles to buttons
+    QString buttonStyle = "QPushButton {"
+                          "background-color: #E9A5F1;"
+                          "border-radius: 15px;"
+                          "color: white;"
+                          "border: 2px solid #DD8DF5;"
+                          "padding: 10px;"
+                          "font-size: 16px;"
+                          "font-weight: bold;"
+                          "min-width: 300px;"
+                          "min-height: 50px;"
+                          "}"
+                          "QPushButton:hover {"
+                          "background-color: #C68EFD;"
+                          "border: 2px solid #924AEB;"
+                          "}";
+
     mainTitle = new QLabel("LOGIN", this);
+    mainTitle->setStyleSheet("QLabel { color: #924AEB; }");
     if (isLogin==0){
         mainSubtitle = new QLabel("Welcome back! Log in to continue.", this);
     } else if (isLogin==1){
@@ -25,9 +44,11 @@ void LoginWindow::setupUI(int isLogin){
     passwordInput->setFixedSize(300, 40);
 
     login_button = new QPushButton("LOGIN", this);
+    login_button->setStyleSheet(buttonStyle);
     login_button->setFixedSize(300, 50);
 
     create_button = new QPushButton("CREATE ACCOUNT", this);
+    create_button->setStyleSheet(buttonStyle);
     create_button->setFixedSize(300, 50);
 
     if (isLogin==1){
@@ -40,9 +61,11 @@ void LoginWindow::setupUI(int isLogin){
         lastnameInput->setFixedSize(300, 40);
 
         register_button = new QPushButton("REGISTER", this);
+        register_button->setStyleSheet(buttonStyle);
         register_button->setFixedSize(300, 50);
 
         btl_button = new QPushButton("BACK TO LOGIN", this);
+        btl_button->setStyleSheet(buttonStyle);
         btl_button->setFixedSize(300, 50);
     }
 
