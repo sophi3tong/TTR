@@ -10,6 +10,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QCoreApplication>
+#include <levelwindow.h>
+#include <userfactory.h>
 
 class LoginWindow : public QMainWindow
 {

@@ -119,7 +119,13 @@ void LoginWindow::handleLogin(){
 
     if (authenticateUser(username, password)){
         qDebug() <<username <<" logged in successfully!";
+        UserFactory uf;
+        uf.createUser(username);
+
         //go to level selection
+        LevelWindow w;
+        w.showMaximized();
+        this->hide();
     } else {
         qDebug() << "Incorrect login information.";
         login_error->setText("Incorrect username or password.");
