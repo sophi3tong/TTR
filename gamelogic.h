@@ -3,8 +3,8 @@
 
 #include <song.h>
 #include <QString>
-#include <scoremanager.h>
-#include <inputhandler.h>
+// #include <scoremanager.h>
+// #include <inputhandler.h>
 
 class GameLogic
 {
@@ -17,10 +17,10 @@ public:
     void loadSong(Song newSong);
 private:
     QString currentSong;
-    ScoreManager sm;
-    InputHandler ih;
-    bool isRunning;
-    int currentLevel;
+    // ScoreManager sm;
+    // InputHandler ih;
+    // bool isRunning;
+    // int currentLevel;
 };
 
 #endif // GAMELOGIC_H

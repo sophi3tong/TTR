@@ -2,6 +2,7 @@
 #define USER_H
 
 #include <QString>
+#include <map>
 
 class User
 {
@@ -10,17 +11,17 @@ public:
     User(QString username, int score);
     QString getUsername();
     int getHighscore();
-    int getLevelscore(int level);
+    std::map<int, int> getLevels();
     void setHighscore(int score);
     void setLevelscore(int level, int score);
+    bool insertHighscore(int highscore);
+    bool insertLevelscore(int level, int score);
 private:
     int user_id;
     QString username;
     int highScore;
-    bool insertHighscore(QString username, int highscore);
+    int getLevelscore(int level);
     int getUserId();
-    bool insertHighscore(int highscore);
-    bool insertLevelscore(int level, int score);
 
     friend class UserFactory;
 };

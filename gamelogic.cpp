@@ -2,18 +2,18 @@
 
 GameLogic::GameLogic() {}
 
-void GameLogic::startGame(){
+// void GameLogic::startGame(){
 
-}
-void GameLogic::pauseGame(){
+// }
+// void GameLogic::pauseGame(){
 
-}
-void GameLogic::updateGame(float score){
+// }
+// void GameLogic::updateGame(float score){
 
-}
-void GameLogic::endGame(){
+// }
+// void GameLogic::endGame(){
 
-}
-void GameLogic::loadSong(Song newSong){
+// }
+// void GameLogic::loadSong(Song newSong){
 
-}
+// }

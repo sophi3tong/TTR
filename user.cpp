@@ -132,3 +132,28 @@ bool User::insertLevelscore(int level, int score){
     qDebug() <<"User highscore inserted successfully!";
     return true;
 }
+
+std::map<int, int> User::getLevels(){
+    std::map<int, int> levels;
+
+    DatabaseManager dm;
+    dm.connectDatabase();
+    QSqlQuery query;
+
+    query.prepare("SELECT level, score FROM level_scores WHERE user_id = :user_id");
+    query.bindValue(":user_id", this->user_id);
+
+    if (!query.exec()) {
+        qDebug() << "(User: getLevels) Error fetching levels: " << query.lastError().text();
+        return levels;
+    }
+
+    while (query.next()) {
+        int level = query.value(0).toInt();
+        int score = query.value(1).toInt();
+        levels[level] = score;
+        qDebug() << "Levels map: " << levels;
+    }
+
+    return levels;
+}
