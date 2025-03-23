@@ -10,10 +10,17 @@ public:
     User(QString username, int score);
     QString getUsername();
     int getHighscore();
-    void setHighscore(int newScore);
+    int getLevelscore(int level);
+    void setHighscore(int score);
+    void setLevelscore(int level, int score);
 private:
+    int user_id;
     QString username;
     int highScore;
+    bool insertHighscore(QString username, int highscore);
+    int getUserId();
+    bool insertHighscore(int highscore);
+    bool insertLevelscore(int level, int score);
 
     friend class UserFactory;
 };

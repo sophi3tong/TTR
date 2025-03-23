@@ -29,19 +29,26 @@ void LoginWindow::setupUI(int isLogin){
                           "border: 2px solid #924AEB;"
                           "}";
 
+    QString textStyle= "QLineEdit, QLabel { color: purple; }";
+
     mainTitle = new QLabel("LOGIN", this);
     mainTitle->setStyleSheet("QLabel { color: #924AEB; }");
     if (isLogin==0){
         mainSubtitle = new QLabel("Welcome back! Log in to continue.", this);
+        mainSubtitle->setStyleSheet(textStyle);
     } else if (isLogin==1){
         mainSubtitle = new QLabel("New here? Create your account today!", this);
+        mainSubtitle->setStyleSheet(textStyle);
     }
+
     usernameInput = new QLineEdit();
     usernameInput->setPlaceholderText("Enter your username");
     usernameInput->setFixedSize(300, 40);
     passwordInput = new QLineEdit();
     passwordInput->setPlaceholderText("Enter your password");
     passwordInput->setFixedSize(300, 40);
+    usernameInput->setStyleSheet(textStyle);
+    passwordInput->setStyleSheet(textStyle);
 
     login_button = new QPushButton("LOGIN", this);
     login_button->setStyleSheet(buttonStyle);
@@ -55,10 +62,12 @@ void LoginWindow::setupUI(int isLogin){
         firstnameInput = new QLineEdit();
         firstnameInput->setPlaceholderText("Enter your first name");
         firstnameInput->setFixedSize(300, 40);
+        firstnameInput->setStyleSheet(textStyle);
 
         lastnameInput = new QLineEdit();
         lastnameInput->setPlaceholderText("Enter your last name");
         lastnameInput->setFixedSize(300, 40);
+        lastnameInput->setStyleSheet(textStyle);
 
         register_button = new QPushButton("REGISTER", this);
         register_button->setStyleSheet(buttonStyle);

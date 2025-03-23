@@ -13,7 +13,7 @@ void DatabaseManager::connectDatabase(){
     db.setPort(3306);
     db.setDatabaseName("ttr_db");
     db.setUserName("admin");
-    db.setPassword("TTR**db123");
+    db.setPassword("ttr-database123");
 
     checkDrivers();
 
