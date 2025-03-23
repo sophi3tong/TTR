@@ -4,22 +4,18 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
-#include <QCoreApplication>
-#include <SFML/Audio.hpp>
-#include <QListWidget>
+#include <QMap>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QUrl>
 
 class LevelWindow : public QMainWindow
 {
     Q_OBJECT
 public:
     explicit LevelWindow(QWidget *parent = nullptr);
-    void playPreview(QPushButton *item);
-    void playFullSong(QPushButton *item);
-    void pausePlayback();
-    void stopPlayback();
-    void restartPlayback();
+    void playSong(QPushButton *item);  // Play song when button is clicked
 
 private:
     QVBoxLayout *layout;
@@ -27,16 +23,12 @@ private:
     QPushButton *levelButton1;
     QPushButton *levelButton2;
     QPushButton *levelButton3;
-    QPushButton *pauseButton;
-    QPushButton *stopButton;
-    QPushButton *restartButton;
     QMap<QPushButton*, QString> songPaths;
-    QListWidget *songList;
     QString currentSongPath;
-    sf::Music musicPlayer;
+
+    // Media player and audio output for playback
+    QMediaPlayer *musicPlayer;
+    QAudioOutput *audioOutput;
 };
 
 #endif // LEVELWINDOW_H
-
-#include <QMainWindow>
-

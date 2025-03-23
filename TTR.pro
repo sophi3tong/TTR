@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -58,4 +58,8 @@ LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 # QT version 6.8.2
 QTDIR = /usr/local/Cellar/qt/6.8.2
 LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+# Add SFML library paths
+LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
+
+RESOURCES += resources.qrc
 
