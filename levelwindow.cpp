@@ -1,6 +1,7 @@
 #include "levelwindow.h"
 #include <QSpacerItem>
 #include <QSizePolicy>
+#include <QTemporaryFile>
 
 LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
     layout = new QVBoxLayout(this);
@@ -98,28 +99,66 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
 }
 
 
+// void LevelWindow::playPreview(QPushButton *button){
+//     if (songPaths.find(button) == songPaths.end()) return;
+//     stopPlayback();
+
+//     currentSongPath = songPaths[button];
+//     if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
+//         musicPlayer.play();
+//     } else {
+//         qDebug() << "Failed to play preview: " << currentSongPath;
+//     }
+// }
+
 void LevelWindow::playPreview(QPushButton *button){
     if (songPaths.find(button) == songPaths.end()) return;
     stopPlayback();
 
     currentSongPath = songPaths[button];
-    if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
-        musicPlayer.play();
-    } else {
-        qDebug() << "Failed to play preview: " << currentSongPath;
+    QTemporaryFile tempFile;
+    tempFile.setAutoRemove(true);
+    if (tempFile.open()){
+        QFile::copy(currentSongPath, tempFile.fileName());
+        if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
+            musicPlayer.play();
+            sf::Time duration = sf::seconds(20);
+            musicPlayer.setPlayingOffset(duration);
+            stopPlayback();
+        } else {
+            qDebug() << "Failed to play preview: " << currentSongPath;
+        }
     }
 }
 
 // Play full song when clicked
+// void LevelWindow::playFullSong(QPushButton *button){
+//     if (songPaths.find(button) == songPaths.end()) return;
+//     stopPlayback();
+
+//     currentSongPath = songPaths[button];
+//     if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
+//         musicPlayer.play();
+//     } else {
+//         qDebug() << "Failed to play song: " << currentSongPath;
+//     }
+// }
+
 void LevelWindow::playFullSong(QPushButton *button){
     if (songPaths.find(button) == songPaths.end()) return;
     stopPlayback();
 
     currentSongPath = songPaths[button];
-    if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
-        musicPlayer.play();
-    } else {
-        qDebug() << "Failed to play song: " << currentSongPath;
+
+    QTemporaryFile tempFile;
+    tempFile.setAutoRemove(true);
+    if (tempFile.open()){
+        QFile::copy(currentSongPath, tempFile.fileName());
+        if (musicPlayer.openFromFile(tempFile.fileName().toStdString())) {
+            musicPlayer.play();
+        } else {
+            qDebug() << "Failed to play song: " << currentSongPath;
+        }
     }
 }
 
