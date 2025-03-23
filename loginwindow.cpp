@@ -123,8 +123,8 @@ void LoginWindow::handleLogin(){
         uf.createUser(username);
 
         //go to level selection
-        LevelWindow w;
-        w.showMaximized();
+        LevelWindow *levelScreen = new LevelWindow(this);
+        levelScreen->showMaximized();
         this->hide();
     } else {
         qDebug() << "Incorrect login information.";

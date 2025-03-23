@@ -41,6 +41,7 @@ private:
     QPushButton *register_button;
     QPushButton *login_button;
     QLabel *login_error;
+    LevelWindow *levelScreen;
 };
 
 #endif // LOGINWINDOW_H
