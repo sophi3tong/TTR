@@ -2,6 +2,9 @@
 #include <QSpacerItem>
 #include <QSizePolicy>
 #include <QTemporaryFile>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QUrl>
 
 #include <QMainWindow>
 LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
@@ -55,20 +58,6 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
     levelButton2->setStyleSheet(buttonStyle);
     levelButton3->setStyleSheet(buttonStyle);
 
-    // Store the buttons and their matching songs
-    QPushButton* levelButtons[] = {levelButton1, levelButton2, levelButton3};
-    QString levelSongs[] = {":/audio/easysong.mp3", ":/audio/mediumsong.mp3", ":/audio/hardsong.mp3"};
-
-    // Connect buttons to songs
-    for (int i = 0; i < 3; i++){
-        QPushButton* button = levelButtons[i];
-        songPaths[button] = levelSongs[i];
-
-        connect(button, &QPushButton::pressed, this, [this, button] { playPreview(button); });
-        connect(button, &QPushButton::clicked, this, [this, button] { playFullSong(button); });
-
-    }
-
     // Set alignment for all widgets
     layout->setAlignment(Qt::AlignCenter);
     // Add spacer at bottom
@@ -88,109 +77,44 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
     levelButton2->setFont(buttonFont);
     levelButton3->setFont(buttonFont);
 
-    // Song buttons
-    pauseButton = new QPushButton("Pause", this);
-    stopButton = new QPushButton("Stop", this);
-    restartButton= new QPushButton("Replay", this);
+    // Initialize player and audio output
+    musicPlayer = new QMediaPlayer();
+    audioOutput = new QAudioOutput();
 
-    // Connecting song buttons
-    connect(pauseButton, &QPushButton::clicked, this, &LevelWindow::pausePlayback);
-    connect(stopButton, &QPushButton::clicked, this, &LevelWindow::stopPlayback);
-    connect(restartButton, &QPushButton::clicked, this, &LevelWindow::restartPlayback);
+    // Set audio output for the media player
+    musicPlayer->setAudioOutput(audioOutput);
+
+    // Store the buttons and their corresponding songs
+    QPushButton* levelButtons[] = {levelButton1, levelButton2, levelButton3};
+    QString levelSongs[] = {":/audio/easysong.mp3", ":/audio/mediumsong.mp3", ":/audio/hardsong.mp3"};
+
+    // Connect buttons to play the corresponding songs
+    for (int i = 0; i < 3; i++) {
+        QPushButton* button = levelButtons[i];
+        songPaths[button] = levelSongs[i]; // Map button to song
+
+        connect(button, &QPushButton::clicked, this, [this, button] { playSong(button); });
+    }
+
+    // Optional: Set the volume
+    audioOutput->setVolume(50);
+
 }
 
-
-// void LevelWindow::playPreview(QPushButton *button){
-//     if (songPaths.find(button) == songPaths.end()) return;
-//     stopPlayback();
-
-//     currentSongPath = songPaths[button];
-//     if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
-//         musicPlayer.play();
-//     } else {
-//         qDebug() << "Failed to play preview: " << currentSongPath;
-//     }
-// }
-
-void LevelWindow::playPreview(QPushButton *button){
+void LevelWindow::playSong(QPushButton *button) {
+    // Check if the button has a song path associated
     if (songPaths.find(button) == songPaths.end()) return;
-    stopPlayback();
 
-    currentSongPath = songPaths[button];
-    QTemporaryFile tempFile;
-    tempFile.setAutoRemove(true);
-    if (tempFile.open()){
-        QFile::copy(currentSongPath, tempFile.fileName());
-        if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
-            musicPlayer.play();
-            sf::Time duration = sf::seconds(20);
-            musicPlayer.setPlayingOffset(duration);
-            stopPlayback();
-        } else {
-            qDebug() << "Failed to play preview: " << currentSongPath;
-        }
-    }
+    // Stop any currently playing song
+    musicPlayer->stop();
+
+    // Get the path of the selected song
+    QString currentSongPath = songPaths[button];
+
+    // Set the media source (song file) for the media player
+    musicPlayer->setSource(QUrl("qrc" + currentSongPath));
+
+    // Play the selected song
+    musicPlayer->play();
 }
-
-// Play full song when clicked
-// void LevelWindow::playFullSong(QPushButton *button){
-//     if (songPaths.find(button) == songPaths.end()) return;
-//     stopPlayback();
-
-//     currentSongPath = songPaths[button];
-//     if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
-//         musicPlayer.play();
-//     } else {
-//         qDebug() << "Failed to play song: " << currentSongPath;
-//     }
-// }
-
-void LevelWindow::playFullSong(QPushButton *button){
-    if (songPaths.find(button) == songPaths.end()) return;
-    stopPlayback();
-
-    currentSongPath = songPaths[button];
-
-    QTemporaryFile tempFile;
-    tempFile.setAutoRemove(true);
-    if (tempFile.open()){
-        QFile::copy(currentSongPath, tempFile.fileName());
-        if (musicPlayer.openFromFile(tempFile.fileName().toStdString())) {
-            musicPlayer.play();
-        } else {
-            qDebug() << "Failed to play song: " << currentSongPath;
-        }
-    }
-}
-
-// Pause the song
-void LevelWindow::pausePlayback(){
-    // Pause the song
-    if (musicPlayer.getStatus() == sf::Music::Playing)
-        musicPlayer.pause();
-    // resume the song
-    if (musicPlayer.getStatus() == sf::Music::Paused)
-        musicPlayer.play();
-}
-
-// Stop the song
-void LevelWindow::stopPlayback(){
-    if (musicPlayer.getStatus() == sf::Music::Playing || musicPlayer.getStatus() == sf::Music::Paused)
-        musicPlayer.stop();
-}
-
-// Restart play
-void LevelWindow::restartPlayback(){
-    if (musicPlayer.getStatus() == sf::Music::Playing || musicPlayer.getStatus() == sf::Music::Paused) {
-        stopPlayback();
-
-        // Restart the same song if one was playing
-        if (!currentSongPath.isEmpty()) {
-            if (musicPlayer.openFromFile(currentSongPath.toStdString())) {
-                musicPlayer.play();
-            } else {
-                qDebug() << "Failed to restart song: " << currentSongPath;
-            }
-        }
-    }
-}
+// fix pause
