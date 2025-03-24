@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "loginwindow.h"
 // #include "mainwindow.h"
 // #include <QApplication>
@@ -12,8 +11,6 @@
 // }
 
 
-=======
->>>>>>> b78f9b7b5e9fe58bf9027698c1efdcdb40e1ea63
 #include "levelwindow.h"
 #include <QApplication>
 #include <QMediaPlayer>
