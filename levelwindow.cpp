@@ -3,6 +3,7 @@
 #include <QSizePolicy>
 #include <QTemporaryFile>
 
+#include <QMainWindow>
 LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
     layout = new QVBoxLayout(this);
     setStyleSheet("background-color: #F5EFFF;");

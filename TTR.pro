@@ -51,11 +51,22 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 # SFML
-INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include
-LIBS += -L/usr/local/Cellar/sfml/3.0.0_1/lib
+# INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include
+# LIBS += -L/usr/local/Cellar/sfml/3.0.0_1/lib
+# LIBS += -lsfml-graphics -lsfml-window -lsfml-system
+
+INCLUDEPATH += /opt/homebrew/opt/sfml/include
+LIBS += -L/opt/homebrew/opt/sfml/lib
 LIBS += -lsfml-graphics -lsfml-window -lsfml-system
 
-# QT version 6.8.2
-QTDIR = /usr/local/Cellar/qt/6.8.2
+# # QT version 6.8.2
+# QTDIR = /usr/local/Cellar/qt/6.8.2
+# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+
+QTDIR = /opt/homebrew/opt/qt
+INCLUDEPATH += $$QTDIR/include
 LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+
+
+
 
