@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QLabel>
+#include "levelwindow.h"  // Include LevelWindow header
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -12,6 +13,9 @@ class MainWindow : public QMainWindow {
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void openLevelWindow();  // Declare the openLevelWindow slot
 
 private:
     QVBoxLayout *layout;

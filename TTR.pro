@@ -13,7 +13,7 @@ SOURCES += \
     gamelogic.cpp \
     gamewindow.cpp \
     genrewindow.cpp \
-    inputhandler.cpp \
+    #inputhandler.cpp \
     levelwindow.cpp \
     loginwindow.cpp \
     main.cpp \
@@ -32,7 +32,7 @@ HEADERS += \
     gamelogic.h \
     gamewindow.h \
     genrewindow.h \
-    inputhandler.h \
+    #inputhandler.h \
     levelwindow.h \
     loginwindow.h \
     mainwindow.h \
@@ -56,9 +56,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 # LIBS += -lsfml-graphics -lsfml-window -lsfml-system
 
 
-INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include
-LIBS += -L/usr/local/Cellar/sfml/3.0.0_1/lib
+
+INCLUDEPATH += /opt/homebrew/opt/sfml/include
+LIBS += -L/opt/homebrew/opt/sfml/lib
 LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
 
 # # QT version 6.8.2
 # QTDIR = /usr/local/Cellar/qt/6.8.2
