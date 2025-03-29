@@ -1,4 +1,5 @@
 #include "inputhandler.h"
+#include "levelwindow.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QSpacerItem>
@@ -16,6 +17,7 @@ InputHandler::InputHandler(QWidget *parent)
     : QWidget(parent)
 {
     initializeUI();
+    this->setFixedSize(600, 400);
 
     roundTimer = new QTimer(this);
     connect(roundTimer, &QTimer::timeout, this, [this]() {
@@ -37,9 +39,11 @@ InputHandler::InputHandler(QWidget *parent)
 
     connect(restartButton, &QPushButton::clicked, this, &InputHandler::restartGame);
     connect(backButton, &QPushButton::clicked, this, [this]() {
-        emit backToMenu();
-        this->close();
+        stopMusic();  // Stop the music in InputHandler
+        emit backToMenu();  // Emit signal to go back to the menu
+        this->close();  // Close the current InputHandler window
     });
+
     connect(pauseButton, &QPushButton::clicked, this, &InputHandler::pauseGame);
     connect(resumeButton, &QPushButton::clicked, this, &InputHandler::resumeGame);
 
@@ -70,6 +74,13 @@ void InputHandler::initializeUI()
     scoreLabel->setFont(scoreFont);
     scoreLabel->setStyleSheet("color: #333;");
     mainLayout->addWidget(scoreLabel);
+
+    livesLabel = new QLabel("Lives: 3", this);  // Added lives label
+    livesLabel->setAlignment(Qt::AlignLeft);
+    QFont livesFont("Helvetica", 16);
+    livesLabel->setFont(livesFont);
+    livesLabel->setStyleSheet("color: #333;");
+    mainLayout->addWidget(livesLabel);
 
     label = new QLabel("Press keys to match letters!", this);
     label->setAlignment(Qt::AlignCenter);
@@ -133,7 +144,7 @@ void InputHandler::initializeUI()
 
     mainLayout->addSpacerItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
     setLayout(mainLayout);
-    setWindowTitle("Letter Matching Game");
+    setWindowTitle("Type Type Revolution");
     resize(600, 400);
 }
 
@@ -251,6 +262,7 @@ void InputHandler::updateLabel()
 void InputHandler::updateStatus()
 {
     scoreLabel->setText("Score: " + QString::number(score));
+    livesLabel->setText("Lives: " + QString::number(lives));  // Update lives label
 }
 
 void InputHandler::handleMistake()
@@ -346,6 +358,13 @@ void InputHandler::resumeGame()
             musicPlayer->play();
         }
     }
-
-
 }
+
+
+void InputHandler::stopMusic()
+{
+    if (musicPlayer) {
+        musicPlayer->stop();
+    }
+}
+

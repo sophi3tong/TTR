@@ -32,6 +32,7 @@ private:
     // UI Elements
     QLabel *label;
     QLabel *statusLabel;
+    QLabel *livesLabel;
     QLabel *timerLabel;
     QLabel *warningLabel;
     QLabel *scoreLabel;
@@ -71,6 +72,7 @@ private:
     void loadHighScore();
     void saveHighScore();
     void initializeUI();
+    void stopMusic();
     void showWarning(const QString &message);
 };
 

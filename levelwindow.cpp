@@ -10,7 +10,13 @@
 
 LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
 {
-    layout = new QVBoxLayout(this);
+    // Create a central widget and set it to the QMainWindow
+    QWidget *centralWidget = new QWidget(this);
+    setCentralWidget(centralWidget);  // Set central widget for the window
+
+    // Create the layout for the central widget
+    layout = new QVBoxLayout(centralWidget);
+
     setStyleSheet("background-color: #F5EFFF;");
 
     layout->addSpacerItem(new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding));
@@ -43,11 +49,16 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
             stopPlayback();
 
             QString level = button->text();
-            gameWindow = new InputHandler();
-            connect(gameWindow, &InputHandler::backToMenu, this, []() {
+            if (gameWindow == nullptr) {
+                gameWindow = new InputHandler();
+            }
+            connect(gameWindow, &InputHandler::backToMenu, this, [this]() {
+                stopPlayback();
                 LevelWindow *newMenu = new LevelWindow();
                 newMenu->show();
+                this->close();
             });
+
             if (level == "Easy") gameWindow->launchEasyMode();
             else if (level == "Medium") gameWindow->launchMediumMode();
             else if (level == "Hard") gameWindow->launchHardMode();
@@ -59,10 +70,6 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
 
     layout->setAlignment(Qt::AlignCenter);
     layout->addSpacerItem(new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding));
-
-    QWidget *centralWidget = new QWidget(this);
-    centralWidget->setLayout(layout);
-    setCentralWidget(centralWidget);
 
     QFont titleFont("Helvetica", 50, QFont::Bold);
     title->setFont(titleFont);
@@ -92,10 +99,6 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
     levelButton1->setStyleSheet(buttonStyle);
     levelButton2->setStyleSheet(buttonStyle);
     levelButton3->setStyleSheet(buttonStyle);
-
-    pauseButton = new QPushButton("Pause", this);
-    stopButton = new QPushButton("Stop", this);
-    restartButton = new QPushButton("Replay", this);
 
     connect(pauseButton, &QPushButton::clicked, this, &LevelWindow::pausePlayback);
     connect(stopButton, &QPushButton::clicked, this, &LevelWindow::stopPlayback);
