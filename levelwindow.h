@@ -17,7 +17,7 @@ class LevelWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    LevelWindow(QWidget *parent = nullptr);
+    explicit LevelWindow(QWidget *parent = nullptr);
     void playSong(QPushButton *item); // Play song when button is clicked
 
 private:

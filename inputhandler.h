@@ -9,16 +9,21 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QPair>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 class InputHandler : public QWidget
 {
     Q_OBJECT
 
 public:
-    InputHandler(QWidget *parent = nullptr);
+    explicit InputHandler(QWidget *parent = nullptr);
     void launchEasyMode();
     void launchMediumMode();
     void launchHardMode();
+
+signals:
+    void backToMenu();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
@@ -27,10 +32,14 @@ private:
     // UI Elements
     QLabel *label;
     QLabel *statusLabel;
+    QLabel *livesLabel;
     QLabel *timerLabel;
+    QLabel *warningLabel;
+    QLabel *scoreLabel;
     QPushButton *restartButton;
     QPushButton *backButton;
-    QLabel *warningLabel;
+    QPushButton *pauseButton;
+    QPushButton *resumeButton;
 
     // Game State
     QVector<QChar> targetLetters;
@@ -47,6 +56,10 @@ private:
     QTimer *roundTimer;
     int timeLeft = 5;
 
+    // Music
+    QMediaPlayer *musicPlayer;
+    QAudioOutput *audioOutput;
+
     // Methods
     void generateRandomLetters();
     void processInput(QChar userInput);
@@ -54,10 +67,12 @@ private:
     void updateStatus();
     void handleMistake();
     void restartGame();
+    void pauseGame();
+    void resumeGame();
     void loadHighScore();
     void saveHighScore();
     void initializeUI();
-    void showWarning();
+    void stopMusic();
     void showWarning(const QString &message);
 };
 

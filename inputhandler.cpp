@@ -8,46 +8,57 @@
 #include <QTextStream>
 #include <QPalette>
 #include <QTimer>
-#include <QInputDialog>
 #include <QApplication>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QUrl>
 
 InputHandler::InputHandler(QWidget *parent)
     : QWidget(parent)
 {
     initializeUI();
+    this->setFixedSize(600, 400);
 
     roundTimer = new QTimer(this);
-    connect(roundTimer, &QTimer::timeout, this, [this]()
-            {
+    connect(roundTimer, &QTimer::timeout, this, [this]() {
+        if (gameOver) return;
+
         --timeLeft;
         timerLabel->setText("Time Left: " + QString::number(timeLeft));
 
         if (timeLeft <= 0) {
             roundTimer->stop();
-            if (!targetLetters.empty()) {
+            if (!targetLetters.isEmpty()) {
                 showWarning("Time's up!");
                 handleMistake();
-                generateRandomLetters();
                 updateLabel();
                 updateStatus();
             }
-        } });
+        }
+    });
 
     connect(restartButton, &QPushButton::clicked, this, &InputHandler::restartGame);
-    connect(backButton, &QPushButton::clicked, this, [this]()
-            {
-        this->close();
-        LevelWindow *menu = new LevelWindow();
-        menu->show(); });
+    connect(backButton, &QPushButton::clicked, this, [this]() {
+        stopMusic();  // Stop the music in InputHandler
+        emit backToMenu();  // Emit signal to go back to the menu
+        this->close();  // Close the current InputHandler window
+    });
+
+    connect(pauseButton, &QPushButton::clicked, this, &InputHandler::pauseGame);
+    connect(resumeButton, &QPushButton::clicked, this, &InputHandler::resumeGame);
 
     loadHighScore();
+
+    musicPlayer = new QMediaPlayer(this);
+    audioOutput = new QAudioOutput(this);
+    musicPlayer->setAudioOutput(audioOutput);
+    audioOutput->setVolume(50);
 }
 
 void InputHandler::initializeUI()
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
-
-    this->setStyleSheet("background-color: #F5EFFF;");
+    setStyleSheet("background-color: #F5EFFF;");
 
     QLabel *title = new QLabel("Typing Challenge", this);
     title->setAlignment(Qt::AlignCenter);
@@ -57,10 +68,25 @@ void InputHandler::initializeUI()
     mainLayout->addWidget(title);
     mainLayout->addSpacerItem(new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
+    scoreLabel = new QLabel("Score: 0", this);
+    scoreLabel->setAlignment(Qt::AlignLeft);
+    QFont scoreFont("Helvetica", 16);
+    scoreLabel->setFont(scoreFont);
+    scoreLabel->setStyleSheet("color: #333;");
+    mainLayout->addWidget(scoreLabel);
+
+    livesLabel = new QLabel("Lives: 3", this);  // Added lives label
+    livesLabel->setAlignment(Qt::AlignLeft);
+    QFont livesFont("Helvetica", 16);
+    livesLabel->setFont(livesFont);
+    livesLabel->setStyleSheet("color: #333;");
+    mainLayout->addWidget(livesLabel);
+
     label = new QLabel("Press keys to match letters!", this);
     label->setAlignment(Qt::AlignCenter);
     QFont labelFont("Helvetica", 24);
     label->setFont(labelFont);
+    label->setStyleSheet("color: #924AEB;");
     mainLayout->addWidget(label);
 
     timerLabel = new QLabel(this);
@@ -70,12 +96,6 @@ void InputHandler::initializeUI()
     timerLabel->setStyleSheet("color: #555;");
     mainLayout->addWidget(timerLabel);
 
-    statusLabel = new QLabel(this);
-    statusLabel->setAlignment(Qt::AlignCenter);
-    statusLabel->setFont(infoFont);
-    statusLabel->setStyleSheet("color: #555;");
-    mainLayout->addWidget(statusLabel);
-
     warningLabel = new QLabel("", this);
     warningLabel->setAlignment(Qt::AlignCenter);
     QFont warningFont("Helvetica", 18, QFont::Bold);
@@ -84,8 +104,11 @@ void InputHandler::initializeUI()
     mainLayout->addWidget(warningLabel);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
+    QHBoxLayout *button2Layout = new QHBoxLayout;
     restartButton = new QPushButton("Restart Game", this);
     backButton = new QPushButton("Back to Menu", this);
+    pauseButton = new QPushButton("Pause", this);
+    resumeButton = new QPushButton("Resume", this);
 
     QFont buttonFont("Helvetica", 16, QFont::Bold);
     QString buttonStyle = "QPushButton {"
@@ -104,31 +127,44 @@ void InputHandler::initializeUI()
 
     restartButton->setFont(buttonFont);
     backButton->setFont(buttonFont);
+    pauseButton->setFont(buttonFont);
+    resumeButton->setFont(buttonFont);
+
     restartButton->setStyleSheet(buttonStyle);
     backButton->setStyleSheet(buttonStyle);
+    pauseButton->setStyleSheet(buttonStyle);
+    resumeButton->setStyleSheet(buttonStyle);
 
     buttonLayout->addWidget(restartButton);
     buttonLayout->addWidget(backButton);
+    button2Layout->addWidget(pauseButton);
+    button2Layout->addWidget(resumeButton);
     mainLayout->addLayout(buttonLayout);
+    mainLayout->addLayout(button2Layout);
 
     mainLayout->addSpacerItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
-
     setLayout(mainLayout);
-    setWindowTitle("Letter Matching Game");
+    setWindowTitle("Type Type Revolution");
     resize(600, 400);
 }
 
 void InputHandler::showWarning(const QString &message)
 {
     warningLabel->setText(message);
-    QTimer::singleShot(1500, this, [this]()
-                       { warningLabel->clear(); });
+    QTimer::singleShot(1500, this, [this]() {
+        warningLabel->clear();
+    });
 }
 
 void InputHandler::launchEasyMode()
 {
     difficultyRange = qMakePair(1, 2);
     isHardMode = true;
+    gameOver = false;
+    score = 0;
+    lives = 3;
+    musicPlayer->setSource(QUrl("qrc:/audio/easysong.mp3"));
+    musicPlayer->play();
     generateRandomLetters();
     updateLabel();
     updateStatus();
@@ -138,6 +174,11 @@ void InputHandler::launchMediumMode()
 {
     difficultyRange = qMakePair(3, 5);
     isHardMode = true;
+    gameOver = false;
+    score = 0;
+    lives = 3;
+    musicPlayer->setSource(QUrl("qrc:/audio/mediumsong.mp3"));
+    musicPlayer->play();
     generateRandomLetters();
     updateLabel();
     updateStatus();
@@ -147,6 +188,11 @@ void InputHandler::launchHardMode()
 {
     difficultyRange = qMakePair(6, 8);
     isHardMode = true;
+    gameOver = false;
+    score = 0;
+    lives = 3;
+    musicPlayer->setSource(QUrl("qrc:/audio/hardsong.mp3"));
+    musicPlayer->play();
     generateRandomLetters();
     updateLabel();
     updateStatus();
@@ -154,6 +200,7 @@ void InputHandler::launchHardMode()
 
 void InputHandler::generateRandomLetters()
 {
+    if (gameOver) return;
     targetLetters.clear();
     int numLetters = QRandomGenerator::global()->bounded(difficultyRange.first, difficultyRange.second + 1);
     for (int i = 0; i < numLetters; ++i)
@@ -177,8 +224,7 @@ void InputHandler::generateRandomLetters()
 
 void InputHandler::processInput(QChar userInput)
 {
-    if (gameOver)
-        return;
+    if (gameOver) return;
 
     userInput = userInput.toUpper();
 
@@ -215,13 +261,8 @@ void InputHandler::updateLabel()
 
 void InputHandler::updateStatus()
 {
-    if (gameOver)
-    {
-        statusLabel->setText("Game Over! Score: " + QString::number(score) + " | High Score: " + QString::number(highScore));
-        return;
-    }
-
-    statusLabel->setText("Score: " + QString::number(score) + " | Lives: " + QString::number(lives) + " | High Score: " + QString::number(highScore));
+    scoreLabel->setText("Score: " + QString::number(score));
+    livesLabel->setText("Lives: " + QString::number(lives));  // Update lives label
 }
 
 void InputHandler::handleMistake()
@@ -233,22 +274,20 @@ void InputHandler::handleMistake()
     pal.setColor(QPalette::WindowText, Qt::red);
     label->setPalette(pal);
 
-    QTimer::singleShot(600, this, [this]()
-                       {
+    QTimer::singleShot(600, this, [this]() {
         QPalette pal = label->palette();
         pal.setColor(QPalette::WindowText, Qt::black);
         label->setPalette(pal);
-        updateLabel(); });
+        updateLabel();
+    });
 
     if (lives <= 0)
     {
         gameOver = true;
         roundTimer->stop();
-        if (score > highScore)
-        {
-            highScore = score;
-            saveHighScore();
-        }
+        musicPlayer->stop();
+        label->setText("Game Over!");
+        warningLabel->setText("Press Restart or Back to Menu");
     }
 }
 
@@ -260,13 +299,14 @@ void InputHandler::restartGame()
     generateRandomLetters();
     updateLabel();
     updateStatus();
+    warningLabel->clear();
+    if (musicPlayer) musicPlayer->play();
 }
 
 void InputHandler::loadHighScore()
 {
     QFile file("highscore.txt");
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&file);
         in >> highScore;
     }
@@ -276,8 +316,7 @@ void InputHandler::loadHighScore()
 void InputHandler::saveHighScore()
 {
     QFile file("highscore.txt");
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QTextStream out(&file);
         out << highScore;
     }
@@ -286,9 +325,46 @@ void InputHandler::saveHighScore()
 
 void InputHandler::keyPressEvent(QKeyEvent *event)
 {
-    QChar key = event->text().at(0);
+    if (event->key() == Qt::Key_Shift) return;
+    if (event->key() == Qt::Key_Backspace) return;
+
+    QString text = event->text();
+    if (text.isEmpty()) return;
+
+    QChar key = text.at(0);
     if (key.isLetter())
     {
         processInput(key);
     }
 }
+
+void InputHandler::pauseGame()
+{
+    if (roundTimer && roundTimer->isActive()){
+        roundTimer->stop();
+    }
+    if (musicPlayer) {
+        musicPlayer->pause();
+    }
+}
+
+void InputHandler::resumeGame()
+{
+    if (!gameOver && timeLeft>0){
+        if (roundTimer){
+            roundTimer->start();
+        }
+        if (musicPlayer) {
+            musicPlayer->play();
+        }
+    }
+}
+
+
+void InputHandler::stopMusic()
+{
+    if (musicPlayer) {
+        musicPlayer->stop();
+    }
+}
+
