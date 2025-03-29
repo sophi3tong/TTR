@@ -1,5 +1,7 @@
 #include "loginwindow.h"
 #include <databasemanager.h>
+#include "mainwindow.h"
+
 
 LoginWindow::LoginWindow(QWidget *parent):QMainWindow{parent}{
     setupUI(0); //0 for Login setup, 1 for Register setup
@@ -156,9 +158,9 @@ void LoginWindow::handleLogin(){
         UserFactory uf;
         uf.createUser(username);
 
-        //go to level selection
-        LevelWindow *levelScreen = new LevelWindow(this);
-        levelScreen->showMaximized();
+        //go to main menu
+        MainWindow *mainScreen = new MainWindow(this);
+        mainScreen->showMaximized();
         this->hide();
     } else {
         qDebug() << "Incorrect login information.";

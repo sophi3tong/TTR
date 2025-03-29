@@ -1,27 +1,11 @@
-#include "mainwindow.h"
 #include "levelwindow.h"
-#include <QApplication>
 #include <QApplication>
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QUrl>
 #include <QDebug>
+#include "loginwindow.h"
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.showMaximized();
-    return a.exec();
-}
-
-
-// #include "levelwindow.h"
-// #include <QApplication>
-// #include <QMediaPlayer>
-// #include <QAudioOutput>
-// #include <QUrl>
-// #include <QDebug>
 
 // int main(int argc, char *argv[])
 // {
@@ -48,3 +32,13 @@ int main(int argc, char *argv[])
 //     w.showMaximized();
 //     return a.exec();
 // }
+
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    LoginWindow w;  // Initialize LoginWindow
+
+    w.showMaximized();
+    return a.exec();
+}
