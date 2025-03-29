@@ -9,6 +9,9 @@
 #include <QPalette>
 #include <QTimer>
 #include <QApplication>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QUrl>
 
 InputHandler::InputHandler(QWidget *parent)
     : QWidget(parent)
@@ -40,6 +43,11 @@ InputHandler::InputHandler(QWidget *parent)
     });
 
     loadHighScore();
+
+    musicPlayer = new QMediaPlayer(this);
+    audioOutput = new QAudioOutput(this);
+    musicPlayer->setAudioOutput(audioOutput);
+    audioOutput->setVolume(50);
 }
 
 void InputHandler::initializeUI()
@@ -131,6 +139,8 @@ void InputHandler::launchEasyMode()
     gameOver = false;
     score = 0;
     lives = 3;
+    musicPlayer->setSource(QUrl("qrc:/audio/easysong.mp3"));
+    musicPlayer->play();
     generateRandomLetters();
     updateLabel();
     updateStatus();
@@ -143,6 +153,8 @@ void InputHandler::launchMediumMode()
     gameOver = false;
     score = 0;
     lives = 3;
+    musicPlayer->setSource(QUrl("qrc:/audio/mediumsong.mp3"));
+    musicPlayer->play();
     generateRandomLetters();
     updateLabel();
     updateStatus();
@@ -155,6 +167,8 @@ void InputHandler::launchHardMode()
     gameOver = false;
     score = 0;
     lives = 3;
+    musicPlayer->setSource(QUrl("qrc:/audio/hardsong.mp3"));
+    musicPlayer->play();
     generateRandomLetters();
     updateLabel();
     updateStatus();
@@ -246,6 +260,7 @@ void InputHandler::handleMistake()
     {
         gameOver = true;
         roundTimer->stop();
+        musicPlayer->stop();
         label->setText("Game Over!");
         warningLabel->setText("Press Restart or Back to Menu");
     }
@@ -260,6 +275,7 @@ void InputHandler::restartGame()
     updateLabel();
     updateStatus();
     warningLabel->clear();
+    if (musicPlayer) musicPlayer->play();
 }
 
 void InputHandler::loadHighScore()

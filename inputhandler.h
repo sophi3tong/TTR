@@ -9,15 +9,15 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QPair>
-#include <QFile>
-#include <QTextStream>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 class InputHandler : public QWidget
 {
     Q_OBJECT
 
 public:
-    InputHandler(QWidget *parent = nullptr);
+    explicit InputHandler(QWidget *parent = nullptr);
     void launchEasyMode();
     void launchMediumMode();
     void launchHardMode();
@@ -52,6 +52,10 @@ private:
     // Timer for Hard Mode
     QTimer *roundTimer;
     int timeLeft = 5;
+
+    // Music
+    QMediaPlayer *musicPlayer;
+    QAudioOutput *audioOutput;
 
     // Methods
     void generateRandomLetters();
