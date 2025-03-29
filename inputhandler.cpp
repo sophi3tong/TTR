@@ -1,5 +1,4 @@
 #include "inputhandler.h"
-#include "levelwindow.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QSpacerItem>
@@ -41,6 +40,8 @@ InputHandler::InputHandler(QWidget *parent)
         emit backToMenu();
         this->close();
     });
+    connect(pauseButton, &QPushButton::clicked, this, &InputHandler::pauseGame);
+    connect(resumeButton, &QPushButton::clicked, this, &InputHandler::resumeGame);
 
     loadHighScore();
 
@@ -74,6 +75,7 @@ void InputHandler::initializeUI()
     label->setAlignment(Qt::AlignCenter);
     QFont labelFont("Helvetica", 24);
     label->setFont(labelFont);
+    label->setStyleSheet("color: #924AEB;");
     mainLayout->addWidget(label);
 
     timerLabel = new QLabel(this);
@@ -91,8 +93,11 @@ void InputHandler::initializeUI()
     mainLayout->addWidget(warningLabel);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
+    QHBoxLayout *button2Layout = new QHBoxLayout;
     restartButton = new QPushButton("Restart Game", this);
     backButton = new QPushButton("Back to Menu", this);
+    pauseButton = new QPushButton("Pause", this);
+    resumeButton = new QPushButton("Resume", this);
 
     QFont buttonFont("Helvetica", 16, QFont::Bold);
     QString buttonStyle = "QPushButton {"
@@ -111,12 +116,20 @@ void InputHandler::initializeUI()
 
     restartButton->setFont(buttonFont);
     backButton->setFont(buttonFont);
+    pauseButton->setFont(buttonFont);
+    resumeButton->setFont(buttonFont);
+
     restartButton->setStyleSheet(buttonStyle);
     backButton->setStyleSheet(buttonStyle);
+    pauseButton->setStyleSheet(buttonStyle);
+    resumeButton->setStyleSheet(buttonStyle);
 
     buttonLayout->addWidget(restartButton);
     buttonLayout->addWidget(backButton);
+    button2Layout->addWidget(pauseButton);
+    button2Layout->addWidget(resumeButton);
     mainLayout->addLayout(buttonLayout);
+    mainLayout->addLayout(button2Layout);
 
     mainLayout->addSpacerItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
     setLayout(mainLayout);
@@ -311,4 +324,28 @@ void InputHandler::keyPressEvent(QKeyEvent *event)
     {
         processInput(key);
     }
+}
+
+void InputHandler::pauseGame()
+{
+    if (roundTimer && roundTimer->isActive()){
+        roundTimer->stop();
+    }
+    if (musicPlayer) {
+        musicPlayer->pause();
+    }
+}
+
+void InputHandler::resumeGame()
+{
+    if (!gameOver && timeLeft>0){
+        if (roundTimer){
+            roundTimer->start();
+        }
+        if (musicPlayer) {
+            musicPlayer->play();
+        }
+    }
+
+
 }

@@ -1,4 +1,4 @@
-QT       += core gui sql multimedia
+QT       += core gui sql multimedia widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,7 +13,7 @@ SOURCES += \
     gamelogic.cpp \
     gamewindow.cpp \
     genrewindow.cpp \
-    #inputhandler.cpp \
+    inputhandler.cpp \
     levelwindow.cpp \
     loginwindow.cpp \
     main.cpp \
@@ -32,7 +32,7 @@ HEADERS += \
     gamelogic.h \
     gamewindow.h \
     genrewindow.h \
-    #inputhandler.h \
+    inputhandler.h \
     levelwindow.h \
     loginwindow.h \
     mainwindow.h \
@@ -50,27 +50,27 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-# SFML
-# INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include
-# LIBS += -L/usr/local/Cellar/sfml/3.0.0_1/lib
-# LIBS += -lsfml-graphics -lsfml-window -lsfml-system
-
-
-
-INCLUDEPATH += /opt/homebrew/opt/sfml/include
-LIBS += -L/opt/homebrew/opt/sfml/lib
+# SFML (Alli)
+INCLUDEPATH += /usr/local/opt/sfml/include
+LIBS += -L/usr/local/opt/sfml/lib
 LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
-# # QT version 6.8.2
-# QTDIR = /usr/local/Cellar/qt/6.8.2
-# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
 
-QTDIR = /opt/homebrew/opt/qt
-INCLUDEPATH += $$QTDIR/include
+# INCLUDEPATH += /opt/homebrew/opt/sfml/include
+# LIBS += -L/opt/homebrew/opt/sfml/lib
+# LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+
+# # QT version 6.8.2 (Alli)
+QTDIR = /usr/local/Cellar/qt/6.8.2
 LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
-# Add SFML library paths
-LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
+
+# QTDIR = /opt/homebrew/opt/qt
+# INCLUDEPATH += $$QTDIR/include
+# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+# # Add SFML library paths
+# LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
 
 RESOURCES += resources.qrc
 

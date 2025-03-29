@@ -32,3 +32,21 @@
 *.exe
 *.out
 *.app
+
+# Build files
+moc_*
+ui_*
+qrc_*
+
+# User Specific project settings
+*.pro.user
+*.pro.user.*
+
+# macOS specific files
+.DS_Store
+
+# Qt stack files
+.qmake.stack
+.qmake.stash
+
+

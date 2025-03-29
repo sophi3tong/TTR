@@ -44,7 +44,7 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
 
             QString level = button->text();
             gameWindow = new InputHandler();
-            connect(gameWindow, &InputHandler::backToMenu, this, [this]() {
+            connect(gameWindow, &InputHandler::backToMenu, this, []() {
                 LevelWindow *newMenu = new LevelWindow();
                 newMenu->show();
             });

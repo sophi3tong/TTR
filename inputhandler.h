@@ -37,6 +37,8 @@ private:
     QLabel *scoreLabel;
     QPushButton *restartButton;
     QPushButton *backButton;
+    QPushButton *pauseButton;
+    QPushButton *resumeButton;
 
     // Game State
     QVector<QChar> targetLetters;
@@ -64,6 +66,8 @@ private:
     void updateStatus();
     void handleMistake();
     void restartGame();
+    void pauseGame();
+    void resumeGame();
     void loadHighScore();
     void saveHighScore();
     void initializeUI();
