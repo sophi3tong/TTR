@@ -1,43 +1,73 @@
 #include "levelwindow.h"
+#include "inputhandler.h"
 #include <QSpacerItem>
 #include <QSizePolicy>
 #include <QTemporaryFile>
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QUrl>
-
 #include <QMainWindow>
-LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
+
+LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
+{
     layout = new QVBoxLayout(this);
     setStyleSheet("background-color: #F5EFFF;");
 
-    // Add spacer at top
     layout->addSpacerItem(new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding));
 
-    // Creating title
     title = new QLabel("Select Level", this);
     title->setStyleSheet("QLabel { color: #924AEB; }");
     title->setAlignment(Qt::AlignCenter);
     layout->addWidget(title);
     layout->addSpacerItem(new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-    // Creating level buttons
     levelButton1 = new QPushButton("Easy", this);
-    layout->addWidget(levelButton1);
-    levelButton1->setFixedSize(300, 50);
-    levelButton1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
     levelButton2 = new QPushButton("Medium", this);
-    layout->addWidget(levelButton2);
-    levelButton2->setFixedSize(300, 50);
-    levelButton2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
     levelButton3 = new QPushButton("Hard", this);
-    layout->addWidget(levelButton3);
-    levelButton3->setFixedSize(300, 50);
-    levelButton3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    // Apply styles to buttons
+    QPushButton *levelButtons[] = {levelButton1, levelButton2, levelButton3};
+    QString levelSongs[] = {":/audio/easysong.mp3", ":/audio/mediumsong.mp3", ":/audio/hardsong.mp3"};
+
+    for (int i = 0; i < 3; i++)
+    {
+        QPushButton *button = levelButtons[i];
+        layout->addWidget(button);
+        button->setFixedSize(300, 50);
+        button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        songPaths[button] = levelSongs[i];
+
+        connect(button, &QPushButton::pressed, this, [this, button]
+                { playSong(button); });
+
+        connect(button, &QPushButton::clicked, this, [this, button]()
+                {
+            stopPlayback();
+
+            QString level = button->text();
+            gameWindow = new InputHandler();
+            if (level == "Easy") gameWindow->launchEasyMode();
+            else if (level == "Medium") gameWindow->launchMediumMode();
+            else if (level == "Hard") gameWindow->launchHardMode();
+
+            gameWindow->show();
+            this->close(); });
+    }
+
+    layout->setAlignment(Qt::AlignCenter);
+    layout->addSpacerItem(new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding));
+
+    QWidget *centralWidget = new QWidget(this);
+    centralWidget->setLayout(layout);
+    setCentralWidget(centralWidget);
+
+    QFont titleFont("Helvetica", 50, QFont::Bold);
+    title->setFont(titleFont);
+
+    QFont buttonFont("Helvetica", 16, QFont::Light);
+    levelButton1->setFont(buttonFont);
+    levelButton2->setFont(buttonFont);
+    levelButton3->setFont(buttonFont);
+
     QString buttonStyle = "QPushButton {"
                           "background-color: #E9A5F1;"
                           "border-radius: 15px;"
@@ -53,68 +83,56 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent) {
                           "background-color: #C68EFD;"
                           "border: 2px solid #924AEB;"
                           "}";
-    // Apply styles to each button
+
     levelButton1->setStyleSheet(buttonStyle);
     levelButton2->setStyleSheet(buttonStyle);
     levelButton3->setStyleSheet(buttonStyle);
 
-    // Set alignment for all widgets
-    layout->setAlignment(Qt::AlignCenter);
-    // Add spacer at bottom
-    layout->addSpacerItem(new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding));
+    pauseButton = new QPushButton("Pause", this);
+    stopButton = new QPushButton("Stop", this);
+    restartButton = new QPushButton("Replay", this);
 
-    // Layout setup
-    QWidget *centralWidget = new QWidget(this);
-    centralWidget->setLayout(layout);
-    setCentralWidget(centralWidget);
+    connect(pauseButton, &QPushButton::clicked, this, &LevelWindow::pausePlayback);
+    connect(stopButton, &QPushButton::clicked, this, &LevelWindow::stopPlayback);
+    connect(restartButton, &QPushButton::clicked, this, &LevelWindow::restartPlayback);
 
-    // Fonts
-    QFont titleFont("Helvetica", 50, QFont::Bold);
-    title->setFont(titleFont);
-
-    QFont buttonFont("Helvetica", 16, QFont::Light);
-    levelButton1->setFont(buttonFont);
-    levelButton2->setFont(buttonFont);
-    levelButton3->setFont(buttonFont);
-
-    // Initialize player and audio output
-    musicPlayer = new QMediaPlayer();
-    audioOutput = new QAudioOutput();
-
-    // Set audio output for the media player
+    // Initialize Qt music player
+    musicPlayer = new QMediaPlayer(this);
+    audioOutput = new QAudioOutput(this);
     musicPlayer->setAudioOutput(audioOutput);
-
-    // Store the buttons and their corresponding songs
-    QPushButton* levelButtons[] = {levelButton1, levelButton2, levelButton3};
-    QString levelSongs[] = {":/audio/easysong.mp3", ":/audio/mediumsong.mp3", ":/audio/hardsong.mp3"};
-
-    // Connect buttons to play the corresponding songs
-    for (int i = 0; i < 3; i++) {
-        QPushButton* button = levelButtons[i];
-        songPaths[button] = levelSongs[i]; // Map button to song
-
-        connect(button, &QPushButton::clicked, this, [this, button] { playSong(button); });
-    }
-
-    // Optional: Set the volume
     audioOutput->setVolume(50);
-
 }
 
-void LevelWindow::playSong(QPushButton *button) {
-    // Check if the button has a song path associated
-    if (songPaths.find(button) == songPaths.end()) return;
-
-    // Stop any currently playing song
+void LevelWindow::playSong(QPushButton *button)
+{
+    if (songPaths.find(button) == songPaths.end())
+        return;
     musicPlayer->stop();
-
-    // Get the path of the selected song
-    QString currentSongPath = songPaths[button];
-
-    // Set the media source (song file) for the media player
+    currentSongPath = songPaths[button];
     musicPlayer->setSource(QUrl("qrc" + currentSongPath));
-
-    // Play the selected song
     musicPlayer->play();
 }
-// fix pause
+
+void LevelWindow::pausePlayback()
+{
+    if (musicPlayer->playbackState() == QMediaPlayer::PlayingState)
+        musicPlayer->pause();
+    else if (musicPlayer->playbackState() == QMediaPlayer::PausedState)
+        musicPlayer->play();
+}
+
+void LevelWindow::stopPlayback()
+{
+    if (musicPlayer->playbackState() != QMediaPlayer::StoppedState)
+        musicPlayer->stop();
+}
+
+void LevelWindow::restartPlayback()
+{
+    if (!currentSongPath.isEmpty())
+    {
+        musicPlayer->stop();
+        musicPlayer->setSource(QUrl("qrc" + currentSongPath));
+        musicPlayer->play();
+    }
+}
