@@ -9,6 +9,8 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QPair>
+#include <QFile>
+#include <QTextStream>
 
 class InputHandler : public QWidget
 {
@@ -20,6 +22,9 @@ public:
     void launchMediumMode();
     void launchHardMode();
 
+signals:
+    void backToMenu();
+
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 
@@ -28,9 +33,10 @@ private:
     QLabel *label;
     QLabel *statusLabel;
     QLabel *timerLabel;
+    QLabel *warningLabel;
+    QLabel *scoreLabel;
     QPushButton *restartButton;
     QPushButton *backButton;
-    QLabel *warningLabel;
 
     // Game State
     QVector<QChar> targetLetters;
@@ -57,7 +63,6 @@ private:
     void loadHighScore();
     void saveHighScore();
     void initializeUI();
-    void showWarning();
     void showWarning(const QString &message);
 };
 

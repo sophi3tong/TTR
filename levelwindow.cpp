@@ -39,18 +39,22 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
         connect(button, &QPushButton::pressed, this, [this, button]
                 { playSong(button); });
 
-        connect(button, &QPushButton::clicked, this, [this, button]()
-                {
+        connect(button, &QPushButton::clicked, this, [this, button]() {
             stopPlayback();
 
             QString level = button->text();
             gameWindow = new InputHandler();
+            connect(gameWindow, &InputHandler::backToMenu, this, [this]() {
+                LevelWindow *newMenu = new LevelWindow();
+                newMenu->show();
+            });
             if (level == "Easy") gameWindow->launchEasyMode();
             else if (level == "Medium") gameWindow->launchMediumMode();
             else if (level == "Hard") gameWindow->launchHardMode();
 
             gameWindow->show();
-            this->close(); });
+            this->close();
+        });
     }
 
     layout->setAlignment(Qt::AlignCenter);
