@@ -78,6 +78,7 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
                           "color: white;"
                           "border: 2px solid #DD8DF5;"
                           "padding: 10px;"
+                          "margin: 10px;"
                           "font-size: 16px;"
                           "font-weight: bold;"
                           "min-width: 300px;"

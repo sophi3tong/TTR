@@ -10,38 +10,38 @@ CONFIG += c++17
 
 SOURCES += \
     databasemanager.cpp \
-    gamelogic.cpp \
-    gamewindow.cpp \
-    genrewindow.cpp \
+    #gamelogic.cpp \
+    #gamewindow.cpp \
+    #genrewindow.cpp \
     inputhandler.cpp \
     levelwindow.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    music.cpp \
-    musicfactory.cpp \
-    note.cpp \
-    scoremanager.cpp \
-    song.cpp \
-    songfactory.cpp \
+    #music.cpp \
+    #musicfactory.cpp \
+    #note.cpp \
+    #scoremanager.cpp \
+    #song.cpp \
+    #songfactory.cpp \
     user.cpp \
     userfactory.cpp
 
 HEADERS += \
     databasemanager.h \
-    gamelogic.h \
-    gamewindow.h \
-    genrewindow.h \
+    #gamelogic.h \
+    #gamewindow.h \
+    #genrewindow.h \
     inputhandler.h \
     levelwindow.h \
     loginwindow.h \
     mainwindow.h \
-    music.h \
-    musicfactory.h \
-    note.h \
-    scoremanager.h \
-    song.h \
-    songfactory.h \
+    #music.h \
+    #musicfactory.h \
+    #note.h \
+    #scoremanager.h \
+    #song.h \
+    #songfactory.h \
     user.h \
     userfactory.h
 
