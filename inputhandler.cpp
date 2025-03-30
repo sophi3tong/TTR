@@ -392,6 +392,8 @@ void InputHandler::saveHighScore()
 
 void InputHandler::keyPressEvent(QKeyEvent *event)
 {
+    if (isPaused || gameOver) return;
+
     if (event->key() == Qt::Key_Shift) return;
     if (event->key() == Qt::Key_Backspace) return;
 
@@ -405,26 +407,36 @@ void InputHandler::keyPressEvent(QKeyEvent *event)
     }
 }
 
+
 void InputHandler::pauseGame()
 {
-    if (roundTimer && roundTimer->isActive()){
+    isPaused = true;
+
+    if (roundTimer && roundTimer->isActive()) {
         roundTimer->stop();
     }
     if (musicPlayer) {
         musicPlayer->pause();
     }
+
+    label->setText("Game Paused!\nPress Resume to continue");
 }
+
 
 void InputHandler::resumeGame()
 {
-    if (!gameOver && timeLeft>0){
-        if (roundTimer){
+    isPaused = false;
+
+    if (!gameOver && timeLeft > 0) {
+        if (roundTimer) {
             roundTimer->start();
         }
         if (musicPlayer) {
             musicPlayer->play();
         }
     }
+
+    updateLabel();
 }
 
 
