@@ -61,6 +61,7 @@ private:
     int lives = 3;
     int highScore;
     bool gameOver = false;
+    bool isPaused = false;
 
     // Difficulty Settings
     QPair<int, int> difficultyRange;
