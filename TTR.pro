@@ -26,10 +26,10 @@ SOURCES += \
     #songfactory.cpp \
     #modeltest.cpp \
     user.cpp \
-    userfactory.cpp
-    soundadjtest.cpp
-    testdatabasemanager.
-    testinputhandler.
+    userfactory.cpp \
+    soundadjtest.cpp \
+    testdatabasemanager \
+    testinputhandler \
     modeltest.cpp
 
 
@@ -50,10 +50,10 @@ HEADERS += \
     #songfactory.h \
     #modeltest.h \
     user.h \
-    userfactory.h
-    soundadjtest.h
-    testdatabasemanager.h
-    testinputhandler.h
+    userfactory.h \
+    soundadjtest. \
+    testdatabasemanager.h \
+    testinputhandler.h \
     modeltest.h
 
 
