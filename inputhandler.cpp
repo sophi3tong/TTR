@@ -1,8 +1,12 @@
 /**
- * @file levelwindow.cpp
- * @author Julie Vo
+/**
+ * @file inputhandler.h
+ * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
  * @date March 30, 2025
- * @brief File containing level window functions.
+ * @brief File containing input handler functions.
+ *
+ * This file contains the implementation of the inputhandler class. It consist of the actually typing game and
+ * how the game deals with the input by the user (ie. if user incorrectly/correctly types letter, music playing, pause, resume, etc.)
  *
  */
 #include "inputhandler.h"
@@ -23,7 +27,14 @@
 #include <QSlider>
 #include <QWidget>
 
-
+/**
+     * @brief InputHandler
+     * @param username
+     * @param parent
+     *
+     * Initializes the InputHandler class, sets up the UI components,
+     * and loads the current player's high score.
+     */
 InputHandler::InputHandler(QString username, QWidget *parent)
     : QWidget(parent)
 {
@@ -227,6 +238,11 @@ void InputHandler::showWarning(const QString &message)
     });
 }
 
+/**
+     * @brief InputHandler::launchEasyMode()
+     *
+     * Lauches the game in Easy mode.
+     */
 void InputHandler::launchEasyMode()
 {
     difficultyRange = qMakePair(1, 2);
@@ -241,6 +257,11 @@ void InputHandler::launchEasyMode()
     updateStatus();
 }
 
+/**
+     * @brief InputHandler::launchMediumMode()
+     *
+     * Lauches the game in Medium mode.
+     */
 void InputHandler::launchMediumMode()
 {
     difficultyRange = qMakePair(3, 5);
@@ -254,7 +275,11 @@ void InputHandler::launchMediumMode()
     updateLabel();
     updateStatus();
 }
-
+/**
+ * @brief InputHandler::launchHardMode
+ *
+ * Lauches the game in Medium mode.
+ */
 void InputHandler::launchHardMode()
 {
     difficultyRange = qMakePair(6, 8);
@@ -269,6 +294,11 @@ void InputHandler::launchHardMode()
     updateStatus();
 }
 
+/**
+ * @brief InputHandler::generateRandomLetters
+ *
+ * This generates random letters for the game.
+ */
 void InputHandler::generateRandomLetters()
 {
     if (gameOver) return;
@@ -293,6 +323,12 @@ void InputHandler::generateRandomLetters()
     }
 }
 
+/**
+ * @brief InputHandler::processInput
+ * @param userInput
+ *
+ * This processes the input of the user when typing.
+ */
 void InputHandler::processInput(QChar userInput)
 {
     if (gameOver) return;
@@ -319,6 +355,11 @@ void InputHandler::processInput(QChar userInput)
     updateStatus();
 }
 
+/**
+ * @brief InputHandler::updateLabel
+ *
+ * This updates the label by removing the letter on screen when user types it correctly.
+ */
 void InputHandler::updateLabel()
 {
     QString displayText;
@@ -330,12 +371,21 @@ void InputHandler::updateLabel()
     label->setText(displayText.trimmed());
 }
 
+/**
+ * @brief InputHandler::updateStatus
+ *
+ * This updates the status of the game.
+ */
 void InputHandler::updateStatus()
 {
     scoreLabel->setText("Score: " + QString::number(score));
     livesLabel->setText("Lives: " + QString::number(lives));  // Update lives label
 }
 
+/**
+ * @brief InputHandler::handleMistake
+ * This handles a mistake that the user does when inputting the wrong letter.
+ */
 void InputHandler::handleMistake()
 {
     --lives;
@@ -366,6 +416,11 @@ void InputHandler::handleMistake()
     }
 }
 
+/**
+ * @brief InputHandler::restartGame
+ *
+ * This restarts the game.
+ */
 void InputHandler::restartGame()
 {
     score = 0;
@@ -385,6 +440,12 @@ void InputHandler::restartGame()
     }
 }
 
+/**
+ * @brief InputHandler::loadHighScore
+ *
+ * This loads the high score of current user.
+ *
+ */
 void InputHandler::loadHighScore()
 {
     QString username = this->username;
@@ -394,6 +455,11 @@ void InputHandler::loadHighScore()
     this->highScore = loginUser.getHighscore();
 }
 
+/**
+ * @brief InputHandler::saveHighScore
+ *
+ * This saves the high score of current user.
+ */
 void InputHandler::saveHighScore()
 {
     QString username = this->username;
@@ -403,6 +469,13 @@ void InputHandler::saveHighScore()
     loginUser.insertHighscore(score);
 }
 
+/**
+ * @brief InputHandler::keyPressEvent
+ * @param event
+ *
+ * Processes the user's input and check if the entered letter matches the target letter.
+ * Updates the game state based on user input.
+ */
 void InputHandler::keyPressEvent(QKeyEvent *event)
 {
     if (isPaused || gameOver) return;
@@ -420,7 +493,11 @@ void InputHandler::keyPressEvent(QKeyEvent *event)
     }
 }
 
-
+/**
+ * @brief InputHandler::pauseGame
+ *
+ * This pauses the game.
+ */
 void InputHandler::pauseGame()
 {
     isPaused = true;
@@ -436,6 +513,11 @@ void InputHandler::pauseGame()
 }
 
 
+/**
+ * @brief InputHandler::resumeGame
+ *
+ * This resumes the game.
+ */
 void InputHandler::resumeGame()
 {
     isPaused = false;
@@ -452,7 +534,11 @@ void InputHandler::resumeGame()
     updateLabel();
 }
 
-
+/**
+ * @brief InputHandler::stopMusic
+ *
+ * This stops the music
+ */
 void InputHandler::stopMusic()
 {
     if (musicPlayer) {
