@@ -1,3 +1,10 @@
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date 29 March 2012
+ * @brief File containing level window functions.
+ *
+ */
 #include "levelwindow.h"
 #include "inputhandler.h"
 #include "mainwindow.h"
@@ -9,6 +16,14 @@
 #include <QUrl>
 #include <QMainWindow>
 
+/**
+ * @brief Constructor for the LevelWindow class.
+ *
+ * Initializes the window layout, buttons, and connects signals and slots for the music playback,
+ * level selection, and transitions to the game window.
+ *
+ * @param parent The parent widget for the window.
+ */
 LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
 {
     // Create a central widget and set it to the QMainWindow
@@ -148,6 +163,13 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
     audioOutput->setVolume(50);
 }
 
+/**
+ * @brief Plays the selected song when a button is clicked.
+ *
+ * Stops any current playback and plays the song associated with the button clicked.
+ *
+ * @param button The button that corresponds to the selected level's song.
+ */
 void LevelWindow::playSong(QPushButton *button)
 {
     if (songPaths.find(button) == songPaths.end())
@@ -158,6 +180,11 @@ void LevelWindow::playSong(QPushButton *button)
     musicPlayer->play();
 }
 
+/**
+ * @brief Pauses or resumes playback of the current song.
+ *
+ * If the song is playing, it pauses. If it's paused, it resumes playing.
+ */
 void LevelWindow::pausePlayback()
 {
     if (musicPlayer->playbackState() == QMediaPlayer::PlayingState)
@@ -166,12 +193,23 @@ void LevelWindow::pausePlayback()
         musicPlayer->play();
 }
 
+/**
+ * @brief Stops the current song playback.
+ *
+ * This function will stop the song and reset the playback.
+ */
+
 void LevelWindow::stopPlayback()
 {
     if (musicPlayer->playbackState() != QMediaPlayer::StoppedState)
         musicPlayer->stop();
 }
 
+/**
+ * @brief Restarts the current song from the beginning.
+ *
+ * This function will stop and play the song from the start again.
+ */
 void LevelWindow::restartPlayback()
 {
     if (!currentSongPath.isEmpty())
