@@ -327,15 +327,17 @@ void InputHandler::handleMistake()
 {
     --lives;
 
-    label->setText("Wrong!");
-    QPalette pal = label->palette();
-    pal.setColor(QPalette::WindowText, Qt::red);
-    label->setPalette(pal);
+    // Flash the current letter string in red
+    QString originalStyle = label->styleSheet();
+    label->setStyleSheet("color: red;");
 
+    // Revert after short delay
+    QTimer::singleShot(150, this, [this, originalStyle]() {
+        label->setStyleSheet(originalStyle);
+    });
+
+    // Refresh label after flash
     QTimer::singleShot(600, this, [this]() {
-        QPalette pal = label->palette();
-        pal.setColor(QPalette::WindowText, Qt::black);
-        label->setPalette(pal);
         updateLabel();
     });
 
@@ -345,7 +347,7 @@ void InputHandler::handleMistake()
         roundTimer->stop();
         musicPlayer->stop();
         label->setText("Game Over!");
-        warningLabel->setText("Press Restart or Back to Menu");
+        warningLabel->setText("Game Over! Press Restart or Back to Menu");
     }
 }
 
@@ -354,11 +356,18 @@ void InputHandler::restartGame()
     score = 0;
     lives = 3;
     gameOver = false;
+    isPaused = false;
+
+    label->setStyleSheet("color: #924AEB;");
+    warningLabel->clear();
     generateRandomLetters();
     updateLabel();
     updateStatus();
-    warningLabel->clear();
-    if (musicPlayer) musicPlayer->play();
+
+    if (musicPlayer) {
+        musicPlayer->setPosition(0);
+        musicPlayer->play();
+    }
 }
 
 void InputHandler::loadHighScore()
