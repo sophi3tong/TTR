@@ -57,4 +57,4 @@ void TestDatabaseManager::test_connectDatabase(){
 
 // register tests
 QTEST_MAIN(TestDatabaseManager)
-#include testdatabasemanager.moc
+#include 'testdatabasemanager.moc'
