@@ -24,6 +24,7 @@ SOURCES += \
     #scoremanager.cpp \
     #song.cpp \
     #songfactory.cpp \
+    modeltest.cpp \
     user.cpp \
     userfactory.cpp
 
@@ -42,6 +43,7 @@ HEADERS += \
     #scoremanager.h \
     #song.h \
     #songfactory.h \
+    modeltest.h \
     user.h \
     userfactory.h
 
