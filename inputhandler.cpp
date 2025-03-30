@@ -25,18 +25,27 @@ InputHandler::InputHandler(QWidget *parent)
 
     roundTimer = new QTimer(this);
     connect(roundTimer, &QTimer::timeout, this, [this]() {
-        if (gameOver) return;
+        if (gameOver || isPaused) return;
 
         --timeLeft;
         timerLabel->setText("Time Left: " + QString::number(timeLeft));
 
         if (timeLeft <= 0) {
             roundTimer->stop();
+
             if (!targetLetters.isEmpty()) {
                 showWarning("Time's up!");
-                handleMistake();
+                handleMistake();          // lose a life
                 updateLabel();
                 updateStatus();
+
+                // Move to next random letters after a short pause
+                QTimer::singleShot(800, this, [this]() {
+                    if (!gameOver) {
+                        generateRandomLetters();
+                        updateLabel();
+                    }
+                });
             }
         }
     });
