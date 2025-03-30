@@ -30,11 +30,13 @@ void TestDatabaseManager::test_checkDrivers(){
 
     QStringList driverList = QSqlDatabase::drivers();
     // Verify that the driverList is not empty 
-    QVERIFY2(isEmpty(driverList), "Test Passed");
+    QVERIFY2(!isEmpty(driverList), "Test Failed: driver list is empty");
+    // Verify that QMYSQL is in driverList
+    QVERIFY2(driverList.contains("QMYSQL"), "Test Failed: driver list does not contain QMYSQL");
 }
 
 /** @test
- * @brief checking if the database is being connected to database
+ * @brief checking if the database is being connected properly
  *
  */
 void TestDatabaseManager::test_connectDatabase(){
@@ -43,14 +45,16 @@ void TestDatabaseManager::test_connectDatabase(){
     // Call the connectDatabase() method to start test
     dbManager.connectDatabase();
 
+    // If the database is open then it was connected properly
     QSqlDatabase sqldb = QSqlDatabase::database();
     if (sqldb.isOpen()) {
         qDebug() << "Test Passed";
     }
     else{
-        qDebug() << "Test Failed";
+        qDebug() << "Test Failed: " << sqldb.lastError().text(); // Print error specific to database connection failure
     }
 }
 
+// register tests
 QTEST_MAIN(TestDatabaseManager)
 #include testdatabasemanager.moc
