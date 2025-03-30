@@ -48,33 +48,46 @@ HEADERS += \
     userfactory.h
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+# qnx: target.path = /tmp/$${TARGET}/bin
+# else: unix:!android: target.path = /opt/$${TARGET}/bin
+# !isEmpty(target.path): INSTALLS += target
 
-# SFML (Alli)
-INCLUDEPATH += /usr/local/opt/sfml/include
-LIBS += -L/usr/local/opt/sfml/lib
-LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-
-
-
-# INCLUDEPATH += /opt/homebrew/opt/sfml/include
-# LIBS += -L/opt/homebrew/opt/sfml/lib
+# # SFML (Alli)
+# INCLUDEPATH += /usr/local/opt/sfml/include
+# LIBS += -L/usr/local/opt/sfml/lib
 # LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+
+
+# # INCLUDEPATH += /opt/homebrew/opt/sfml/include
+# # LIBS += -L/opt/homebrew/opt/sfml/lib
+# # LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 # # QT version 6.8.2 (Alli)
 QTDIR = /usr/local/Cellar/qt/6.8.2
 LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
 
-# QTDIR = /opt/homebrew/opt/qt
+QTDIR = /opt/homebrew/opt/qt
+INCLUDEPATH += $$QTDIR/include
+LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+# Add SFML library paths
+LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
+
+# # Julie's pathway
+# INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include
+# LIBS += -L/usr/local/Cellar/sfml/3.0.0_1/lib
+# LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+# # Qt version 6.8.2 installed via Homebrew
+# QTDIR = /usr/local/Cellar/qt/6.8.2
 # INCLUDEPATH += $$QTDIR/include
 # LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
-# # Add SFML library paths
-# LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
+# end
 
-RESOURCES += resources.qrc
+
+RESOURCES += \
+    resources.qrc
 
 
 

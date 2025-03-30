@@ -11,6 +11,9 @@
 #include <QPair>
 #include <QMediaPlayer>
 #include <QAudioOutput>
+#include <QSlider>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 class InputHandler : public QWidget
 {
@@ -32,6 +35,7 @@ private:
     // UI Elements
     QLabel *label;
     QLabel *statusLabel;
+    QLabel *livesLabel;
     QLabel *timerLabel;
     QLabel *warningLabel;
     QLabel *scoreLabel;
@@ -58,6 +62,12 @@ private:
     // Music
     QMediaPlayer *musicPlayer;
     QAudioOutput *audioOutput;
+    QHBoxLayout *topRightLayout;
+    QSlider *volumeSlider;
+    QPushButton *volumeButton;
+    bool isVisible;
+    QWidget *topRightWidget;
+
 
     // Methods
     void generateRandomLetters();
@@ -71,6 +81,7 @@ private:
     void loadHighScore();
     void saveHighScore();
     void initializeUI();
+    void stopMusic();
     void showWarning(const QString &message);
 };
 
