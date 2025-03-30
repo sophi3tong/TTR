@@ -1,5 +1,13 @@
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date March 30, 2025
+ * @brief File containing level window functions.
+ *
+ */
 #include "inputhandler.h"
-#include "levelwindow.h"
+#include "user.h"
+#include "userfactory.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QSpacerItem>
@@ -16,10 +24,12 @@
 #include <QWidget>
 
 
-InputHandler::InputHandler(QWidget *parent)
+InputHandler::InputHandler(QString username, QWidget *parent)
     : QWidget(parent)
 {
-
+    qDebug() << "(InputHandler top) Username:" << username;
+    this->username = username;
+    loadHighScore();
     initializeUI();
     this->setFixedSize(800, 500);
 
@@ -50,8 +60,6 @@ InputHandler::InputHandler(QWidget *parent)
 
     connect(pauseButton, &QPushButton::clicked, this, &InputHandler::pauseGame);
     connect(resumeButton, &QPushButton::clicked, this, &InputHandler::resumeGame);
-
-    loadHighScore();
 
     musicPlayer = new QMediaPlayer(this);
     audioOutput = new QAudioOutput(this);
@@ -129,6 +137,13 @@ void InputHandler::initializeUI()
     livesLabel->setStyleSheet("color: #333;");
     mainLayout->addWidget(livesLabel);
 
+    highscoreLabel = new QLabel("Highscore: "+QString::number(this->highScore), this);
+    highscoreLabel->setAlignment(Qt::AlignLeft);
+    QFont highscoreFont("Helvetica", 16);
+    highscoreLabel->setFont(highscoreFont);
+    highscoreLabel->setStyleSheet("color: #333;");
+    mainLayout->addWidget(highscoreLabel);
+
     label = new QLabel("Press keys to match letters!", this);
     label->setAlignment(Qt::AlignCenter);
     QFont labelFont("Helvetica", 24);
@@ -188,8 +203,6 @@ void InputHandler::initializeUI()
     button2Layout->addWidget(resumeButton);
     mainLayout->addLayout(buttonLayout);
     mainLayout->addLayout(button2Layout);
-
-
 
     mainLayout->addSpacerItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
     setLayout(mainLayout);
@@ -332,6 +345,8 @@ void InputHandler::handleMistake()
 
     if (lives <= 0)
     {
+        saveHighScore();
+        highscoreLabel->setText("Highscore: "+QString::number(this->highScore));
         gameOver = true;
         roundTimer->stop();
         musicPlayer->stop();
@@ -354,22 +369,20 @@ void InputHandler::restartGame()
 
 void InputHandler::loadHighScore()
 {
-    QFile file("highscore.txt");
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream in(&file);
-        in >> highScore;
-    }
-    file.close();
+    QString username = this->username;
+    UserFactory uf;
+    User loginUser = uf.createUser(username);
+    qDebug() << "(InputHandler::loadHighScore) Username:" << username;
+    this->highScore = loginUser.getHighscore();
 }
 
 void InputHandler::saveHighScore()
 {
-    QFile file("highscore.txt");
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QTextStream out(&file);
-        out << highScore;
-    }
-    file.close();
+    QString username = this->username;
+    UserFactory uf;
+    User loginUser = uf.createUser(username);
+    qDebug() << "(InputHandler::saveHighScore) Username:" << loginUser.getUsername();
+    loginUser.insertHighscore(score);
 }
 
 void InputHandler::keyPressEvent(QKeyEvent *event)

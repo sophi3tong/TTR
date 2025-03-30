@@ -24,7 +24,7 @@ SOURCES += \
     #scoremanager.cpp \
     #song.cpp \
     #songfactory.cpp \
-    modeltest.cpp \
+    #modeltest.cpp \
     user.cpp \
     userfactory.cpp
 
@@ -43,7 +43,7 @@ HEADERS += \
     #scoremanager.h \
     #song.h \
     #songfactory.h \
-    modeltest.h \
+    #modeltest.h \
     user.h \
     userfactory.h
 
@@ -53,9 +53,9 @@ HEADERS += \
 # !isEmpty(target.path): INSTALLS += target
 
 # # SFML (Alli)
-# INCLUDEPATH += /usr/local/opt/sfml/include
-# LIBS += -L/usr/local/opt/sfml/lib
-# LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+INCLUDEPATH += /usr/local/opt/sfml/include
+LIBS += -L/usr/local/opt/sfml/lib
+LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 
@@ -68,11 +68,11 @@ HEADERS += \
 QTDIR = /usr/local/Cellar/qt/6.8.2
 LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
 
-QTDIR = /opt/homebrew/opt/qt
-INCLUDEPATH += $$QTDIR/include
-LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
-# Add SFML library paths
-LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
+# QTDIR = /opt/homebrew/opt/qt
+# INCLUDEPATH += $$QTDIR/include
+# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+# # Add SFML library paths
+# LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
 
 # # Julie's pathway
 # INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include

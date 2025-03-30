@@ -52,8 +52,10 @@ public:
      * @param item The button that corresponds to the song to be played.
      */
     void playSong(QPushButton *item); // Play song when button is clicked
+    QString username;
 
 private:
+
     // Layout and UI
     QVBoxLayout *layout;
     QLabel *title;

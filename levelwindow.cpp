@@ -8,6 +8,8 @@
 #include "levelwindow.h"
 #include "inputhandler.h"
 #include "mainwindow.h"
+#include "user.h"
+#include "userfactory.h"
 #include <QSpacerItem>
 #include <QSizePolicy>
 #include <QTemporaryFile>
@@ -26,6 +28,12 @@
  */
 LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
 {
+    // Retrieve user information
+    QString username = this->username;
+    UserFactory uf;
+    User loginUser = uf.createUser(username);
+    qDebug() << "(Level Window Check Top) Username:" << loginUser.getUsername();
+
     // Create a central widget and set it to the QMainWindow
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);  // Set central widget for the window
@@ -63,15 +71,24 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
                 { playSong(button); });
 
         connect(button, &QPushButton::clicked, this, [this, button]() {
+            QString username = this->username;
+            UserFactory uf;
+            User loginUser = uf.createUser(username);
+            qDebug() << "(Level Window Check Later) Username:" << this->username;
+
             stopPlayback();
 
             QString level = button->text();
             if (gameWindow == nullptr) {
-                gameWindow = new InputHandler();
+                gameWindow = new InputHandler(this->username);
             }
             connect(gameWindow, &InputHandler::backToMenu, this, [this]() {
+                QString username = this->username;
+
                 stopPlayback();
                 LevelWindow *newMenu = new LevelWindow();
+                newMenu->username = this->username;
+                qDebug() << "(Level Window Check back) Username:" << newMenu->username;
                 newMenu->show();
                 this->close();
             });
@@ -79,7 +96,6 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
             if (level == "Easy") gameWindow->launchEasyMode();
             else if (level == "Medium") gameWindow->launchMediumMode();
             else if (level == "Hard") gameWindow->launchHardMode();
-
             gameWindow->show();
             this->close();
         });
@@ -148,6 +164,7 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
     connect(backButton, &QPushButton::clicked, this, [this]() {
         stopPlayback();
         MainWindow *mainMenu = new MainWindow();
+        mainMenu->username = this->username;
         mainMenu->show();
         this->close();
     });

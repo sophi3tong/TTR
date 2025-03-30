@@ -11,19 +11,28 @@
 #include <QPair>
 #include <QMediaPlayer>
 #include <QAudioOutput>
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date March 30, 2025
+ * @brief File containing level window functions.
+ *
+ */
 #include <QSlider>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <databasemanager.h>
 
 class InputHandler : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit InputHandler(QWidget *parent = nullptr);
+    explicit InputHandler(QString username, QWidget *parent = nullptr);
     void launchEasyMode();
     void launchMediumMode();
     void launchHardMode();
+    QString username;
 
 signals:
     void backToMenu();
@@ -32,6 +41,7 @@ protected:
     void keyPressEvent(QKeyEvent *event) override;
 
 private:
+
     // UI Elements
     QLabel *label;
     QLabel *statusLabel;
@@ -39,6 +49,7 @@ private:
     QLabel *timerLabel;
     QLabel *warningLabel;
     QLabel *scoreLabel;
+    QLabel *highscoreLabel;
     QPushButton *restartButton;
     QPushButton *backButton;
     QPushButton *pauseButton;
@@ -48,7 +59,7 @@ private:
     QVector<QChar> targetLetters;
     int score = 0;
     int lives = 3;
-    int highScore = 0;
+    int highScore;
     bool gameOver = false;
 
     // Difficulty Settings

@@ -1,27 +1,63 @@
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date March 30, 2025
+ * @brief File containing level window functions.
+ *
+ */
 #include "user.h"
 #include "databasemanager.h"
 
 User::User(QString username) {
+    DatabaseManager dm;
+    dm.connectDatabase();
     this->username=username;
     this->user_id=getUserId();
 
     this->highScore = (this->user_id != -1) ? getHighscore() : 0;
-    insertHighscore(this->highScore);
+    this->levelScores = getLevels();
 }
 
 User::User(QString username, int score) {
+    DatabaseManager dm;
+    dm.connectDatabase();
     this->username=username;
     this->user_id=getUserId();
 
     this->highScore = (this->user_id != -1) ? getHighscore() : 0;
     if (score > this->highScore) {
         this->highScore = score;
-        insertHighscore(this->highScore);
     }
+    this->levelScores = getLevels();
+}
+
+User User::getUser(int user_id){
+    QString username = getUsername(user_id);
+    return User(username);
 }
 
 QString User::getUsername(){
     return this->username;
+}
+
+QString User::getUsername(int user_id){
+    QSqlQuery query;
+
+    query.prepare("SELECT username FROM users WHERE user_id = :user_id");
+    query.bindValue(":user_id", user_id);
+
+    if (!query.exec()){
+        qDebug() << "(User: getUsername) Username query failed.";
+        return QString();
+    }
+
+    if (query.next()){
+        this->username=query.value(0).toString();
+        qDebug() << "Username: " << this->username;
+
+        return this->username;
+    }
+    return QString();
 }
 
 int User::getUserId(){
@@ -129,7 +165,7 @@ bool User::insertLevelscore(int level, int score){
         return false;
     }
 
-    qDebug() <<"User highscore inserted successfully!";
+    qDebug() <<"User level_scores inserted successfully!";
     return true;
 }
 

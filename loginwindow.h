@@ -1,3 +1,10 @@
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date March 30, 2025
+ * @brief File containing level window functions.
+ *
+ */
 #ifndef LOGINWINDOW_H
 #define LOGINWINDOW_H
 
@@ -16,6 +23,8 @@ class LoginWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit LoginWindow(QWidget *parent = nullptr);
+    QString username;
+
 private slots:
     void setupUI(int isLogin);
     void handleRegister();
@@ -25,6 +34,7 @@ private slots:
     bool insertUser(const QString& firstname, const QString& lastname, const QString& username, const QString& password);
     bool authenticateUser(const QString& username, const QString& password);
 private:
+
     QVBoxLayout *layout;
     QLabel *mainTitle;
     QLabel *mainSubtitle;
