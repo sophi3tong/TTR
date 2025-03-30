@@ -4,4 +4,8 @@
         <file>hardsong.mp3</file>
         <file>mediumsong.mp3</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>volume-up.png</file>
+        <file>cancel.png</file>
+    </qresource>
 </RCC>

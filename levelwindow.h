@@ -11,6 +11,7 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include "inputhandler.h"
+#include "mainwindow.h"
 
 class LevelWindow : public QMainWindow
 {
@@ -31,6 +32,7 @@ private:
     QPushButton *pauseButton;
     QPushButton *stopButton;
     QPushButton *restartButton;
+    QPushButton *backButton;
 
     // Music
     QMap<QPushButton *, QString> songPaths;

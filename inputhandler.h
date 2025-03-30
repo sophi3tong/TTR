@@ -11,6 +11,9 @@
 #include <QPair>
 #include <QMediaPlayer>
 #include <QAudioOutput>
+#include <QSlider>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 class InputHandler : public QWidget
 {
@@ -59,6 +62,12 @@ private:
     // Music
     QMediaPlayer *musicPlayer;
     QAudioOutput *audioOutput;
+    QHBoxLayout *topRightLayout;
+    QSlider *volumeSlider;
+    QPushButton *volumeButton;
+    bool isVisible;
+    QWidget *topRightWidget;
+
 
     // Methods
     void generateRandomLetters();

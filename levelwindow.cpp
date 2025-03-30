@@ -1,5 +1,6 @@
 #include "levelwindow.h"
 #include "inputhandler.h"
+#include "mainwindow.h"
 #include <QSpacerItem>
 #include <QSizePolicy>
 #include <QTemporaryFile>
@@ -30,6 +31,7 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
     levelButton1 = new QPushButton("Easy", this);
     levelButton2 = new QPushButton("Medium", this);
     levelButton3 = new QPushButton("Hard", this);
+    backButton = new QPushButton("Back to Menu", this);
 
     QPushButton *levelButtons[] = {levelButton1, levelButton2, levelButton3};
     QString levelSongs[] = {":/audio/easysong.mp3", ":/audio/mediumsong.mp3", ":/audio/hardsong.mp3"};
@@ -78,6 +80,7 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
     levelButton1->setFont(buttonFont);
     levelButton2->setFont(buttonFont);
     levelButton3->setFont(buttonFont);
+    backButton->setFont(buttonFont);
 
     QString buttonStyle = "QPushButton {"
                           "background-color: #E9A5F1;"
@@ -99,6 +102,40 @@ LevelWindow::LevelWindow(QWidget *parent) : QMainWindow(parent)
     levelButton1->setStyleSheet(buttonStyle);
     levelButton2->setStyleSheet(buttonStyle);
     levelButton3->setStyleSheet(buttonStyle);
+
+
+    backButton->setFixedSize(200,40);
+    layout->addWidget(backButton);
+    backButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    // Align it to the center
+    layout->setAlignment(backButton, Qt::AlignCenter);
+    layout->addSpacerItem(new QSpacerItem(20, 30, QSizePolicy::Minimum, QSizePolicy::Fixed));
+    backButton->setStyleSheet(QStringLiteral(
+        "QPushButton {"
+        "background-color: #E9A5F1;"
+        "border-radius: 15px;"
+        "color: white;"
+        "border: 2px solid #DD8DF5;"
+        "padding: 10px;"
+        "margin: 10px;"
+        "font-size: 16px;"
+        "font-weight: bold;"
+        "min-width: 200px;"
+        "min-height: 40px;"
+        "}"
+        "QPushButton:hover {"
+        "background-color: #C68EFD;"
+        "border: 2px solid #924AEB;"
+        "}"
+        ));
+
+
+    connect(backButton, &QPushButton::clicked, this, [this]() {
+        stopPlayback();
+        MainWindow *mainMenu = new MainWindow();
+        mainMenu->show();
+        this->close();
+    });
 
     connect(pauseButton, &QPushButton::clicked, this, &LevelWindow::pausePlayback);
     connect(stopButton, &QPushButton::clicked, this, &LevelWindow::stopPlayback);

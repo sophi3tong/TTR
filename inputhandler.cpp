@@ -12,12 +12,16 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include <QUrl>
+#include <QSlider>
+#include <QWidget>
+
 
 InputHandler::InputHandler(QWidget *parent)
     : QWidget(parent)
 {
+
     initializeUI();
-    this->setFixedSize(600, 400);
+    this->setFixedSize(800, 500);
 
     roundTimer = new QTimer(this);
     connect(roundTimer, &QTimer::timeout, this, [this]() {
@@ -59,6 +63,49 @@ void InputHandler::initializeUI()
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     setStyleSheet("background-color: #F5EFFF;");
+
+    // Adjust volume button with icon
+    volumeButton = new QPushButton(this);
+    volumeButton->setIcon(QIcon(":/icons/volume-up.png"));
+    volumeButton->setIconSize(QSize(20, 20));
+    volumeButton->setStyleSheet("QPushButton { background: transparent; border: none; }");
+    volumeButton->setFixedSize(40, 40);
+
+    // Add a horizontal layout for the volume slider
+    QHBoxLayout *topRightLayout = new QHBoxLayout;
+    topRightLayout->addStretch();  // Pushes the slider to the right
+    topRightLayout->addWidget(volumeButton);
+
+    // Create the volume slider (hidden by default)
+    volumeSlider = new QSlider(Qt::Horizontal, this);
+    volumeSlider->setRange(0, 100);  // Range is from 0 (mute) to 100 (max volume)
+    volumeSlider->setValue(50);      // Set initial volume to 50%
+    volumeSlider->setVisible(false); // Initially hide the slider
+    topRightLayout->addWidget(volumeSlider);
+
+    QWidget *topRightWidget = new QWidget(this);
+    topRightWidget->setLayout(topRightLayout);
+    // Add the top right layout to the main layout
+    mainLayout->addWidget(topRightWidget,0, Qt::AlignTop | Qt::AlignRight);
+
+    // Connect volume button to toggle visibility of slider
+    connect(volumeButton, &QPushButton::clicked, this, [this]() {
+        bool isVisible = volumeSlider->isVisible();
+        volumeSlider->setVisible(!isVisible);
+        // Change button icon based on visibility
+        if (isVisible) {
+            volumeButton->setIcon(QIcon(":/icons/volume-up.png")); // Show volume icon when slider is hidden
+            volumeButton->setIconSize(QSize(20, 20));
+        } else {
+            volumeButton->setIcon(QIcon(":/icons/cancel.png"));   // Show close (X) icon when slider is visible
+            volumeButton->setIconSize(QSize(20, 20));
+        }
+    });
+
+    // Connect the slider's value change to control audio volume
+    connect(volumeSlider, &QSlider::valueChanged, this, [this](int value) {
+        audioOutput->setVolume(value / 100.0);  // QAudioOutput volume is set from 0 to 1
+    });
 
     QLabel *title = new QLabel("Typing Challenge", this);
     title->setAlignment(Qt::AlignCenter);
@@ -141,6 +188,8 @@ void InputHandler::initializeUI()
     button2Layout->addWidget(resumeButton);
     mainLayout->addLayout(buttonLayout);
     mainLayout->addLayout(button2Layout);
+
+
 
     mainLayout->addSpacerItem(new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding));
     setLayout(mainLayout);
