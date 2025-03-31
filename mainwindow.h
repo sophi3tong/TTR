@@ -12,7 +12,6 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QLabel>
-#include "levelwindow.h"  // Include LevelWindow header
 #include <QDebug>
 #include "tutorial.h"  // Include TutorialWindow header
 
@@ -46,12 +45,6 @@ private slots:
      * This opens the level window.
      */
     void openLevelWindow();  // Declare the openLevelWindow slot
-    /**
-     * @brief openTutorialWindow
-     *
-     * This opens the tutorial window.
-     */
-    void openTutorialWindow();  // Declare the openTutorialWindow slot
 
 private:
 
