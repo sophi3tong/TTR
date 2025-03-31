@@ -92,14 +92,14 @@ int User::getHighscore(){
 
     if (!query.exec()){
         qDebug() << "(User: getHighscore) User highscore query failed.";
-        return 0;
+        return -1;
     }
 
     if (query.next()){
         this->highScore=query.value(0).toInt();
         return this->highScore;
     }
-    return 0;
+    return -1;
 }
 
 int User::getLevelscore(int level){

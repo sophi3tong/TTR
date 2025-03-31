@@ -1,5 +1,4 @@
 /**
-/**
  * @file databasemanager.h
  * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
  * @date March 30, 2025

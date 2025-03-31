@@ -26,9 +26,9 @@ private:
  * @brief initialize an input handler for the test case
 */
 void TestInputHandler::initTestCase(){
-    // Test case: (Sophia)
+    // Test case: (TestUser)
     UserFactory uf;
-    User testUser = User("sophia123");
+    User testUser = User("TestUser");
     inputhandler = new InputHandler(testUser.getUsername());
     inputhandler->show(); // display inputhandler to be used for testing
 }
@@ -51,4 +51,4 @@ void TestInputHandler::cleanUpTestCase(){
 
 // register tests
 QTEST_MAIN(TestInputHandler);
-#include 'testinputhandler.moc';
+// #include 'testinputhandler.moc';

@@ -13,6 +13,3 @@ User UserFactory::createUser(QString username){
     return User(username);
 }
 
-User UserFactory::createUser(QString username, int score){
-    return User(username, score);
-}
