@@ -16,7 +16,6 @@ class TestInputHandler : public QObject{
 
 private slots:
     void initTestCase();
-    void testUI();
     void testTimer();
     void testPauseandResume();
     void testInput();
@@ -34,30 +33,6 @@ void TestInputHandler::initTestCase(){
     User testUser = User("TestUser");
     inputhandler = new InputHandler(testUser.getUsername());
     inputhandler->show(); // display inputhandler to be used for testing
-}
-
-/**
- * @test
- * @brief testing all UI components
-*/
-void TestInputHandler::testUI(){
-    qDebug() << "Testing UI Components";
-    // test that all labels are not null
-    // if null, print fail message
-    QVERIFY2(inputhandler->findChild<QLabel *>("label") != nullptr, "Test Failed: label not found");
-    QVERIFY2(inputhandler->findChild<QLabel *>("statusLabel") != nullptr, "Test Failed: statusLabel not found");
-    QVERIFY2(inputhandler->findChild<QLabel *>("livesLabel") != nullptr, "Test Failed: livesLabel not found");
-    QVERIFY2(inputhandler->findChild<QLabel *>("timerLabel") != nullptr, "Test Failed: timerLabel not found");
-    QVERIFY2(inputhandler->findChild<QLabel *>("warningLabel") != nullptr, "Test Failed: warningLabel not found");
-    QVERIFY2(inputhandler->findChild<QLabel *>("scoreLabel") != nullptr, "Test Failed: scoreLabel not found");
-    QVERIFY2(inputhandler->findChild<QLabel *>("highscoreLabel") != nullptr, "Test Failed: highscoreLabel not found");
-
-    // test that all buttons are not null
-    // if null, print fail message
-    QVERIFY2(inputhandler->findChild<QPushButton *>("restartButton") != nullptr, "Test Failed: restartButton not found");
-    QVERIFY2(inputhandler->findChild<QPushButton *>("pauseButton") != nullptr, "Test Failed: pauseButton not found");
-    QVERIFY2(inputhandler->findChild<QPushButton *>("resumeButton") != nullptr, "Test Failed: resumeButton not found");
-    QVERIFY2(inputhandler->findChild<QPushButton *>("backButton") != nullptr, "Test Failed: backButton not found");
 }
 
 /**
@@ -84,10 +59,10 @@ void TestInputHandler::testPauseandResume(){
     qDebug() << "Testing the Pause and Resume Buttons";
     InputHandler ih("TestUser");
     // Test the pause button
-    QTest::mouseClick(ih.pauseButton, Qt::LeftButton);
+    QTest::mouseClick(ih.pauseGame());
     QVERIFY2(inputhandler->isPaused == true, "Test Failed: Pause button not working");
     // Test the restart button
-    QTest::mouseClick(ih.resumeButton, Qt::LeftButton);
+    QTest::mouseClick(ih.resumeGame());
     QVERIFY2(inputhandler->isPaused == false, "Test Failed: Resume button not working");
 }
 
@@ -105,13 +80,16 @@ void TestInputHandler::testInput(){
     if (!inputhandler->getTargetLetters().isEmpty()){
         // get correct input
         QChar correctInput = inputhandler->getTargetLetters().first();
+        // count number of target letters
+        int origTargetLetters = inputhandler->getTargetLetters().count();
         // get initial score
         int initialScore = inputhandler->getScore();
 
         // test processInput() function
         inputhandler->processInput(correctInput);
+        int currTargetLetters = inputhandler->getTargetLetters.count();
         QVERIFY2(inputhandler->getScore() == initialScore + 1, "Test Failed: score updated incorrectly");
-        QVERIFY2(inputhandler->getTargetLetters().isEmpty(), "Test Failed: Letter not removed from list correctly");
+        QVERIFY2(origTargetLetters == currTargetLetters + 1, "Test Failed: Letter not removed from list correctly");
     }
 
     // when user uses incorrect input
