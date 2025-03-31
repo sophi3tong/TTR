@@ -45,7 +45,7 @@ private slots:
      * This opens the level window.
      */
     void openLevelWindow();  // Declare the openLevelWindow slot
-
+    void openTutorialWindow();
 private:
 
     QVBoxLayout *layout;
