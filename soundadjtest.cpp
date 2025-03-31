@@ -1,3 +1,5 @@
+#include <QObject>
+#include <QtTest/QtTest>
 /**
  * @file levelwindow.cpp
  * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
@@ -7,11 +9,22 @@
  * This file contains the implementation of sound adjustment testing.
  */
 
-#include "soundadjtest.h"
 #include <QPushButton>
 #include <QSlider>
 #include <QSignalSpy>
 #include <QApplication>
+
+class soundAdjTest : public QObject {
+    Q_OBJECT
+
+private slots:
+    // Test accessing sound setting.
+    void testVolumeButton();
+
+    // Test adjusting music voume.
+    void testSlider();
+
+};
 
 /**
  * @brief soundAdjTest::testVolumeButton
@@ -72,3 +85,4 @@ void soundAdjTest::testSlider()
     }
 }
 
+#include "soundadjtest.moc"

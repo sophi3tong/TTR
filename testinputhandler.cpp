@@ -49,6 +49,4 @@ void TestInputHandler::cleanUpTestCase(){
     delete inputhandler;
 }
 
-// register tests
-QTEST_MAIN(TestInputHandler);
-// #include 'testinputhandler.moc';
+#include "testinputhandler.moc"

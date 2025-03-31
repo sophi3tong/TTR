@@ -25,11 +25,10 @@ SOURCES += \
     #song.cpp \
     #songfactory.cpp \
     #modeltest.cpp \
-    testdatabasemanager.cpp \
-    testinputhandler.cpp \
     user.cpp \
     userfactory.cpp \
     soundadjtest.cpp \
+    testdatabasemanager.cpp \
     testinputhandler.cpp \
     modeltest.cpp
 
@@ -51,11 +50,7 @@ HEADERS += \
     #songfactory.h \
     #modeltest.h \
     user.h \
-    userfactory.h \
-    soundadjtest.h \
-    testdatabasemanager.h \
-    testinputhandler.h \
-    modeltest.h
+    userfactory.h 
 
 
 # Default rules for deployment.
@@ -79,15 +74,9 @@ LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 # # LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
-
-# INCLUDEPATH += /opt/homebrew/opt/sfml/include
-# LIBS += -L/opt/homebrew/opt/sfml/lib
-# LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-
-
 # # QT version 6.8.2 (Alli)
-# QTDIR = /usr/local/Cellar/qt/6.8.2
-# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+QTDIR = /usr/local/Cellar/qt/6.8.2
+LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
 
 # QTDIR = /opt/homebrew/opt/qt
 # INCLUDEPATH += $$QTDIR/include
@@ -102,23 +91,8 @@ LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # # Qt version 6.8.2 installed via Homebrew
 # QTDIR = /usr/local/Cellar/qt/6.8.2
-# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
-
-# QTDIR = /opt/homebrew/opt/qt
 # INCLUDEPATH += $$QTDIR/include
 # LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
-# # Add SFML library paths
-# LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
-
-# # Julie's pathway
-INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include
-LIBS += -L/usr/local/Cellar/sfml/3.0.0_1/lib
-LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-
-# Qt version 6.8.2 installed via Homebrew
-QTDIR = /usr/local/Cellar/qt/6.8.2
-INCLUDEPATH += $$QTDIR/include
-LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
 # end
 
 
