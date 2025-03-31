@@ -101,23 +101,23 @@ void TestInputHandler::testInput(){
 
     // when user uses correct input
     // Check that the targetLetters are not empty
-    if (!inputhandler->targetLetters.isEmpty()){
+    if (!inputhandler->getTargetLetters().isEmpty()){
         // get correct input
-        QChar correctInput = inputhandler->targetLetters[0];
+        QChar correctInput = inputhandler->getTargetLetters().first();
         // get initial score
-        int initialScore = inputhandler->score;
+        int initialScore = inputhandler->getScore();
 
         // test processInput() function
         inputhandler->processInput(correctInput);
-        QVERIFY2(inputhandler->score == initialScore + 1, "Test Failed: score updated incorrectly");
-        QVERIFY2(inputhandler->targetLetters.isEmpty(), "Test Failed: Letter not removed from list correctly");
+        QVERIFY2(inputhandler->getScore() == initialScore + 1, "Test Failed: score updated incorrectly");
+        QVERIFY2(inputhandler->getTargetLetters().isEmpty(), "Test Failed: Letter not removed from list correctly");
     }
 
     // when user uses incorrect input
-    int currLives = inputhandler->lives;
+    int currLives = inputhandler->getLives();
     // Simulate incorrect key press
     inputhandler->processInput('1');
-    QVERIFY2(inputhandler->lives == currLives - 1, "Test Failed: Lives not updated correctly");
+    QVERIFY2(inputhandler->getLives() == currLives - 1, "Test Failed: Lives not updated correctly");
 }
 
 /**
