@@ -64,6 +64,10 @@ HEADERS += \
 # else: unix:!android: target.path = /opt/$${TARGET}/bin
 # !isEmpty(target.path): INSTALLS += target
 
+# SFML (Alli)
+# INCLUDEPATH += /usr/local/opt/sfml/include
+# LIBS += -L/usr/local/opt/sfml/lib
+# LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 # # SFML (Alli)
 INCLUDEPATH += /usr/local/opt/sfml/include
 LIBS += -L/usr/local/opt/sfml/lib
@@ -74,6 +78,12 @@ LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 # # INCLUDEPATH += /opt/homebrew/opt/sfml/include
 # # LIBS += -L/opt/homebrew/opt/sfml/lib
 # # LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+
+
+INCLUDEPATH += /opt/homebrew/opt/sfml/include
+LIBS += -L/opt/homebrew/opt/sfml/lib
+LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 # # QT version 6.8.2 (Alli)
