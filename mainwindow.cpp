@@ -1,8 +1,8 @@
 /**
- * @file levelwindow.cpp
- * @author Julie Vo
+ * @file mainwindow.cpp
+ * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
  * @date March 30, 2025
- * @brief File containing level window functions.
+ * @brief File containing main window functions.
  *
  */
 #include "mainwindow.h"
@@ -14,7 +14,12 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
-
+/**
+ * @brief MainWindow::MainWindow
+ * @param parent
+ *
+ * This is the main window and how it is displays.
+ */
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     layout = new QVBoxLayout(this);
     setStyleSheet("QMainWindow { background-color: #F5EFFF; }");
@@ -106,6 +111,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
 MainWindow::~MainWindow() {}
 
+/**
+ * @brief MainWindow::openLevelWindow
+ *
+ * This open the level window when the user wants to go to levels.
+ */
 void MainWindow::openLevelWindow() {
     // Create an instance of LevelWindow
     LevelWindow *levelWindow = new LevelWindow();
