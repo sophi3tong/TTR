@@ -1,8 +1,21 @@
-#include "soundadjtest.h"
+#include <QObject>
+#include <QTest>
 #include <QPushButton>
 #include <QSlider>
 #include <QSignalSpy>
 #include <QApplication>
+
+class soundAdjTest : public QObject {
+    Q_OBJECT
+
+private slots:
+    // Test accessing sound setting.
+    void testVolumeButton();
+
+    // Test adjusting music voume.
+    void testSlider();
+
+};
 
 void soundAdjTest::testVolumeButton()
 {
@@ -53,3 +66,4 @@ void soundAdjTest::testSlider()
     }
 }
 
+#include "soundadjtest.moc"

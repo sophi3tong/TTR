@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR='"/Users/allisonso/Documents/UWO/Y6/CS3307/TTR"'
 CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -Wall -Wextra -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -Wall -Wextra -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/local/Cellar/sfml/3.0.0_1/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/share/qt/mkspecs/macx-clang -F/usr/local/lib
+INCPATH       = -I. -I/usr/local/opt/sfml/include -I. -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/share/qt/mkspecs/macx-clang -F/usr/local/lib
 QMAKE         = /usr/local/Cellar/qt/6.8.2/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = TTR1.0.0
 DISTDIR = /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/.tmp/TTR1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/usr/local/lib
-LIBS          = $(SUBLIBS) -F/usr/local/lib -L/usr/local/Cellar/sfml/3.0.0_1/lib -lsfml-graphics -lsfml-window -lsfml-system -L/usr/local/Cellar/qt/6.8.2/lib -framework QtWidgetsH -framework QtMultimedia -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtSql -framework QtNetwork -framework QtCore -framework IOKit -framework DiskArbitration -framework UniformTypeIdentifiers -framework AGL -framework OpenGL   
+LIBS          = $(SUBLIBS) -F/usr/local/lib -L/usr/local/opt/sfml/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -L/usr/local/Cellar/qt/6.8.2/lib -framework QtMultimedia -framework QtWidgets -framework QtGui -framework ImageIO -framework Metal -framework QtSql -framework QtNetwork -framework QtTest -framework Security -framework AppKit -framework ApplicationServices -framework Foundation -framework QtCore -framework IOKit -framework DiskArbitration -framework UniformTypeIdentifiers -framework AGL -framework OpenGL   
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -53,52 +53,38 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = databasemanager.cpp \
-		gamelogic.cpp \
-		gamewindow.cpp \
-		genrewindow.cpp \
 		inputhandler.cpp \
 		levelwindow.cpp \
 		loginwindow.cpp \
 		main.cpp \
 		mainwindow.cpp \
-		music.cpp \
-		musicfactory.cpp \
-		note.cpp \
-		scoremanager.cpp \
-		song.cpp \
-		songfactory.cpp \
+		soundadjtest.cpp \
+		testdatabasemanager.cpp \
+		testinputhandler.cpp \
 		user.cpp \
-		userfactory.cpp qrc_resources.cpp \
-		moc_gamewindow.cpp \
-		moc_genrewindow.cpp \
-		moc_inputhandler.cpp \
+		userfactory.cpp \
+		modeltest.cpp moc_inputhandler.cpp \
 		moc_levelwindow.cpp \
 		moc_loginwindow.cpp \
-		moc_mainwindow.cpp
+		moc_mainwindow.cpp \
+		qrc_resources.cpp
 OBJECTS       = databasemanager.o \
-		gamelogic.o \
-		gamewindow.o \
-		genrewindow.o \
 		inputhandler.o \
 		levelwindow.o \
 		loginwindow.o \
 		main.o \
 		mainwindow.o \
-		music.o \
-		musicfactory.o \
-		note.o \
-		scoremanager.o \
-		song.o \
-		songfactory.o \
+		soundadjtest.o \
+		testdatabasemanager.o \
+		testinputhandler.o \
 		user.o \
 		userfactory.o \
-		qrc_resources.o \
-		moc_gamewindow.o \
-		moc_genrewindow.o \
+		modeltest.o \
 		moc_inputhandler.o \
 		moc_levelwindow.o \
 		moc_loginwindow.o \
-		moc_mainwindow.o
+		moc_mainwindow.o \
+		qrc_resources.o
 DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		/usr/local/share/qt/mkspecs/features/device_config.prf \
 		/usr/local/share/qt/mkspecs/common/unix.conf \
@@ -433,6 +419,7 @@ DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		/usr/local/share/qt/mkspecs/features/qt_config.prf \
 		/usr/local/share/qt/mkspecs/macx-clang/qmake.conf \
 		/usr/local/share/qt/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/local/share/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/local/share/qt/mkspecs/features/mac/sdk.prf \
 		/usr/local/share/qt/mkspecs/features/toolchain.prf \
@@ -443,13 +430,14 @@ DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		/usr/local/share/qt/mkspecs/features/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/objective_c.prf \
+		/usr/local/share/qt/mkspecs/features/moc.prf \
 		/usr/local/share/qt/mkspecs/features/mac/mac.prf \
 		/usr/local/share/qt/mkspecs/features/warn_on.prf \
 		/usr/local/share/qt/mkspecs/features/permissions.prf \
 		/usr/local/share/qt/mkspecs/features/qt.prf \
 		/usr/local/share/qt/mkspecs/features/resources_functions.prf \
 		/usr/local/share/qt/mkspecs/features/resources.prf \
-		/usr/local/share/qt/mkspecs/features/moc.prf \
+		/usr/local/share/qt/mkspecs/features/testlib_defines.prf \
 		/usr/local/share/qt/mkspecs/features/unix/opengl.prf \
 		/usr/local/share/qt/mkspecs/features/uic.prf \
 		/usr/local/share/qt/mkspecs/features/unix/thread.prf \
@@ -462,37 +450,23 @@ DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		/usr/local/share/qt/mkspecs/features/yacc.prf \
 		/usr/local/share/qt/mkspecs/features/lex.prf \
 		TTR.pro databasemanager.h \
-		gamelogic.h \
-		gamewindow.h \
-		genrewindow.h \
 		inputhandler.h \
 		levelwindow.h \
 		loginwindow.h \
 		mainwindow.h \
-		music.h \
-		musicfactory.h \
-		note.h \
-		scoremanager.h \
-		song.h \
-		songfactory.h \
 		user.h \
 		userfactory.h databasemanager.cpp \
-		gamelogic.cpp \
-		gamewindow.cpp \
-		genrewindow.cpp \
 		inputhandler.cpp \
 		levelwindow.cpp \
 		loginwindow.cpp \
 		main.cpp \
 		mainwindow.cpp \
-		music.cpp \
-		musicfactory.cpp \
-		note.cpp \
-		scoremanager.cpp \
-		song.cpp \
-		songfactory.cpp \
+		soundadjtest.cpp \
+		testdatabasemanager.cpp \
+		testinputhandler.cpp \
 		user.cpp \
-		userfactory.cpp
+		userfactory.cpp \
+		modeltest.cpp
 QMAKE_TARGET  = TTR
 DESTDIR       = 
 TARGET        = TTR.app/Contents/MacOS/TTR
@@ -501,7 +475,7 @@ TARGET        = TTR.app/Contents/MacOS/TTR
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 15.2
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = 
+EXPORT__QMAKE_STASH_ = /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64
 EXPORT_DEFAULT_ARCHS = x86_64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -851,6 +825,7 @@ Makefile: TTR.pro /usr/local/share/qt/mkspecs/macx-clang/qmake.conf /usr/local/s
 		/usr/local/share/qt/mkspecs/features/qt_config.prf \
 		/usr/local/share/qt/mkspecs/macx-clang/qmake.conf \
 		/usr/local/share/qt/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/local/share/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/local/share/qt/mkspecs/features/mac/sdk.prf \
 		/usr/local/share/qt/mkspecs/features/toolchain.prf \
@@ -861,13 +836,14 @@ Makefile: TTR.pro /usr/local/share/qt/mkspecs/macx-clang/qmake.conf /usr/local/s
 		/usr/local/share/qt/mkspecs/features/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/objective_c.prf \
+		/usr/local/share/qt/mkspecs/features/moc.prf \
 		/usr/local/share/qt/mkspecs/features/mac/mac.prf \
 		/usr/local/share/qt/mkspecs/features/warn_on.prf \
 		/usr/local/share/qt/mkspecs/features/permissions.prf \
 		/usr/local/share/qt/mkspecs/features/qt.prf \
 		/usr/local/share/qt/mkspecs/features/resources_functions.prf \
 		/usr/local/share/qt/mkspecs/features/resources.prf \
-		/usr/local/share/qt/mkspecs/features/moc.prf \
+		/usr/local/share/qt/mkspecs/features/testlib_defines.prf \
 		/usr/local/share/qt/mkspecs/features/unix/opengl.prf \
 		/usr/local/share/qt/mkspecs/features/uic.prf \
 		/usr/local/share/qt/mkspecs/features/unix/thread.prf \
@@ -884,9 +860,10 @@ Makefile: TTR.pro /usr/local/share/qt/mkspecs/macx-clang/qmake.conf /usr/local/s
 		/usr/local/lib/QtCore.framework/Resources/QtCore.prl \
 		/usr/local/lib/QtSql.framework/Resources/QtSql.prl \
 		/usr/local/lib/QtGui.framework/Resources/QtGui.prl \
-		/usr/local/lib/QtMultimedia.framework/Resources/QtMultimedia.prl \
 		/usr/local/lib/QtWidgets.framework/Resources/QtWidgets.prl \
-		/usr/local/lib/QtNetwork.framework/Resources/QtNetwork.prl
+		/usr/local/lib/QtMultimedia.framework/Resources/QtMultimedia.prl \
+		/usr/local/lib/QtNetwork.framework/Resources/QtNetwork.prl \
+		/usr/local/lib/QtTest.framework/Resources/QtTest.prl
 	$(QMAKE) -o Makefile TTR.pro
 /usr/local/share/qt/mkspecs/features/spec_pre.prf:
 /usr/local/share/qt/mkspecs/features/device_config.prf:
@@ -1222,6 +1199,7 @@ Makefile: TTR.pro /usr/local/share/qt/mkspecs/macx-clang/qmake.conf /usr/local/s
 /usr/local/share/qt/mkspecs/features/qt_config.prf:
 /usr/local/share/qt/mkspecs/macx-clang/qmake.conf:
 /usr/local/share/qt/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/local/share/qt/mkspecs/features/exclusive_builds.prf:
 /usr/local/share/qt/mkspecs/features/mac/sdk.prf:
 /usr/local/share/qt/mkspecs/features/toolchain.prf:
@@ -1232,13 +1210,14 @@ Makefile: TTR.pro /usr/local/share/qt/mkspecs/macx-clang/qmake.conf /usr/local/s
 /usr/local/share/qt/mkspecs/features/default_post.prf:
 /usr/local/share/qt/mkspecs/features/mac/default_post.prf:
 /usr/local/share/qt/mkspecs/features/mac/objective_c.prf:
+/usr/local/share/qt/mkspecs/features/moc.prf:
 /usr/local/share/qt/mkspecs/features/mac/mac.prf:
 /usr/local/share/qt/mkspecs/features/warn_on.prf:
 /usr/local/share/qt/mkspecs/features/permissions.prf:
 /usr/local/share/qt/mkspecs/features/qt.prf:
 /usr/local/share/qt/mkspecs/features/resources_functions.prf:
 /usr/local/share/qt/mkspecs/features/resources.prf:
-/usr/local/share/qt/mkspecs/features/moc.prf:
+/usr/local/share/qt/mkspecs/features/testlib_defines.prf:
 /usr/local/share/qt/mkspecs/features/unix/opengl.prf:
 /usr/local/share/qt/mkspecs/features/uic.prf:
 /usr/local/share/qt/mkspecs/features/unix/thread.prf:
@@ -1255,9 +1234,10 @@ resources.qrc:
 /usr/local/lib/QtCore.framework/Resources/QtCore.prl:
 /usr/local/lib/QtSql.framework/Resources/QtSql.prl:
 /usr/local/lib/QtGui.framework/Resources/QtGui.prl:
-/usr/local/lib/QtMultimedia.framework/Resources/QtMultimedia.prl:
 /usr/local/lib/QtWidgets.framework/Resources/QtWidgets.prl:
+/usr/local/lib/QtMultimedia.framework/Resources/QtMultimedia.prl:
 /usr/local/lib/QtNetwork.framework/Resources/QtNetwork.prl:
+/usr/local/lib/QtTest.framework/Resources/QtTest.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile TTR.pro
 
@@ -1282,10 +1262,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/local/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents databasemanager.h gamelogic.h gamewindow.h genrewindow.h inputhandler.h levelwindow.h loginwindow.h mainwindow.h music.h musicfactory.h note.h scoremanager.h song.h songfactory.h user.h userfactory.h $(DISTDIR)/
-	$(COPY_FILE) --parents databasemanager.cpp gamelogic.cpp gamewindow.cpp genrewindow.cpp inputhandler.cpp levelwindow.cpp loginwindow.cpp main.cpp mainwindow.cpp music.cpp musicfactory.cpp note.cpp scoremanager.cpp song.cpp songfactory.cpp user.cpp userfactory.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents databasemanager.h inputhandler.h levelwindow.h loginwindow.h mainwindow.h user.h userfactory.h $(DISTDIR)/
+	$(COPY_FILE) --parents databasemanager.cpp inputhandler.cpp levelwindow.cpp loginwindow.cpp main.cpp mainwindow.cpp soundadjtest.cpp testdatabasemanager.cpp testinputhandler.cpp user.cpp userfactory.cpp modeltest.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1295,6 +1275,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r TTR.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -1311,39 +1292,15 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_resources.cpp
-compiler_rcc_clean:
-	-$(DEL_FILE) qrc_resources.cpp
-qrc_resources.cpp: resources.qrc \
-		/usr/local/share/qt/libexec/rcc \
-		easysong.mp3 \
-		hardsong.mp3 \
-		mediumsong.mp3
-	/usr/local/share/qt/libexec/rcc -name resources resources.qrc -o qrc_resources.cpp
-
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/local/share/qt/mkspecs/features/data/dummy.cpp
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -Wall -Wextra -fPIC -dM -E -o moc_predefs.h /usr/local/share/qt/mkspecs/features/data/dummy.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -dM -E -o moc_predefs.h /usr/local/share/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_gamewindow.cpp moc_genrewindow.cpp moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_gamewindow.cpp moc_genrewindow.cpp moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp
-moc_gamewindow.cpp: gamewindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
-		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		moc_predefs.h \
-		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/Cellar/sfml/3.0.0_1/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib gamewindow.h -o moc_gamewindow.cpp
-
-moc_genrewindow.cpp: genrewindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
-		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		moc_predefs.h \
-		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/Cellar/sfml/3.0.0_1/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib genrewindow.h -o moc_genrewindow.cpp
-
+	-$(DEL_FILE) moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp
 moc_inputhandler.cpp: inputhandler.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -1365,9 +1322,27 @@ moc_inputhandler.cpp: inputhandler.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
 		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/Cellar/sfml/3.0.0_1/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib inputhandler.h -o moc_inputhandler.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib inputhandler.h -o moc_inputhandler.cpp
 
 moc_levelwindow.cpp: levelwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1382,48 +1357,48 @@ moc_levelwindow.cpp: levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
 		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Config.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Listener.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Music.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Sound.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Clock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Err.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Exception.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/FileInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/InputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Sleep.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.inl \
+		/usr/local/opt/sfml/include/SFML/Audio.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/Config.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
+		/usr/local/opt/sfml/include/SFML/System.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
+		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
+		/usr/local/opt/sfml/include/SFML/System/String.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
+		/usr/local/opt/sfml/include/SFML/System/String.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
 		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
@@ -1441,9 +1416,25 @@ moc_levelwindow.cpp: levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
 		/usr/local/lib/QtCore.framework/Headers/QPair \
 		/usr/local/lib/QtCore.framework/Headers/qpair.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		mainwindow.h \
+		levelwindow.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/Cellar/sfml/3.0.0_1/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib levelwindow.h -o moc_levelwindow.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib levelwindow.h -o moc_levelwindow.cpp
 
 moc_loginwindow.cpp: loginwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1461,48 +1452,48 @@ moc_loginwindow.cpp: loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
 		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Config.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Listener.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Music.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Sound.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Clock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Err.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Exception.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/FileInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/InputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Sleep.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.inl \
+		/usr/local/opt/sfml/include/SFML/Audio.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/Config.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
+		/usr/local/opt/sfml/include/SFML/System.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
+		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
+		/usr/local/opt/sfml/include/SFML/System/String.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
+		/usr/local/opt/sfml/include/SFML/System/String.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
 		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
@@ -1520,8 +1511,9 @@ moc_loginwindow.cpp: loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
 		/usr/local/lib/QtCore.framework/Headers/QPair \
 		/usr/local/lib/QtCore.framework/Headers/qpair.h \
-		userfactory.h \
-		user.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		databasemanager.h \
 		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
 		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
@@ -1533,9 +1525,12 @@ moc_loginwindow.cpp: loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		mainwindow.h \
+		userfactory.h \
+		user.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/Cellar/sfml/3.0.0_1/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib loginwindow.h -o moc_loginwindow.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib loginwindow.h -o moc_loginwindow.cpp
 
 moc_mainwindow.cpp: mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1551,48 +1546,48 @@ moc_mainwindow.cpp: mainwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
 		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Config.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Listener.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Music.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Sound.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Clock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Err.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Exception.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/FileInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/InputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Sleep.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.inl \
+		/usr/local/opt/sfml/include/SFML/Audio.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/Config.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
+		/usr/local/opt/sfml/include/SFML/System.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
+		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
+		/usr/local/opt/sfml/include/SFML/System/String.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
+		/usr/local/opt/sfml/include/SFML/System/String.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
 		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
@@ -1610,14 +1605,132 @@ moc_mainwindow.cpp: mainwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
 		/usr/local/lib/QtCore.framework/Headers/QPair \
 		/usr/local/lib/QtCore.framework/Headers/qpair.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		mainwindow.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/Cellar/sfml/3.0.0_1/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib mainwindow.h -o moc_mainwindow.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
-compiler_moc_source_make_all:
+compiler_moc_source_make_all: soundadjtest.moc testdatabasemanager.moc testinputhandler.moc modeltest.moc
 compiler_moc_source_clean:
+	-$(DEL_FILE) soundadjtest.moc testdatabasemanager.moc testinputhandler.moc modeltest.moc
+soundadjtest.moc: soundadjtest.cpp \
+		/usr/local/lib/QtCore.framework/Headers/QObject \
+		/usr/local/lib/QtCore.framework/Headers/qobject.h \
+		/usr/local/lib/QtTest.framework/Headers/QTest \
+		/usr/local/lib/QtTest.framework/Headers/qtest.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
+		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtTest.framework/Headers/QSignalSpy \
+		/usr/local/lib/QtTest.framework/Headers/qsignalspy.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
+		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
+		moc_predefs.h \
+		/usr/local/share/qt/libexec/moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib soundadjtest.cpp -o soundadjtest.moc
+
+testdatabasemanager.moc: testdatabasemanager.cpp \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		moc_predefs.h \
+		/usr/local/share/qt/libexec/moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib testdatabasemanager.cpp -o testdatabasemanager.moc
+
+testinputhandler.moc: testinputhandler.cpp \
+		userfactory.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		user.h \
+		inputhandler.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
+		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QLabel \
+		/usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
+		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/usr/local/lib/QtCore.framework/Headers/QVector \
+		/usr/local/lib/QtCore.framework/Headers/qvector.h \
+		/usr/local/lib/QtCore.framework/Headers/QChar \
+		/usr/local/lib/QtCore.framework/Headers/qchar.h \
+		/usr/local/lib/QtGui.framework/Headers/QKeyEvent \
+		/usr/local/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/lib/QtCore.framework/Headers/QTimer \
+		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
+		/usr/local/lib/QtCore.framework/Headers/QPair \
+		/usr/local/lib/QtCore.framework/Headers/qpair.h \
+		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
+		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
+		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		moc_predefs.h \
+		/usr/local/share/qt/libexec/moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib testinputhandler.cpp -o testinputhandler.moc
+
+modeltest.moc: modeltest.cpp \
+		user.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		userfactory.h \
+		moc_predefs.h \
+		/usr/local/share/qt/libexec/moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib modeltest.cpp -o modeltest.moc
+
+compiler_rcc_make_all: qrc_resources.cpp
+compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: resources.qrc \
+		/usr/local/share/qt/libexec/rcc \
+		easysong.mp3 \
+		hardsong.mp3 \
+		mediumsong.mp3 \
+		cancel.png \
+		volume-up.png
+	/usr/local/share/qt/libexec/rcc -name resources resources.qrc -o qrc_resources.cpp
+
 compiler_uic_make_all:
 compiler_uic_clean:
 compiler_rez_source_make_all:
@@ -1628,7 +1741,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_moc_source_clean compiler_rcc_clean 
 
 ####### Compile
 
@@ -1646,22 +1759,6 @@ databasemanager.o: databasemanager.cpp databasemanager.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databasemanager.o databasemanager.cpp
-
-gamelogic.o: gamelogic.cpp gamelogic.h \
-		song.h \
-		/usr/local/lib/QtCore.framework/Headers/QString \
-		/usr/local/lib/QtCore.framework/Headers/qstring.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamelogic.o gamelogic.cpp
-
-gamewindow.o: gamewindow.cpp gamewindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
-		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamewindow.o gamewindow.cpp
-
-genrewindow.o: genrewindow.cpp genrewindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
-		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o genrewindow.o genrewindow.cpp
 
 inputhandler.o: inputhandler.cpp inputhandler.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
@@ -1684,9 +1781,26 @@ inputhandler.o: inputhandler.cpp inputhandler.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
 		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		user.h \
+		userfactory.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/usr/local/lib/QtWidgets.framework/Headers/qlayoutitem.h \
 		/usr/local/lib/QtCore.framework/Headers/QRandomGenerator \
@@ -1716,48 +1830,48 @@ levelwindow.o: levelwindow.cpp levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
 		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Config.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Listener.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Music.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Sound.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Clock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Err.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Exception.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/FileInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/InputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Sleep.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.inl \
+		/usr/local/opt/sfml/include/SFML/Audio.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/Config.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
+		/usr/local/opt/sfml/include/SFML/System.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
+		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
+		/usr/local/opt/sfml/include/SFML/System/String.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
+		/usr/local/opt/sfml/include/SFML/System/String.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
 		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
@@ -1775,6 +1889,23 @@ levelwindow.o: levelwindow.cpp levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
 		/usr/local/lib/QtCore.framework/Headers/QPair \
 		/usr/local/lib/QtCore.framework/Headers/qpair.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		mainwindow.h \
+		user.h \
+		userfactory.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/usr/local/lib/QtWidgets.framework/Headers/qlayoutitem.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QSizePolicy \
@@ -1801,48 +1932,48 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
 		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Config.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Listener.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Music.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Sound.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Clock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Err.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Exception.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/FileInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/InputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Sleep.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.inl \
+		/usr/local/opt/sfml/include/SFML/Audio.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/Config.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
+		/usr/local/opt/sfml/include/SFML/System.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
+		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
+		/usr/local/opt/sfml/include/SFML/System/String.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
+		/usr/local/opt/sfml/include/SFML/System/String.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
 		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
@@ -1860,8 +1991,9 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
 		/usr/local/lib/QtCore.framework/Headers/QPair \
 		/usr/local/lib/QtCore.framework/Headers/qpair.h \
-		userfactory.h \
-		user.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		databasemanager.h \
 		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
 		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
@@ -1873,7 +2005,9 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
-		mainwindow.h
+		mainwindow.h \
+		userfactory.h \
+		user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o loginwindow.cpp
 
 main.o: main.cpp levelwindow.h \
@@ -1889,48 +2023,48 @@ main.o: main.cpp levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
 		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Config.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Listener.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Music.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Sound.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Clock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Err.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Exception.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/FileInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/InputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Sleep.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.inl \
+		/usr/local/opt/sfml/include/SFML/Audio.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/Config.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
+		/usr/local/opt/sfml/include/SFML/System.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
+		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
+		/usr/local/opt/sfml/include/SFML/System/String.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
+		/usr/local/opt/sfml/include/SFML/System/String.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
 		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
@@ -1948,17 +2082,9 @@ main.o: main.cpp levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
 		/usr/local/lib/QtCore.framework/Headers/QPair \
 		/usr/local/lib/QtCore.framework/Headers/qpair.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
-		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
-		/usr/local/lib/QtCore.framework/Headers/QUrl \
-		/usr/local/lib/QtCore.framework/Headers/qurl.h \
-		/usr/local/lib/QtCore.framework/Headers/QDebug \
-		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
-		loginwindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/lib/QtWidgets.framework/Headers/qlineedit.h \
-		userfactory.h \
-		user.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		databasemanager.h \
 		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
 		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
@@ -1966,8 +2092,20 @@ main.o: main.cpp levelwindow.h \
 		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
 		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
 		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
-		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		mainwindow.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
+		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
+		/usr/local/lib/QtCore.framework/Headers/QUrl \
+		/usr/local/lib/QtCore.framework/Headers/qurl.h \
+		loginwindow.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QLineEdit \
+		/usr/local/lib/QtWidgets.framework/Headers/qlineedit.h \
+		userfactory.h \
+		user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -1984,48 +2122,48 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
 		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Config.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Listener.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Angle.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Export.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector3.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Music.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Time.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/Sound.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Clock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Err.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Exception.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/FileInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/InputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Sleep.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Utf.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/String.inl \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.hpp \
-		/usr/local/Cellar/sfml/3.0.0_1/include/SFML/System/Vector2.inl \
+		/usr/local/opt/sfml/include/SFML/Audio.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/Config.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Time.inl \
+		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
+		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
+		/usr/local/opt/sfml/include/SFML/System.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
+		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
+		/usr/local/opt/sfml/include/SFML/System/String.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
+		/usr/local/opt/sfml/include/SFML/System/String.inl \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
+		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
 		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
 		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
@@ -2043,11 +2181,9 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
 		/usr/local/lib/QtCore.framework/Headers/QPair \
 		/usr/local/lib/QtCore.framework/Headers/qpair.h \
-		loginwindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/lib/QtWidgets.framework/Headers/qlineedit.h \
-		userfactory.h \
-		user.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
 		databasemanager.h \
 		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
 		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
@@ -2059,29 +2195,91 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		loginwindow.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QLineEdit \
+		/usr/local/lib/QtWidgets.framework/Headers/qlineedit.h \
+		userfactory.h \
+		user.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/usr/local/lib/QtWidgets.framework/Headers/qlayoutitem.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QSizePolicy \
 		/usr/local/lib/QtWidgets.framework/Headers/qsizepolicy.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
-music.o: music.cpp music.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o music.o music.cpp
+soundadjtest.o: soundadjtest.cpp /usr/local/lib/QtCore.framework/Headers/QObject \
+		/usr/local/lib/QtCore.framework/Headers/qobject.h \
+		/usr/local/lib/QtTest.framework/Headers/QTest \
+		/usr/local/lib/QtTest.framework/Headers/qtest.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
+		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtTest.framework/Headers/QSignalSpy \
+		/usr/local/lib/QtTest.framework/Headers/qsignalspy.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
+		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
+		soundadjtest.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o soundadjtest.o soundadjtest.cpp
 
-musicfactory.o: musicfactory.cpp musicfactory.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o musicfactory.o musicfactory.cpp
+testdatabasemanager.o: testdatabasemanager.cpp databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		testdatabasemanager.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testdatabasemanager.o testdatabasemanager.cpp
 
-note.o: note.cpp note.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o note.o note.cpp
-
-scoremanager.o: scoremanager.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scoremanager.o scoremanager.cpp
-
-song.o: song.cpp song.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o song.o song.cpp
-
-songfactory.o: songfactory.cpp songfactory.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o songfactory.o songfactory.cpp
+testinputhandler.o: testinputhandler.cpp userfactory.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		user.h \
+		inputhandler.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
+		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QLabel \
+		/usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
+		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		/usr/local/lib/QtCore.framework/Headers/QVector \
+		/usr/local/lib/QtCore.framework/Headers/qvector.h \
+		/usr/local/lib/QtCore.framework/Headers/QChar \
+		/usr/local/lib/QtCore.framework/Headers/qchar.h \
+		/usr/local/lib/QtGui.framework/Headers/QKeyEvent \
+		/usr/local/lib/QtGui.framework/Headers/qevent.h \
+		/usr/local/lib/QtCore.framework/Headers/QTimer \
+		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
+		/usr/local/lib/QtCore.framework/Headers/QPair \
+		/usr/local/lib/QtCore.framework/Headers/qpair.h \
+		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
+		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
+		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
+		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		databasemanager.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
+		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlError \
+		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
+		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
+		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
+		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
+		testinputhandler.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testinputhandler.o testinputhandler.cpp
 
 user.o: user.cpp user.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
@@ -2105,14 +2303,12 @@ userfactory.o: userfactory.cpp userfactory.h \
 		user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userfactory.o userfactory.cpp
 
-qrc_resources.o: qrc_resources.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
-
-moc_gamewindow.o: moc_gamewindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_gamewindow.o moc_gamewindow.cpp
-
-moc_genrewindow.o: moc_genrewindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_genrewindow.o moc_genrewindow.cpp
+modeltest.o: modeltest.cpp user.h \
+		/usr/local/lib/QtCore.framework/Headers/QString \
+		/usr/local/lib/QtCore.framework/Headers/qstring.h \
+		userfactory.h \
+		modeltest.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modeltest.o modeltest.cpp
 
 moc_inputhandler.o: moc_inputhandler.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_inputhandler.o moc_inputhandler.cpp
@@ -2126,23 +2322,14 @@ moc_loginwindow.o: moc_loginwindow.cpp
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
+
 ####### Install
 
-install_target: first FORCE
-	@test -d $(INSTALL_ROOT)/opt/TTR/bin || mkdir -p $(INSTALL_ROOT)/opt/TTR/bin
-	$(DEL_FILE) -r $(INSTALL_ROOT)/opt/TTR/bin/TTR.app
-	
-	$(QINSTALL) TTR.app $(INSTALL_ROOT)/opt/TTR/bin/TTR.app
-	-$(STRIP) $(INSTALL_ROOT)/opt/TTR/bin/TTR.app/Contents/MacOS/$(QMAKE_TARGET)
+install:  FORCE
 
-uninstall_target: FORCE
-	-$(DEL_FILE) -r $(INSTALL_ROOT)/opt/TTR/bin/TTR.app
-	-$(DEL_DIR) $(INSTALL_ROOT)/opt/TTR/bin/ 
-
-
-install: install_target  FORCE
-
-uninstall: uninstall_target  FORCE
+uninstall:  FORCE
 
 FORCE:
 

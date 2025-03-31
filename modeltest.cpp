@@ -1,4 +1,17 @@
-#include "modeltest.h"
+#include <QtTest/QtTest>
+#include <user.h>
+#include <userfactory.h>
+
+class ModelTest : public QObject{
+    Q_OBJECT
+private slots:
+    bool testUserFactory();
+    bool testUserFactoryCreate();
+    bool testUser();
+    bool testUserGetUserID();
+    bool testUserGetHighscore();
+    bool testUserInsertHighscore();
+};
 
 bool ModelTest::testUserFactory(){
     try {
@@ -91,3 +104,5 @@ bool ModelTest::testUserInsertHighscore(){
         return false;
     }
 }
+
+#include "modeltest.moc"
