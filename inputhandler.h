@@ -92,67 +92,6 @@ public:
      * Current player's username.
      */
     QString username;
-
-signals:
-    /**
-     * @brief backToMenu
-     *
-     * This signal is emitted when the player chooses to go back to the main menu.
-     */
-    void backToMenu();
-
-protected:
-    /**
-     * @brief keyPressEvent
-     * @param event
-     *
-     * Processes the user's input and check if the entered letter matches the target letter.
-     * Updates the game state based on user input.
-     */
-    void keyPressEvent(QKeyEvent *event) override;
-
-private:
-
-    // UI Elements
-    QLabel *label;
-    QLabel *statusLabel;
-    QLabel *livesLabel;
-    QLabel *timerLabel;
-    QLabel *warningLabel;
-    QLabel *scoreLabel;
-    QLabel *highscoreLabel;
-    QPushButton *restartButton;
-    QPushButton *backButton;
-    QPushButton *pauseButton;
-    QPushButton *resumeButton;
-
-    // Game State
-    QVector<QChar> targetLetters;
-    int score = 0;
-    int lives = 3;
-    int highScore;
-    bool gameOver = false;
-    bool isPaused = false;
-
-    // Difficulty Settings
-    QPair<int, int> difficultyRange;
-    bool isHardMode = false;
-
-    // Timer for Hard Mode
-    QTimer *roundTimer;
-    int timeLeft = 5;
-
-    // Music
-    QMediaPlayer *musicPlayer;
-    QAudioOutput *audioOutput;
-    QHBoxLayout *topRightLayout;
-    QSlider *volumeSlider;
-    QPushButton *volumeButton;
-    bool isVisible;
-    QWidget *topRightWidget;
-
-
-    // Methods
     /**
      * @brief generateRandomLetters
      *
@@ -233,6 +172,68 @@ private:
      * This shows warning to the user such as a time's up warning.
      */
     void showWarning(const QString &message);
+    int timeLeft = 5;
+    QPushButton *pauseButton;
+    bool isPaused = false;
+    QPushButton *resumeButton;
+signals:
+    /**
+     * @brief backToMenu
+     *
+     * This signal is emitted when the player chooses to go back to the main menu.
+     */
+    void backToMenu();
+
+protected:
+    /**
+     * @brief keyPressEvent
+     * @param event
+     *
+     * Processes the user's input and check if the entered letter matches the target letter.
+     * Updates the game state based on user input.
+     */
+    void keyPressEvent(QKeyEvent *event) override;
+
+private:
+
+    // UI Elements
+    QLabel *label;
+    QLabel *statusLabel;
+    QLabel *livesLabel;
+    QLabel *timerLabel;
+    QLabel *warningLabel;
+    QLabel *scoreLabel;
+    QLabel *highscoreLabel;
+    QPushButton *restartButton;
+    QPushButton *backButton;
+
+
+
+    // Game State
+    QVector<QChar> targetLetters;
+    int score = 0;
+    int lives = 3;
+    int highScore;
+    bool gameOver = false;
+
+
+    // Difficulty Settings
+    QPair<int, int> difficultyRange;
+    bool isHardMode = false;
+
+    // Timer for Hard Mode
+    QTimer *roundTimer;
+
+
+    // Music
+    QMediaPlayer *musicPlayer;
+    QAudioOutput *audioOutput;
+    QHBoxLayout *topRightLayout;
+    QSlider *volumeSlider;
+    QPushButton *volumeButton;
+    bool isVisible;
+    QWidget *topRightWidget;
+
 };
 
 #endif // INPUTHANDLER_H
