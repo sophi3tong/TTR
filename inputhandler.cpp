@@ -400,26 +400,35 @@ void InputHandler::handleMistake()
     QString originalStyle = label->styleSheet();
     label->setStyleSheet("color: red;");
 
-    // Revert after short delay
+    if (lives <= 0)
+    {
+        saveHighScore();
+        highscoreLabel->setText("Highscore: " + QString::number(this->highScore));
+        gameOver = true;
+        roundTimer->stop();
+        musicPlayer->stop();
+
+        // Clear target letters so no more input is expected
+        targetLetters.clear();
+
+        // Show "Game Over!" on the letter display label
+        label->setStyleSheet("color: #924AEB;");
+        label->setText("Game Over!");
+
+        // Show guidance message in the warning label
+        warningLabel->setText("Game Over! Press Restart or Back to Menu");
+
+        return; // Prevent further label updates
+    }
+
+    // If not game over, revert flash and refresh label
     QTimer::singleShot(150, this, [this, originalStyle]() {
         label->setStyleSheet(originalStyle);
     });
 
-    // Refresh label after flash
     QTimer::singleShot(600, this, [this]() {
         updateLabel();
     });
-
-    if (lives <= 0)
-    {
-        saveHighScore();
-        highscoreLabel->setText("Highscore: "+QString::number(this->highScore));
-        gameOver = true;
-        roundTimer->stop();
-        musicPlayer->stop();
-        label->setText("Game Over!");
-        warningLabel->setText("Game Over! Press Restart or Back to Menu");
-    }
 }
 
 /**
