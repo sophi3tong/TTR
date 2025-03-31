@@ -1,6 +1,6 @@
 /**
  * @file testinputhandler.cpp
- * @author Samantha Chang
+ * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
  * @date 30 March 2025
  * @brief testing the inputhandler.cpp functionalities
  *

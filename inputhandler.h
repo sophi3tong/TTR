@@ -69,6 +69,24 @@ public:
     void launchHardMode();
 
     /**
+     * @brief getScore()
+     * Gets current Score
+     */
+    int getScore() const { return score; }
+
+    /**
+     * @brief getLives()
+     * Gets current lives
+     */
+    int getLives() const { return lives; }
+
+    /**
+     * @brief getTargetLetters()
+     * Gets current Score
+     */
+    QVector<QChar> getTargetLetters() const { return targetLetters; }
+
+    /**
      * @brief username
      *
      * Current player's username.
