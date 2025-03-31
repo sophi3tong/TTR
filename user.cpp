@@ -1,13 +1,17 @@
 /**
- * @file levelwindow.cpp
- * @author Julie Vo
+ * @file user.cpp
+ * @author Allison So
  * @date March 30, 2025
- * @brief File containing level window functions.
+ * @brief File containing user related functions.
  *
  */
 #include "user.h"
 #include "databasemanager.h"
-
+/**
+ * @brief User constructor
+ * @param username
+ * Initializes user private variables.
+ */
 User::User(QString username) {
     DatabaseManager dm;
     dm.connectDatabase();
@@ -17,29 +21,18 @@ User::User(QString username) {
     this->highScore = (this->user_id != -1) ? getHighscore() : 0;
     this->levelScores = getLevels();
 }
-
-User::User(QString username, int score) {
-    DatabaseManager dm;
-    dm.connectDatabase();
-    this->username=username;
-    this->user_id=getUserId();
-
-    this->highScore = (this->user_id != -1) ? getHighscore() : 0;
-    if (score > this->highScore) {
-        this->highScore = score;
-    }
-    this->levelScores = getLevels();
-}
-
-User User::getUser(int user_id){
-    QString username = getUsername(user_id);
-    return User(username);
-}
-
+/**
+ * @brief User::getUsername
+ * Returns user object stored username.
+ */
 QString User::getUsername(){
     return this->username;
 }
-
+/**
+ * @brief User::getUsername
+ * @param user_id
+ * Queries database for username with given user_id.
+ */
 QString User::getUsername(int user_id){
     QSqlQuery query;
 
@@ -59,9 +52,11 @@ QString User::getUsername(int user_id){
     }
     return QString();
 }
-
+/**
+ * @brief User::getUserId
+ * Queries database for user_id.
+ */
 int User::getUserId(){
-    DatabaseManager dm;
     dm.connectDatabase();
     QSqlQuery query;
 
@@ -81,10 +76,11 @@ int User::getUserId(){
     }
     return -1;
 }
-
+/**
+ * @brief User::getHighscore
+ * Queries database for user highscore.
+ */
 int User::getHighscore(){
-    DatabaseManager dm;
-    dm.connectDatabase();
     QSqlQuery query;
 
     query.prepare("SELECT highscore FROM high_scores WHERE user_id = :user_id");
@@ -101,10 +97,12 @@ int User::getHighscore(){
     }
     return -1;
 }
-
+/**
+ * @brief User::getLevelscore
+ * @param level
+ * Queries database for  score for given level.
+ */
 int User::getLevelscore(int level){
-    DatabaseManager dm;
-    dm.connectDatabase();
     QSqlQuery query;
 
     query.prepare("SELECT score FROM level_scores WHERE user_id = :user_id AND level = :level");
@@ -121,7 +119,11 @@ int User::getLevelscore(int level){
     }
     return -1;
 }
-
+/**
+ * @brief User::insertHighscore
+ * @param highscore
+ * Inserts or updates highscore in database.
+ */
 bool User::insertHighscore(int highscore){
     QSqlQuery query;
 
@@ -144,7 +146,11 @@ bool User::insertHighscore(int highscore){
     qDebug() <<"User highscore inserted successfully!";
     return true;
 }
-
+/**
+ * @brief User::insertLevelscore
+ * @param level, score
+ * Inserts or updates level score in database.
+ */
 bool User::insertLevelscore(int level, int score){
     QSqlQuery query;
 
@@ -168,12 +174,13 @@ bool User::insertLevelscore(int level, int score){
     qDebug() <<"User level_scores inserted successfully!";
     return true;
 }
-
+/**
+ * @brief User::getLevels
+ * Queries database for mapped list of pairs (level, score) otherwise returns empty map.
+ */
 std::map<int, int> User::getLevels(){
     std::map<int, int> levels;
 
-    DatabaseManager dm;
-    dm.connectDatabase();
     QSqlQuery query;
 
     query.prepare("SELECT level, score FROM level_scores WHERE user_id = :user_id");

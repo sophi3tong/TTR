@@ -1,3 +1,11 @@
+/**
+ * @file modeltest.cpp
+ * @author Allison So
+ * @date March 30, 2025
+ * @brief File containing the model side testing.
+ *
+ * This file contains the implementation for user factory and user testing..
+ */
 #include <QtTest/QtTest>
 #include <user.h>
 #include <userfactory.h>
@@ -12,7 +20,9 @@ private slots:
     bool testUserGetHighscore();
     bool testUserInsertHighscore();
 };
-
+/** @test
+ * @brief Checking if user factory is successfully created.
+ */
 bool ModelTest::testUserFactory(){
     try {
         UserFactory uf;
@@ -23,7 +33,9 @@ bool ModelTest::testUserFactory(){
         return false;
     }
 }
-
+/** @test
+ * @brief Checking if user factory successfully creates user.
+ */
 bool ModelTest::testUserFactoryCreate(){
     try{
         UserFactory uf;
@@ -40,7 +52,9 @@ bool ModelTest::testUserFactoryCreate(){
         return false;
     }
 }
-
+/** @test
+ * @brief Checking if user is successfully created.
+ */
 bool ModelTest::testUser(){
     try{
         User user = User("TestUser2");
@@ -56,7 +70,9 @@ bool ModelTest::testUser(){
         return false;
     }
 }
-
+/** @test
+ * @brief Checking if user id is successfully retrieved.
+ */
 bool ModelTest::testUserGetUserID(){
     try{
         User user = User("TestUser2");
@@ -72,7 +88,9 @@ bool ModelTest::testUserGetUserID(){
         return false;
     }
 }
-
+/** @test
+ * @brief Checking if user highscore is successfully retrieved.
+ */
 bool ModelTest::testUserGetHighscore(){
     try{
         User user = User("TestUser2");
@@ -88,7 +106,9 @@ bool ModelTest::testUserGetHighscore(){
         return false;
     }
 }
-
+/** @test
+ * @brief Checking if user highscore is successfully updated.
+ */
 bool ModelTest::testUserInsertHighscore(){
     try{
         User user = User("TestUser2");

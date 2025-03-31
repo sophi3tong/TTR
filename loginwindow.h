@@ -1,6 +1,6 @@
 /**
  * @file loginwindow.h
- * @author Allison So
+ * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
  * @date March 30, 2025
  * @brief File containing login window header.
  *

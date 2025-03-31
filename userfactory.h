@@ -1,6 +1,6 @@
 /**
  * @file userfactory.h
- * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
+ * @author Allison So
  * @date March 30, 2025
  * @brief File containing user factory header.
  *
@@ -10,11 +10,31 @@
 
 #include <QString>
 #include <user.h>
-
+/**
+ * @brief The UserFactory class
+ *
+ * The user factory creates users.
+ */
 class UserFactory
 {
 public:
+    /**
+     * @brief UserFactory
+     * @param parent
+     *
+     * The UserFactory class is responsible for creating Users.
+     */
+    /**
+     * @brief UserFactory
+     *
+     * Basic constructor.
+     */
     UserFactory();
+    /**
+     * @brief createUser
+     * @param username
+     * Creates a User object given a username.
+     */
     User createUser(QString username);
 };
 

@@ -1,6 +1,6 @@
 /**
  * @file databasemanager.h
- * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
+ * @author Allison So
  * @date March 30, 2025
  * @brief File containig database manager header.
  *
