@@ -159,3 +159,4 @@ void MainWindow::openTutorialWindow() {
     this->hide();
 
 }
+
