@@ -7,5 +7,6 @@
     <qresource prefix="/icons">
         <file>volume-up.png</file>
         <file>cancel.png</file>
+        <file>tutorial.png</file>
     </qresource>
 </RCC>

@@ -25,6 +25,7 @@ SOURCES += \
     #song.cpp \
     #songfactory.cpp \
     #modeltest.cpp \
+    tutorial.cpp \
     user.cpp \
     userfactory.cpp \
     soundadjtest.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     #song.h \
     #songfactory.h \
     #modeltest.h \
+    tutorial.h \
     user.h \
     userfactory.h 
 
