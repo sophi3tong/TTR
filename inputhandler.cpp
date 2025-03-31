@@ -84,6 +84,13 @@ InputHandler::InputHandler(QString username, QWidget *parent)
     audioOutput = new QAudioOutput(this);
     musicPlayer->setAudioOutput(audioOutput);
     audioOutput->setVolume(50);
+
+    connect(musicPlayer, &QMediaPlayer::mediaStatusChanged, this, [this](QMediaPlayer::MediaStatus status) {
+        if (status == QMediaPlayer::EndOfMedia) {
+            musicPlayer->setPosition(0);
+            musicPlayer->play();
+        }
+    });
 }
 
 void InputHandler::initializeUI()
