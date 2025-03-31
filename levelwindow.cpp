@@ -1,10 +1,12 @@
 /**
  * @file levelwindow.cpp
- * @author Julie Vo
- * @date 29 March 2025
- * @brief File containing level window functions.
+ * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
+ * @date March 29, 2025
+ * @brief File containing the level window function.
  *
+ * This file contains the implementation of the level window. This shows Easy, Medium, and Hard options that take users to different levels.
  */
+
 #include "levelwindow.h"
 #include "inputhandler.h"
 #include "mainwindow.h"
