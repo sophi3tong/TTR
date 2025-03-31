@@ -95,7 +95,7 @@ void TestInputHandler::testInput(){
     // when user uses incorrect input
     int currLives = inputhandler->getLives();
     // Simulate incorrect key press
-    inputhandler->processInput('1');
+    inputhandler->processInput('X');
     QVERIFY2(inputhandler->getLives() == currLives - 1, "Test Failed: Lives not updated correctly");
 }
 

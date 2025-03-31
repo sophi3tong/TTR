@@ -14,6 +14,7 @@
 #include <QLabel>
 #include "levelwindow.h"  // Include LevelWindow header
 #include <QDebug>
+#include "tutorial.h"  // Include TutorialWindow header
 
 /**
  * @brief The MainWindow class
@@ -45,6 +46,12 @@ private slots:
      * This opens the level window.
      */
     void openLevelWindow();  // Declare the openLevelWindow slot
+    /**
+     * @brief openTutorialWindow
+     *
+     * This opens the tutorial window.
+     */
+    void openTutorialWindow();  // Declare the openTutorialWindow slot
 
 private:
 
@@ -52,6 +59,9 @@ private:
     QLabel *title;
     QPushButton *playButton;
     QPushButton *logoutButton;
+    QPushButton *tutorialButton;  // Tutorial Button
+    Tutorial *tutorialWindow;
+
 };
 
 #endif // MAINWINDOW_H
