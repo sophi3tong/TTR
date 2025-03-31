@@ -44,20 +44,20 @@ void TestInputHandler::testUI(){
     qDebug() << "Testing UI Components";
     // test that all labels are not null
     // if null, print fail message
-    QVERIFY2(inputHandler->findChild<QLabel *>("label") != nullptr, "Test Failed: label not found");
-    QVERIFY2(inputHandler->findChild<QLabel *>("statusLabel") != nullptr, "Test Failed: statusLabel not found");
-    QVERIFY2(inputHandler->findChild<QLabel *>("livesLabel") != nullptr, "Test Failed: livesLabel not found");
-    QVERIFY2(inputHandler->findChild<QLabel *>("timerLabel") != nullptr, "Test Failed: timerLabel not found");
-    QVERIFY2(inputHandler->findChild<QLabel *>("warningLabel") != nullptr, "Test Failed: warningLabel not found");
-    QVERIFY2(inputHandler->findChild<QLabel *>("scoreLabel") != nullptr, "Test Failed: scoreLabel not found");
-    QVERIFY2(inputHandler->findChild<QLabel *>("highscoreLabel") != nullptr, "Test Failed: highscoreLabel not found");
+    QVERIFY2(inputhandler->findChild<QLabel *>("label") != nullptr, "Test Failed: label not found");
+    QVERIFY2(inputhandler->findChild<QLabel *>("statusLabel") != nullptr, "Test Failed: statusLabel not found");
+    QVERIFY2(inputhandler->findChild<QLabel *>("livesLabel") != nullptr, "Test Failed: livesLabel not found");
+    QVERIFY2(inputhandler->findChild<QLabel *>("timerLabel") != nullptr, "Test Failed: timerLabel not found");
+    QVERIFY2(inputhandler->findChild<QLabel *>("warningLabel") != nullptr, "Test Failed: warningLabel not found");
+    QVERIFY2(inputhandler->findChild<QLabel *>("scoreLabel") != nullptr, "Test Failed: scoreLabel not found");
+    QVERIFY2(inputhandler->findChild<QLabel *>("highscoreLabel") != nullptr, "Test Failed: highscoreLabel not found");
 
     // test that all buttons are not null
     // if null, print fail message
-    QVERIFY2(inputHandler->findChild<QPushButton *>("restartButton") != nullptr, "Test Failed: restartButton not found");
-    QVERIFY2(inputHandler->findChild<QPushButton *>("pauseButton") != nullptr, "Test Failed: pauseButton not found");
-    QVERIFY2(inputHandler->findChild<QPushButton *>("resumeButton") != nullptr, "Test Failed: resumeButton not found");
-    QVERIFY2(inputHandler->findChild<QPushButton *>("backButton") != nullptr, "Test Failed: backButton not found");
+    QVERIFY2(inputhandler->findChild<QPushButton *>("restartButton") != nullptr, "Test Failed: restartButton not found");
+    QVERIFY2(inputhandler->findChild<QPushButton *>("pauseButton") != nullptr, "Test Failed: pauseButton not found");
+    QVERIFY2(inputhandler->findChild<QPushButton *>("resumeButton") != nullptr, "Test Failed: resumeButton not found");
+    QVERIFY2(inputhandler->findChild<QPushButton *>("backButton") != nullptr, "Test Failed: backButton not found");
 }
 
 /**
@@ -80,14 +80,14 @@ void TestInputHandler::testTimer(){
  * @test
  * @brief testing functionalities of pause and resume buttons
 */
-void TestInputHandler::testPauseAndResume(){
+void TestInputHandler::testPauseandResume(){
     qDebug() << "Testing the Pause and Resume Buttons";
     // Test the pause button
-    QTest::mouseClick(inputHandler->pauseButton, Qt::LeftButton);
-    QVERIFY2(inputHandler->isPaused == true, "Test Failed: Pause button not working");
+    QTest::mouseClick(inputhandler->pauseButton, Qt::LeftButton);
+    QVERIFY2(inputhandler->isPaused == true, "Test Failed: Pause button not working");
     // Test the restart button
     QTest::mouseClick(inputHandler->resumeButton, Qt::LeftButton);
-    QVERIFY2(inputHandler->isPaused == false, "Test Failed: Resume button not working");
+    QVERIFY2(inputhandler->isPaused == false, "Test Failed: Resume button not working");
 }
 
 /**
