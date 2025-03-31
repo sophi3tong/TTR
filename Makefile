@@ -17,7 +17,7 @@ CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefau
 DEFINES       = -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR='"/Users/allisonso/Documents/UWO/Y6/CS3307/TTR"'
 CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -Wall -Wextra -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -Wall -Wextra -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/local/opt/sfml/include -I. -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/share/qt/mkspecs/macx-clang -F/usr/local/lib
+INCPATH       = -I. -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/share/qt/mkspecs/macx-clang -F/usr/local/lib
 QMAKE         = /usr/local/Cellar/qt/6.8.2/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -58,33 +58,29 @@ SOURCES       = databasemanager.cpp \
 		loginwindow.cpp \
 		main.cpp \
 		mainwindow.cpp \
-		soundadjtest.cpp \
-		testdatabasemanager.cpp \
-		testinputhandler.cpp \
+		tutorial.cpp \
 		user.cpp \
-		userfactory.cpp \
-		modeltest.cpp moc_inputhandler.cpp \
+		userfactory.cpp qrc_resources.cpp \
+		moc_inputhandler.cpp \
 		moc_levelwindow.cpp \
 		moc_loginwindow.cpp \
 		moc_mainwindow.cpp \
-		qrc_resources.cpp
+		moc_tutorial.cpp
 OBJECTS       = databasemanager.o \
 		inputhandler.o \
 		levelwindow.o \
 		loginwindow.o \
 		main.o \
 		mainwindow.o \
-		soundadjtest.o \
-		testdatabasemanager.o \
-		testinputhandler.o \
+		tutorial.o \
 		user.o \
 		userfactory.o \
-		modeltest.o \
+		qrc_resources.o \
 		moc_inputhandler.o \
 		moc_levelwindow.o \
 		moc_loginwindow.o \
 		moc_mainwindow.o \
-		qrc_resources.o
+		moc_tutorial.o
 DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		/usr/local/share/qt/mkspecs/features/device_config.prf \
 		/usr/local/share/qt/mkspecs/common/unix.conf \
@@ -430,13 +426,13 @@ DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		/usr/local/share/qt/mkspecs/features/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/objective_c.prf \
-		/usr/local/share/qt/mkspecs/features/moc.prf \
 		/usr/local/share/qt/mkspecs/features/mac/mac.prf \
 		/usr/local/share/qt/mkspecs/features/warn_on.prf \
 		/usr/local/share/qt/mkspecs/features/permissions.prf \
 		/usr/local/share/qt/mkspecs/features/qt.prf \
 		/usr/local/share/qt/mkspecs/features/resources_functions.prf \
 		/usr/local/share/qt/mkspecs/features/resources.prf \
+		/usr/local/share/qt/mkspecs/features/moc.prf \
 		/usr/local/share/qt/mkspecs/features/testlib_defines.prf \
 		/usr/local/share/qt/mkspecs/features/unix/opengl.prf \
 		/usr/local/share/qt/mkspecs/features/uic.prf \
@@ -454,6 +450,7 @@ DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		levelwindow.h \
 		loginwindow.h \
 		mainwindow.h \
+		tutorial.h \
 		user.h \
 		userfactory.h databasemanager.cpp \
 		inputhandler.cpp \
@@ -461,12 +458,9 @@ DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		loginwindow.cpp \
 		main.cpp \
 		mainwindow.cpp \
-		soundadjtest.cpp \
-		testdatabasemanager.cpp \
-		testinputhandler.cpp \
+		tutorial.cpp \
 		user.cpp \
-		userfactory.cpp \
-		modeltest.cpp
+		userfactory.cpp
 QMAKE_TARGET  = TTR
 DESTDIR       = 
 TARGET        = TTR.app/Contents/MacOS/TTR
@@ -836,13 +830,13 @@ Makefile: TTR.pro /usr/local/share/qt/mkspecs/macx-clang/qmake.conf /usr/local/s
 		/usr/local/share/qt/mkspecs/features/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/default_post.prf \
 		/usr/local/share/qt/mkspecs/features/mac/objective_c.prf \
-		/usr/local/share/qt/mkspecs/features/moc.prf \
 		/usr/local/share/qt/mkspecs/features/mac/mac.prf \
 		/usr/local/share/qt/mkspecs/features/warn_on.prf \
 		/usr/local/share/qt/mkspecs/features/permissions.prf \
 		/usr/local/share/qt/mkspecs/features/qt.prf \
 		/usr/local/share/qt/mkspecs/features/resources_functions.prf \
 		/usr/local/share/qt/mkspecs/features/resources.prf \
+		/usr/local/share/qt/mkspecs/features/moc.prf \
 		/usr/local/share/qt/mkspecs/features/testlib_defines.prf \
 		/usr/local/share/qt/mkspecs/features/unix/opengl.prf \
 		/usr/local/share/qt/mkspecs/features/uic.prf \
@@ -1210,13 +1204,13 @@ Makefile: TTR.pro /usr/local/share/qt/mkspecs/macx-clang/qmake.conf /usr/local/s
 /usr/local/share/qt/mkspecs/features/default_post.prf:
 /usr/local/share/qt/mkspecs/features/mac/default_post.prf:
 /usr/local/share/qt/mkspecs/features/mac/objective_c.prf:
-/usr/local/share/qt/mkspecs/features/moc.prf:
 /usr/local/share/qt/mkspecs/features/mac/mac.prf:
 /usr/local/share/qt/mkspecs/features/warn_on.prf:
 /usr/local/share/qt/mkspecs/features/permissions.prf:
 /usr/local/share/qt/mkspecs/features/qt.prf:
 /usr/local/share/qt/mkspecs/features/resources_functions.prf:
 /usr/local/share/qt/mkspecs/features/resources.prf:
+/usr/local/share/qt/mkspecs/features/moc.prf:
 /usr/local/share/qt/mkspecs/features/testlib_defines.prf:
 /usr/local/share/qt/mkspecs/features/unix/opengl.prf:
 /usr/local/share/qt/mkspecs/features/uic.prf:
@@ -1262,10 +1256,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents /usr/local/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents databasemanager.h inputhandler.h levelwindow.h loginwindow.h mainwindow.h user.h userfactory.h $(DISTDIR)/
-	$(COPY_FILE) --parents databasemanager.cpp inputhandler.cpp levelwindow.cpp loginwindow.cpp main.cpp mainwindow.cpp soundadjtest.cpp testdatabasemanager.cpp testinputhandler.cpp user.cpp userfactory.cpp modeltest.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents /usr/local/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents databasemanager.h inputhandler.h levelwindow.h loginwindow.h mainwindow.h tutorial.h user.h userfactory.h $(DISTDIR)/
+	$(COPY_FILE) --parents databasemanager.cpp inputhandler.cpp levelwindow.cpp loginwindow.cpp main.cpp mainwindow.cpp tutorial.cpp user.cpp userfactory.cpp soundadjtest.cpp testdatabasemanager.cpp testinputhandler.cpp modeltest.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1292,15 +1286,28 @@ check: first
 
 benchmark: first
 
+compiler_rcc_make_all: qrc_resources.cpp
+compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: resources.qrc \
+		/usr/local/share/qt/libexec/rcc \
+		easysong.mp3 \
+		hardsong.mp3 \
+		mediumsong.mp3 \
+		cancel.png \
+		volume-up.png \
+		tutorial.png
+	/usr/local/share/qt/libexec/rcc -name resources resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/local/share/qt/mkspecs/features/data/dummy.cpp
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -dM -E -o moc_predefs.h /usr/local/share/qt/mkspecs/features/data/dummy.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=14.0 -Wall -Wextra -fPIC -dM -E -o moc_predefs.h /usr/local/share/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp moc_tutorial.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp
+	-$(DEL_FILE) moc_inputhandler.cpp moc_levelwindow.cpp moc_loginwindow.cpp moc_mainwindow.cpp moc_tutorial.cpp
 moc_inputhandler.cpp: inputhandler.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -1342,7 +1349,7 @@ moc_inputhandler.cpp: inputhandler.h \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib inputhandler.h -o moc_inputhandler.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib inputhandler.h -o moc_inputhandler.cpp
 
 moc_levelwindow.cpp: levelwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1431,10 +1438,10 @@ moc_levelwindow.cpp: levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		mainwindow.h \
-		levelwindow.h \
+		tutorial.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib levelwindow.h -o moc_levelwindow.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib levelwindow.h -o moc_levelwindow.cpp
 
 moc_loginwindow.cpp: loginwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1526,11 +1533,12 @@ moc_loginwindow.cpp: loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		mainwindow.h \
+		tutorial.h \
 		userfactory.h \
 		user.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib loginwindow.h -o moc_loginwindow.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib loginwindow.h -o moc_loginwindow.cpp
 
 moc_mainwindow.cpp: mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1541,88 +1549,27 @@ moc_mainwindow.cpp: mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
-		levelwindow.h \
-		/usr/local/lib/QtCore.framework/Headers/QMap \
-		/usr/local/lib/QtCore.framework/Headers/qmap.h \
-		/usr/local/lib/QtCore.framework/Headers/QString \
-		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/opt/sfml/include/SFML/Audio.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/InputSoundFile.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/Export.hpp \
-		/usr/local/opt/sfml/include/SFML/Config.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundFileReader.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundChannel.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/Listener.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Angle.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Angle.inl \
-		/usr/local/opt/sfml/include/SFML/System/Vector3.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Export.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Vector3.inl \
-		/usr/local/opt/sfml/include/SFML/Audio/Music.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundStream.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundSource.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/AudioResource.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Time.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Time.inl \
-		/usr/local/opt/sfml/include/SFML/Audio/OutputSoundFile.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundFileWriter.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/PlaybackDevice.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/Sound.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundBuffer.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundBufferRecorder.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundRecorder.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.hpp \
-		/usr/local/opt/sfml/include/SFML/Audio/SoundFileFactory.inl \
-		/usr/local/opt/sfml/include/SFML/System.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Clock.hpp \
-		/usr/local/opt/sfml/include/SFML/System/SuspendAwareClock.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Err.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Exception.hpp \
-		/usr/local/opt/sfml/include/SFML/System/FileInputStream.hpp \
-		/usr/local/opt/sfml/include/SFML/System/InputStream.hpp \
-		/usr/local/opt/sfml/include/SFML/System/MemoryInputStream.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Sleep.hpp \
-		/usr/local/opt/sfml/include/SFML/System/String.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Utf.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Utf.inl \
-		/usr/local/opt/sfml/include/SFML/System/String.inl \
-		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
-		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
-		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
-		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
-		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
-		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
-		inputhandler.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
-		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
-		/usr/local/lib/QtCore.framework/Headers/QVector \
-		/usr/local/lib/QtCore.framework/Headers/qvector.h \
-		/usr/local/lib/QtCore.framework/Headers/QChar \
-		/usr/local/lib/QtCore.framework/Headers/qchar.h \
-		/usr/local/lib/QtGui.framework/Headers/QKeyEvent \
-		/usr/local/lib/QtGui.framework/Headers/qevent.h \
-		/usr/local/lib/QtCore.framework/Headers/QTimer \
-		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
-		/usr/local/lib/QtCore.framework/Headers/QPair \
-		/usr/local/lib/QtCore.framework/Headers/qpair.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
-		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		databasemanager.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
-		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlError \
-		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
-		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
 		/usr/local/lib/QtCore.framework/Headers/QDebug \
 		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
-		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
-		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
-		mainwindow.h \
+		tutorial.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
+		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib mainwindow.h -o moc_mainwindow.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib mainwindow.h -o moc_mainwindow.cpp
+
+moc_tutorial.cpp: tutorial.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
+		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QLabel \
+		/usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
+		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		moc_predefs.h \
+		/usr/local/share/qt/libexec/moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib tutorial.h -o moc_tutorial.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1632,8 +1579,6 @@ compiler_moc_source_clean:
 soundadjtest.moc: soundadjtest.cpp \
 		/usr/local/lib/QtCore.framework/Headers/QObject \
 		/usr/local/lib/QtCore.framework/Headers/qobject.h \
-		/usr/local/lib/QtTest.framework/Headers/QTest \
-		/usr/local/lib/QtTest.framework/Headers/qtest.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
@@ -1644,7 +1589,7 @@ soundadjtest.moc: soundadjtest.cpp \
 		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib soundadjtest.cpp -o soundadjtest.moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib soundadjtest.cpp -o soundadjtest.moc
 
 testdatabasemanager.moc: testdatabasemanager.cpp \
 		databasemanager.h \
@@ -1662,7 +1607,7 @@ testdatabasemanager.moc: testdatabasemanager.cpp \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib testdatabasemanager.cpp -o testdatabasemanager.moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib testdatabasemanager.cpp -o testdatabasemanager.moc
 
 testinputhandler.moc: testinputhandler.cpp \
 		userfactory.h \
@@ -1708,7 +1653,7 @@ testinputhandler.moc: testinputhandler.cpp \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib testinputhandler.cpp -o testinputhandler.moc
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib testinputhandler.cpp -o testinputhandler.moc
 
 modeltest.moc: modeltest.cpp \
 		user.h \
@@ -1717,19 +1662,7 @@ modeltest.moc: modeltest.cpp \
 		userfactory.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
-	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib modeltest.cpp -o modeltest.moc
-
-compiler_rcc_make_all: qrc_resources.cpp
-compiler_rcc_clean:
-	-$(DEL_FILE) qrc_resources.cpp
-qrc_resources.cpp: resources.qrc \
-		/usr/local/share/qt/libexec/rcc \
-		easysong.mp3 \
-		hardsong.mp3 \
-		mediumsong.mp3 \
-		cancel.png \
-		volume-up.png
-	/usr/local/share/qt/libexec/rcc -name resources resources.qrc -o qrc_resources.cpp
+	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/allisonso/Documents/UWO/Y6/CS3307/TTR/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/allisonso/Documents/UWO/Y6/CS3307/TTR -I/usr/local/opt/sfml/include -I/usr/local/lib/QtMultimedia.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtSql.framework/Headers -I/usr/local/lib/QtNetwork.framework/Headers -I/usr/local/lib/QtTest.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib modeltest.cpp -o modeltest.moc
 
 compiler_uic_make_all:
 compiler_uic_clean:
@@ -1741,7 +1674,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_moc_source_clean compiler_rcc_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_moc_source_clean 
 
 ####### Compile
 
@@ -1904,6 +1837,7 @@ levelwindow.o: levelwindow.cpp levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		mainwindow.h \
+		tutorial.h \
 		user.h \
 		userfactory.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QSpacerItem \
@@ -2006,19 +1940,33 @@ loginwindow.o: loginwindow.cpp loginwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		mainwindow.h \
+		tutorial.h \
 		userfactory.h \
 		user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o loginwindow.cpp
 
-main.o: main.cpp levelwindow.h \
+main.o: main.cpp /usr/local/lib/QtWidgets.framework/Headers/QApplication \
+		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
+		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
+		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
+		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
+		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
+		/usr/local/lib/QtCore.framework/Headers/QUrl \
+		/usr/local/lib/QtCore.framework/Headers/qurl.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		loginwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
 		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
 		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QLineEdit \
+		/usr/local/lib/QtWidgets.framework/Headers/qlineedit.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/QMap \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
@@ -2065,10 +2013,6 @@ main.o: main.cpp levelwindow.h \
 		/usr/local/opt/sfml/include/SFML/System/String.inl \
 		/usr/local/opt/sfml/include/SFML/System/Vector2.hpp \
 		/usr/local/opt/sfml/include/SFML/System/Vector2.inl \
-		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
-		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
-		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
-		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
 		inputhandler.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -2092,20 +2036,24 @@ main.o: main.cpp levelwindow.h \
 		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
 		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
 		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
-		/usr/local/lib/QtCore.framework/Headers/QDebug \
-		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		mainwindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
-		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
-		/usr/local/lib/QtCore.framework/Headers/QUrl \
-		/usr/local/lib/QtCore.framework/Headers/qurl.h \
-		loginwindow.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QLineEdit \
-		/usr/local/lib/QtWidgets.framework/Headers/qlineedit.h \
+		tutorial.h \
 		userfactory.h \
-		user.h
+		user.h \
+		modeltest.cpp \
+		modeltest.moc \
+		soundadjtest.cpp \
+		/usr/local/lib/QtCore.framework/Headers/QObject \
+		/usr/local/lib/QtCore.framework/Headers/qobject.h \
+		/usr/local/lib/QtTest.framework/Headers/QSignalSpy \
+		/usr/local/lib/QtTest.framework/Headers/qsignalspy.h \
+		soundadjtest.moc \
+		testdatabasemanager.cpp \
+		testdatabasemanager.moc \
+		testinputhandler.cpp \
+		testinputhandler.moc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -2117,6 +2065,11 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
+		/usr/local/lib/QtCore.framework/Headers/QDebug \
+		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
+		tutorial.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
+		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
 		levelwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/QMap \
 		/usr/local/lib/QtCore.framework/Headers/qmap.h \
@@ -2169,8 +2122,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
 		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
 		inputhandler.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
-		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
 		/usr/local/lib/QtCore.framework/Headers/QVector \
 		/usr/local/lib/QtCore.framework/Headers/qvector.h \
 		/usr/local/lib/QtCore.framework/Headers/QChar \
@@ -2191,8 +2142,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
 		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
 		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
-		/usr/local/lib/QtCore.framework/Headers/QDebug \
-		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
 		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
 		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
 		loginwindow.h \
@@ -2206,80 +2155,24 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/qsizepolicy.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
-soundadjtest.o: soundadjtest.cpp /usr/local/lib/QtCore.framework/Headers/QObject \
-		/usr/local/lib/QtCore.framework/Headers/qobject.h \
-		/usr/local/lib/QtTest.framework/Headers/QTest \
-		/usr/local/lib/QtTest.framework/Headers/qtest.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
-		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
-		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
-		/usr/local/lib/QtTest.framework/Headers/QSignalSpy \
-		/usr/local/lib/QtTest.framework/Headers/qsignalspy.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
-		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h \
-		soundadjtest.moc
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o soundadjtest.o soundadjtest.cpp
-
-testdatabasemanager.o: testdatabasemanager.cpp databasemanager.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
-		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlError \
-		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
-		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
-		/usr/local/lib/QtCore.framework/Headers/QString \
-		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		/usr/local/lib/QtCore.framework/Headers/QDebug \
-		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
-		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
-		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
-		testdatabasemanager.moc
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testdatabasemanager.o testdatabasemanager.cpp
-
-testinputhandler.o: testinputhandler.cpp userfactory.h \
-		/usr/local/lib/QtCore.framework/Headers/QString \
-		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		user.h \
-		inputhandler.h \
+tutorial.o: tutorial.cpp tutorial.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QWidget \
 		/usr/local/lib/QtWidgets.framework/Headers/qwidget.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QLabel \
 		/usr/local/lib/QtWidgets.framework/Headers/qlabel.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QPushButton \
 		/usr/local/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/usr/local/lib/QtCore.framework/Headers/QVector \
-		/usr/local/lib/QtCore.framework/Headers/qvector.h \
-		/usr/local/lib/QtCore.framework/Headers/QChar \
-		/usr/local/lib/QtCore.framework/Headers/qchar.h \
-		/usr/local/lib/QtGui.framework/Headers/QKeyEvent \
-		/usr/local/lib/QtGui.framework/Headers/qevent.h \
-		/usr/local/lib/QtCore.framework/Headers/QTimer \
-		/usr/local/lib/QtCore.framework/Headers/qtimer.h \
-		/usr/local/lib/QtCore.framework/Headers/QPair \
-		/usr/local/lib/QtCore.framework/Headers/qpair.h \
-		/usr/local/lib/QtMultimedia.framework/Headers/QMediaPlayer \
-		/usr/local/lib/QtMultimedia.framework/Headers/qmediaplayer.h \
-		/usr/local/lib/QtMultimedia.framework/Headers/QAudioOutput \
-		/usr/local/lib/QtMultimedia.framework/Headers/qaudiooutput.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QSlider \
-		/usr/local/lib/QtWidgets.framework/Headers/qslider.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QVBoxLayout \
-		/usr/local/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		databasemanager.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlDatabase \
-		/usr/local/lib/QtSql.framework/Headers/qsqldatabase.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlError \
-		/usr/local/lib/QtSql.framework/Headers/qsqlerror.h \
-		/usr/local/lib/QtSql.framework/Headers/QSqlQuery \
-		/usr/local/lib/QtSql.framework/Headers/qsqlquery.h \
+		mainwindow.h \
+		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
+		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/usr/local/lib/QtCore.framework/Headers/QDebug \
 		/usr/local/lib/QtCore.framework/Headers/qdebug.h \
-		/usr/local/lib/QtCore.framework/Headers/QCoreApplication \
-		/usr/local/lib/QtCore.framework/Headers/qcoreapplication.h \
-		testinputhandler.moc
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testinputhandler.o testinputhandler.cpp
+		/usr/local/lib/QtWidgets.framework/Headers/QHBoxLayout \
+		/usr/local/lib/QtGui.framework/Headers/QPixmap \
+		/usr/local/lib/QtGui.framework/Headers/qpixmap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tutorial.o tutorial.cpp
 
 user.o: user.cpp user.h \
 		/usr/local/lib/QtCore.framework/Headers/QString \
@@ -2303,12 +2196,8 @@ userfactory.o: userfactory.cpp userfactory.h \
 		user.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userfactory.o userfactory.cpp
 
-modeltest.o: modeltest.cpp user.h \
-		/usr/local/lib/QtCore.framework/Headers/QString \
-		/usr/local/lib/QtCore.framework/Headers/qstring.h \
-		userfactory.h \
-		modeltest.moc
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o modeltest.o modeltest.cpp
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_inputhandler.o: moc_inputhandler.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_inputhandler.o moc_inputhandler.cpp
@@ -2322,8 +2211,8 @@ moc_loginwindow.o: moc_loginwindow.cpp
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
-qrc_resources.o: qrc_resources.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
+moc_tutorial.o: moc_tutorial.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tutorial.o moc_tutorial.cpp
 
 ####### Install
 

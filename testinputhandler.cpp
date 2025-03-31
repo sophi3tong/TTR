@@ -32,6 +32,7 @@ void TestInputHandler::initTestCase(){
     inputhandler = new InputHandler(testUser.getUsername());
     inputhandler->show(); // test display
     inputhandler->hide();
+    inputhandler->stopMusic();
 }
 
 /**
@@ -49,6 +50,7 @@ void TestInputHandler::testTimer(){
     QTest::qWait(3000);
     QVERIFY2(inputhandler->timeLeft == allottedTime - 3, "Test Failed: Timer malfunction");
     inputhandler->hide();
+    inputhandler->stopMusic();
 }
 
 /**
@@ -72,7 +74,7 @@ void TestInputHandler::testInput(){
         int initialScore = ih.getScore();
 
         // test processInput() function
-        inputhandler->processInput(correctInput);
+        ih.processInput(correctInput);
         int currTargetLetters = ih.getTargetLetters().count();
         QVERIFY2(ih.getScore() == initialScore + 1, "Test Failed: score updated incorrectly");
         QVERIFY2(origTargetLetters == currTargetLetters + 1, "Test Failed: Letter not removed from list correctly");
@@ -84,6 +86,7 @@ void TestInputHandler::testInput(){
     ih.processInput('X');
     QVERIFY2(ih.getLives() == currLives - 1, "Test Failed: Lives not updated correctly");
     ih.hide();
+    inputhandler->stopMusic();
 }
 
 #include "testinputhandler.moc"
