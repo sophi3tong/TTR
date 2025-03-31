@@ -30,7 +30,6 @@ SOURCES += \
     user.cpp \
     userfactory.cpp \
     soundadjtest.cpp \
-    testdatabasemanager.cpp \
     testinputhandler.cpp \
     modeltest.cpp
 
@@ -81,20 +80,20 @@ LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 
-INCLUDEPATH += /opt/homebrew/opt/sfml/include
-LIBS += -L/opt/homebrew/opt/sfml/lib
-LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+# INCLUDEPATH += /opt/homebrew/opt/sfml/include
+# LIBS += -L/opt/homebrew/opt/sfml/lib
+# LIBS += -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 # # QT version 6.8.2 (Alli)
-QTDIR = /usr/local/Cellar/qt/6.8.2
-LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+# QTDIR = /usr/local/Cellar/qt/6.8.2
+# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
 
-QTDIR = /opt/homebrew/opt/qt
-INCLUDEPATH += $$QTDIR/include
-LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
-# Add SFML library paths
-LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
+# QTDIR = /opt/homebrew/opt/qt
+# INCLUDEPATH += $$QTDIR/include
+# LIBS += -L$$QTDIR/lib -framework QtCore -framework QtSql -framework QtGui -framework QtWidgets
+# # Add SFML library paths
+# LIBS += -L/path/to/sfml/lib -lsfml-audio -lsfml-system
 
 # # Julie's pathway
 # INCLUDEPATH += /usr/local/Cellar/sfml/3.0.0_1/include

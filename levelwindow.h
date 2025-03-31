@@ -1,7 +1,7 @@
 /**
  * @file levelwindow.cpp
- * @author Julie Vo
- * @date 29 March 2012
+ * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
+ * @date 29 March 2025
  * @brief File containing level window functions.
  *
  */
