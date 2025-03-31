@@ -57,7 +57,6 @@ QString User::getUsername(int user_id){
  * Queries database for user_id.
  */
 int User::getUserId(){
-    dm.connectDatabase();
     QSqlQuery query;
 
     query.prepare("SELECT user_id FROM users WHERE username = :username");

@@ -82,11 +82,12 @@ void TestInputHandler::testTimer(){
 */
 void TestInputHandler::testPauseandResume(){
     qDebug() << "Testing the Pause and Resume Buttons";
+    InputHandler ih("TestUser");
     // Test the pause button
-    QTest::mouseClick(inputhandler->pauseButton, Qt::LeftButton);
+    QTest::mouseClick(ih.pauseButton, Qt::LeftButton);
     QVERIFY2(inputhandler->isPaused == true, "Test Failed: Pause button not working");
     // Test the restart button
-    QTest::mouseClick(inputHandler->resumeButton, Qt::LeftButton);
+    QTest::mouseClick(ih.resumeButton, Qt::LeftButton);
     QVERIFY2(inputhandler->isPaused == false, "Test Failed: Resume button not working");
 }
 
