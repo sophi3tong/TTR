@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['backtomenu_0',['backToMenu',['../class_input_handler.html#a95fd4067e6a09a077484d88fe5107614',1,'InputHandler::backToMenu()'],['../class_tutorial.html#a7d1166b72956761d8cb4a7c1142a8b72',1,'Tutorial::backToMenu()']]]
+  ['authenticateuser_0',['authenticateUser',['../class_login_window.html#a832dfcb813eec2cfa9e7ef71528978ab',1,'LoginWindow']]]
 ];

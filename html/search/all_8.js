@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['mainwindow_1',['MainWindow',['../class_main_window.html',1,'MainWindow'],['../class_main_window.html#a996c5a2b6f77944776856f08ec30858d',1,'MainWindow::MainWindow()']]],
-  ['mainwindow_2ecpp_2',['mainwindow.cpp',['../mainwindow_8cpp.html',1,'']]],
-  ['mainwindow_2eh_3',['mainwindow.h',['../mainwindow_8h.html',1,'']]],
-  ['modeltest_4',['ModelTest',['../class_model_test.html',1,'']]],
-  ['modeltest_2ecpp_5',['modeltest.cpp',['../modeltest_8cpp.html',1,'']]]
+  ['launcheasymode_0',['launchEasyMode',['../class_input_handler.html#a9944123d7e998f2a9bf736671818fe3d',1,'InputHandler']]],
+  ['launchhardmode_1',['launchHardMode',['../class_input_handler.html#af64b3065789631eeb8978b5f6ed3047f',1,'InputHandler']]],
+  ['launchmediummode_2',['launchMediumMode',['../class_input_handler.html#a442bd6071b39b8f6f522f60bf28d4a01',1,'InputHandler']]],
+  ['levelwindow_3',['LevelWindow',['../class_level_window.html',1,'LevelWindow'],['../class_level_window.html#a3ed5b7a0923dc2b8f46be6717da05df4',1,'LevelWindow::LevelWindow()']]],
+  ['levelwindow_2ecpp_4',['levelwindow.cpp',['../levelwindow_8cpp.html',1,'']]],
+  ['levelwindow_2eh_5',['levelwindow.h',['../levelwindow_8h.html',1,'']]],
+  ['list_6',['Test List',['../test.html',1,'']]],
+  ['loadhighscore_7',['loadHighScore',['../class_input_handler.html#a1822c98b0eebc9e0d952788fb09f5c83',1,'InputHandler']]],
+  ['loginwindow_8',['LoginWindow',['../class_login_window.html',1,'LoginWindow'],['../class_login_window.html#aa4c04d26b299de00156bbf3c32b2a082',1,'LoginWindow::LoginWindow()']]],
+  ['loginwindow_2ecpp_9',['loginwindow.cpp',['../loginwindow_8cpp.html',1,'']]],
+  ['loginwindow_2eh_10',['loginwindow.h',['../loginwindow_8h.html',1,'']]]
 ];

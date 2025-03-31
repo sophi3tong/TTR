@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['initializeui_0',['initializeUI',['../class_input_handler.html#ade729473a42320ee3b25becb622d00f9',1,'InputHandler']]],
-  ['inputhandler_1',['InputHandler',['../class_input_handler.html',1,'InputHandler'],['../class_input_handler.html#a25657643e763ae668cf5250bc34b8a0f',1,'InputHandler::InputHandler()']]],
-  ['inputhandler_2eh_2',['inputhandler.h',['../inputhandler_8h.html',1,'']]],
-  ['inserthighscore_3',['insertHighscore',['../class_user.html#abf1a6b9aeaacb76b7a5e95d0c9bccc74',1,'User']]],
-  ['insertlevelscore_4',['insertLevelscore',['../class_user.html#ae5dd01dde4a92fd46e8a2ee5c32a5a25',1,'User']]]
+  ['handlebacktologin_0',['handleBackToLogin',['../class_login_window.html#abac71b650ea4931b02dd1508e9d22087',1,'LoginWindow']]],
+  ['handlecreate_1',['handleCreate',['../class_login_window.html#a27f02c84129ce98b40b1297da260b335',1,'LoginWindow']]],
+  ['handlelogin_2',['handleLogin',['../class_login_window.html#ac517fa6e0fef7c879f387fa56fa8ddc1',1,'LoginWindow']]],
+  ['handlemistake_3',['handleMistake',['../class_input_handler.html#ad519ef4e4cc47e765d549b5d6ae059b4',1,'InputHandler']]],
+  ['handleregister_4',['handleRegister',['../class_login_window.html#adbb2b07a1378bfb0032be4c70d7169f1',1,'LoginWindow']]]
 ];

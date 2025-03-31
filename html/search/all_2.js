@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['databasemanager_0',['DatabaseManager',['../class_database_manager.html',1,'DatabaseManager'],['../class_database_manager.html#aa162d97472e6c31a4e873adda435dbb6',1,'DatabaseManager::DatabaseManager()']]],
-  ['databasemanager_2eh_1',['databasemanager.h',['../databasemanager_8h.html',1,'']]]
+  ['checkdrivers_0',['checkDrivers',['../class_database_manager.html#adf3adf39e6435f236f6ec077c7898a1d',1,'DatabaseManager']]],
+  ['connectdatabase_1',['connectDatabase',['../class_database_manager.html#a1121ba8a90ead30d566bc58b62da0ca5',1,'DatabaseManager']]],
+  ['createuser_2',['createUser',['../class_user_factory.html#a847b6d7b612565023ea12594d7a8b42d',1,'UserFactory']]]
 ];
