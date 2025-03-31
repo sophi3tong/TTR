@@ -1,0 +1,111 @@
+\doxysection{inputhandler.\+h}
+\hypertarget{inputhandler_8h_source}{}\label{inputhandler_8h_source}\mbox{\hyperlink{inputhandler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ INPUTHANDLER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ INPUTHANDLER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QVector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QChar>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QKeyEvent>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QPair>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QMediaPlayer>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <QAudioOutput>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <QSlider>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <QHBoxLayout>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{databasemanager_8h}{databasemanager.h}}>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_handler_a25657643e763ae668cf5250bc34b8a0f}{InputHandler}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_input_handler_a25657643e763ae668cf5250bc34b8a0f}{InputHandler}}(QString\ \mbox{\hyperlink{class_input_handler_af56b543b9b123d143dd4743dbc01e04b}{username}},\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a9944123d7e998f2a9bf736671818fe3d}{launchEasyMode}}();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a442bd6071b39b8f6f522f60bf28d4a01}{launchMediumMode}}();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_af64b3065789631eeb8978b5f6ed3047f}{launchHardMode}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_input_handler_a1d7de664bffb545dbd4cf0793d361ae5}{getScore}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ score;\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_input_handler_ab0a8f0b4742684e09188ae65227c401a}{getLives}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ lives;\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \ \ QVector<QChar>\ \mbox{\hyperlink{class_input_handler_a656402d6048cebd96bc702e22577eec7}{getTargetLetters}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ targetLetters;\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \ \ \ \ QString\ \mbox{\hyperlink{class_input_handler_af56b543b9b123d143dd4743dbc01e04b}{username}};}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_ace13529afae6d6abdf1d7062d5345106}{generateRandomLetters}}();}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_aba4245d2eea4bce0a0691a8167f01dc0}{processInput}}(QChar\ userInput);}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a550bf1400fa2b264a06afa5f79694092}{updateLabel}}();}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a8ec3107eacbfeced3419c3bd2b078d14}{updateStatus}}();}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_ad519ef4e4cc47e765d549b5d6ae059b4}{handleMistake}}();}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a48281398e4cff5bbd82799de7cfd26f6}{restartGame}}();}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a4b1f676ceb5e674ed620c9f99dd8dd9f}{pauseGame}}();}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_ad8258c38a78e98d0bfe4afc7d2b59e53}{resumeGame}}();}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a1822c98b0eebc9e0d952788fb09f5c83}{loadHighScore}}();}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a9780204e0d9f88d761d43e8617065ae6}{saveHighScore}}();}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_ade729473a42320ee3b25becb622d00f9}{initializeUI}}();}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a7020055c0641c3084ccbc41f909fedd7}{stopMusic}}();}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a06b5d2d858c45c914c19139f32527f54}{showWarning}}(\textcolor{keyword}{const}\ QString\ \&message);}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{int}\ timeLeft\ =\ 5;}
+\DoxyCodeLine{00176\ \ \ \ \ QPushButton\ *pauseButton;}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{bool}\ isPaused\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00178\ \ \ \ \ QPushButton\ *resumeButton;}
+\DoxyCodeLine{00179\ signals:}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a95fd4067e6a09a077484d88fe5107614}{backToMenu}}();}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_handler_a262cba8a3a84b87b53b37d307104228f}{keyPressEvent}}(QKeyEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{comment}{//\ UI\ Elements}}
+\DoxyCodeLine{00200\ \ \ \ \ QLabel\ *label;}
+\DoxyCodeLine{00201\ \ \ \ \ QLabel\ *statusLabel;}
+\DoxyCodeLine{00202\ \ \ \ \ QLabel\ *livesLabel;}
+\DoxyCodeLine{00203\ \ \ \ \ QLabel\ *timerLabel;}
+\DoxyCodeLine{00204\ \ \ \ \ QLabel\ *warningLabel;}
+\DoxyCodeLine{00205\ \ \ \ \ QLabel\ *scoreLabel;}
+\DoxyCodeLine{00206\ \ \ \ \ QLabel\ *highscoreLabel;}
+\DoxyCodeLine{00207\ \ \ \ \ QPushButton\ *restartButton;}
+\DoxyCodeLine{00208\ \ \ \ \ QPushButton\ *backButton;}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//\ Game\ State}}
+\DoxyCodeLine{00213\ \ \ \ \ QVector<QChar>\ targetLetters;}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{int}\ score\ =\ 0;}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{int}\ lives\ =\ 3;}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{int}\ highScore;}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordtype}{bool}\ gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{comment}{//\ Difficulty\ Settings}}
+\DoxyCodeLine{00221\ \ \ \ \ QPair<int,\ int>\ difficultyRange;}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{bool}\ isHardMode\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{//\ Timer\ for\ Hard\ Mode}}
+\DoxyCodeLine{00225\ \ \ \ \ QTimer\ *roundTimer;}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{comment}{//\ Music}}
+\DoxyCodeLine{00229\ \ \ \ \ QMediaPlayer\ *musicPlayer;}
+\DoxyCodeLine{00230\ \ \ \ \ QAudioOutput\ *audioOutput;}
+\DoxyCodeLine{00231\ \ \ \ \ QHBoxLayout\ *topRightLayout;}
+\DoxyCodeLine{00232\ \ \ \ \ QSlider\ *volumeSlider;}
+\DoxyCodeLine{00233\ \ \ \ \ QPushButton\ *volumeButton;}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{bool}\ isVisible;}
+\DoxyCodeLine{00235\ \ \ \ \ QWidget\ *topRightWidget;}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INPUTHANDLER\_H}}
+
+\end{DoxyCode}

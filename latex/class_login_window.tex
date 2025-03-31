@@ -1,0 +1,264 @@
+\doxysection{Login\+Window Class Reference}
+\hypertarget{class_login_window}{}\label{class_login_window}\index{LoginWindow@{LoginWindow}}
+
+
+The \doxylink{class_login_window}{Login\+Window} class.  
+
+
+
+
+{\ttfamily \#include $<$loginwindow.\+h$>$}
+
+Inheritance diagram for Login\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_login_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_login_window_aa4c04d26b299de00156bbf3c32b2a082}{Login\+Window}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_login_window}{Login\+Window}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QString \mbox{\hyperlink{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107}{username}}
+\begin{DoxyCompactList}\small\item\em username \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_login_window_adad6fa8eb8a2c89152a5c6ceff308f3d}{setup\+UI}} (int is\+Login)
+\begin{DoxyCompactList}\small\item\em setup\+UI \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_login_window_adbb2b07a1378bfb0032be4c70d7169f1}{handle\+Register}} ()
+\begin{DoxyCompactList}\small\item\em handle\+Register \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_login_window_abac71b650ea4931b02dd1508e9d22087}{handle\+Back\+To\+Login}} ()
+\begin{DoxyCompactList}\small\item\em handle\+Back\+To\+Login \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_login_window_ac517fa6e0fef7c879f387fa56fa8ddc1}{handle\+Login}} ()
+\begin{DoxyCompactList}\small\item\em handle\+Login \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_login_window_a27f02c84129ce98b40b1297da260b335}{handle\+Create}} ()
+\begin{DoxyCompactList}\small\item\em handle\+Create \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_login_window_a90c75303790c5f856292eba3dc759342}{insert\+User}} (const QString \&firstname, const QString \&lastname, const QString \&\mbox{\hyperlink{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107}{username}}, const QString \&password)
+\begin{DoxyCompactList}\small\item\em insert\+User \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_login_window_a832dfcb813eec2cfa9e7ef71528978ab}{authenticate\+User}} (const QString \&\mbox{\hyperlink{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107}{username}}, const QString \&password)
+\begin{DoxyCompactList}\small\item\em authenticate\+User \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_login_window_ad74b30651f87159eb768278dbee7cced}\label{class_login_window_ad74b30651f87159eb768278dbee7cced} 
+QVBox\+Layout \texorpdfstring{$\ast$}{*} {\bfseries layout}
+\item 
+\Hypertarget{class_login_window_a8464eb44244bb3974a14e77d097bad0c}\label{class_login_window_a8464eb44244bb3974a14e77d097bad0c} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries main\+Title}
+\item 
+\Hypertarget{class_login_window_a9518d197d7b45053296367a324fbbca9}\label{class_login_window_a9518d197d7b45053296367a324fbbca9} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries main\+Subtitle}
+\item 
+\Hypertarget{class_login_window_a03eec996b1ae3b3d5e20d62bd8916306}\label{class_login_window_a03eec996b1ae3b3d5e20d62bd8916306} 
+QLine\+Edit \texorpdfstring{$\ast$}{*} {\bfseries firstname\+Input}
+\item 
+\Hypertarget{class_login_window_a0a843f47fe41fe7d717c9c598e7335b6}\label{class_login_window_a0a843f47fe41fe7d717c9c598e7335b6} 
+QLine\+Edit \texorpdfstring{$\ast$}{*} {\bfseries lastname\+Input}
+\item 
+\Hypertarget{class_login_window_a40eb0eda5ee09dae95638416fc88582c}\label{class_login_window_a40eb0eda5ee09dae95638416fc88582c} 
+QLine\+Edit \texorpdfstring{$\ast$}{*} {\bfseries username\+Input}
+\item 
+\Hypertarget{class_login_window_af66bbebafd12818feb63c5f3776efcea}\label{class_login_window_af66bbebafd12818feb63c5f3776efcea} 
+QLine\+Edit \texorpdfstring{$\ast$}{*} {\bfseries password\+Input}
+\item 
+\Hypertarget{class_login_window_a8f87dc3819c392a7e286fa403b07d23c}\label{class_login_window_a8f87dc3819c392a7e286fa403b07d23c} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries btl\+\_\+button}
+\item 
+\Hypertarget{class_login_window_ad144f923b58cadb7ce617e2f2c3cdb0e}\label{class_login_window_ad144f923b58cadb7ce617e2f2c3cdb0e} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries create\+\_\+button}
+\item 
+\Hypertarget{class_login_window_a016ebbb512a063ee95fc881c53aac004}\label{class_login_window_a016ebbb512a063ee95fc881c53aac004} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries register\+\_\+button}
+\item 
+\Hypertarget{class_login_window_ae04d5ed7a4d4552b0acbb36ef983a95e}\label{class_login_window_ae04d5ed7a4d4552b0acbb36ef983a95e} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries login\+\_\+button}
+\item 
+\Hypertarget{class_login_window_a03dca424c880280c63f5716d19c00c6d}\label{class_login_window_a03dca424c880280c63f5716d19c00c6d} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries login\+\_\+error}
+\item 
+\Hypertarget{class_login_window_a840c69b37a0e6f1cc375bb98fa036ecb}\label{class_login_window_a840c69b37a0e6f1cc375bb98fa036ecb} 
+\mbox{\hyperlink{class_level_window}{Level\+Window}} \texorpdfstring{$\ast$}{*} {\bfseries level\+Screen}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_login_window}{Login\+Window} class. 
+
+The login window displays the login window for users to login. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_login_window_aa4c04d26b299de00156bbf3c32b2a082}\index{LoginWindow@{LoginWindow}!LoginWindow@{LoginWindow}}
+\index{LoginWindow@{LoginWindow}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{LoginWindow()}{LoginWindow()}}
+{\footnotesize\ttfamily \label{class_login_window_aa4c04d26b299de00156bbf3c32b2a082} 
+Login\+Window\+::\+Login\+Window (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxylink{class_login_window}{Login\+Window}. 
+
+\doxylink{class_login_window_aa4c04d26b299de00156bbf3c32b2a082}{Login\+Window\+::\+Login\+Window}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+The \doxylink{class_login_window}{Login\+Window} class is responsible for displaying the login interface where users can log in or register. It also handles the interactions with the user authentication system.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+This constructor initializes the login window by calling the {\ttfamily \doxylink{class_login_window_adad6fa8eb8a2c89152a5c6ceff308f3d}{setup\+UI()}} method. It sets up the user interface for the login window. By default, it sets up the window in login mode (indicated by 0). 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_login_window_a832dfcb813eec2cfa9e7ef71528978ab}\index{LoginWindow@{LoginWindow}!authenticateUser@{authenticateUser}}
+\index{authenticateUser@{authenticateUser}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{authenticateUser}{authenticateUser}}
+{\footnotesize\ttfamily \label{class_login_window_a832dfcb813eec2cfa9e7ef71528978ab} 
+bool Login\+Window\+::authenticate\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{username}{, }\item[{const QString \&}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+authenticate\+User 
+
+\doxylink{class_login_window_a832dfcb813eec2cfa9e7ef71528978ab}{Login\+Window\+::authenticate\+User}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+This method checks the database for a matching username and password. \Hypertarget{class_login_window_abac71b650ea4931b02dd1508e9d22087}\index{LoginWindow@{LoginWindow}!handleBackToLogin@{handleBackToLogin}}
+\index{handleBackToLogin@{handleBackToLogin}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{handleBackToLogin}{handleBackToLogin}}
+{\footnotesize\ttfamily \label{class_login_window_abac71b650ea4931b02dd1508e9d22087} 
+void Login\+Window\+::handle\+Back\+To\+Login (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+handle\+Back\+To\+Login 
+
+\doxylink{class_login_window_abac71b650ea4931b02dd1508e9d22087}{Login\+Window\+::handle\+Back\+To\+Login}.
+
+This is triggered when the user clicks the Back to Login button.
+
+This is triggered when the user clicks the Login button and thier user account already exists. \Hypertarget{class_login_window_a27f02c84129ce98b40b1297da260b335}\index{LoginWindow@{LoginWindow}!handleCreate@{handleCreate}}
+\index{handleCreate@{handleCreate}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{handleCreate}{handleCreate}}
+{\footnotesize\ttfamily \label{class_login_window_a27f02c84129ce98b40b1297da260b335} 
+void Login\+Window\+::handle\+Create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+handle\+Create 
+
+\doxylink{class_login_window_a27f02c84129ce98b40b1297da260b335}{Login\+Window\+::handle\+Create}.
+
+This is triggered when the user clicks the Create button when making a new user. \Hypertarget{class_login_window_ac517fa6e0fef7c879f387fa56fa8ddc1}\index{LoginWindow@{LoginWindow}!handleLogin@{handleLogin}}
+\index{handleLogin@{handleLogin}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{handleLogin}{handleLogin}}
+{\footnotesize\ttfamily \label{class_login_window_ac517fa6e0fef7c879f387fa56fa8ddc1} 
+void Login\+Window\+::handle\+Login (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+handle\+Login 
+
+\doxylink{class_login_window_ac517fa6e0fef7c879f387fa56fa8ddc1}{Login\+Window\+::handle\+Login}.
+
+This is triggered when the user clicks the Login button and thier user account already exists.
+
+This is triggered when the user clicks the Back to Login button. \Hypertarget{class_login_window_adbb2b07a1378bfb0032be4c70d7169f1}\index{LoginWindow@{LoginWindow}!handleRegister@{handleRegister}}
+\index{handleRegister@{handleRegister}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{handleRegister}{handleRegister}}
+{\footnotesize\ttfamily \label{class_login_window_adbb2b07a1378bfb0032be4c70d7169f1} 
+void Login\+Window\+::handle\+Register (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+handle\+Register 
+
+\doxylink{class_login_window_adbb2b07a1378bfb0032be4c70d7169f1}{Login\+Window\+::handle\+Register}.
+
+This is triggered when the user clicks the Register button. \Hypertarget{class_login_window_a90c75303790c5f856292eba3dc759342}\index{LoginWindow@{LoginWindow}!insertUser@{insertUser}}
+\index{insertUser@{insertUser}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{insertUser}{insertUser}}
+{\footnotesize\ttfamily \label{class_login_window_a90c75303790c5f856292eba3dc759342} 
+bool Login\+Window\+::insert\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{firstname}{, }\item[{const QString \&}]{lastname}{, }\item[{const QString \&}]{username}{, }\item[{const QString \&}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+insert\+User 
+
+\doxylink{class_login_window_a90c75303790c5f856292eba3dc759342}{Login\+Window\+::insert\+User}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em firstname} & \\
+\hline
+{\em lastname} & \\
+\hline
+{\em username} & \\
+\hline
+{\em password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+This inserts a new user with the provided informaiton in the database. \Hypertarget{class_login_window_adad6fa8eb8a2c89152a5c6ceff308f3d}\index{LoginWindow@{LoginWindow}!setupUI@{setupUI}}
+\index{setupUI@{setupUI}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{setupUI}{setupUI}}
+{\footnotesize\ttfamily \label{class_login_window_adad6fa8eb8a2c89152a5c6ceff308f3d} 
+void Login\+Window\+::setup\+UI (\begin{DoxyParamCaption}\item[{int}]{is\+Login}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+setup\+UI 
+
+\doxylink{class_login_window_adad6fa8eb8a2c89152a5c6ceff308f3d}{Login\+Window\+::setup\+UI}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Login} & \\
+\hline
+\end{DoxyParams}
+This method sets up the user interface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Login} & \\
+\hline
+\end{DoxyParams}
+This displays the login window to the user. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107}\index{LoginWindow@{LoginWindow}!username@{username}}
+\index{username@{username}!LoginWindow@{LoginWindow}}
+\doxysubsubsection{\texorpdfstring{username}{username}}
+{\footnotesize\ttfamily \label{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107} 
+QString Login\+Window\+::username}
+
+
+
+username 
+
+Stores the username. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{loginwindow_8h}{loginwindow.\+h}}\item 
+\mbox{\hyperlink{loginwindow_8cpp}{loginwindow.\+cpp}}\end{DoxyCompactItemize}

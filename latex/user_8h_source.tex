@@ -1,0 +1,33 @@
+\doxysection{user.\+h}
+\hypertarget{user_8h_source}{}\label{user_8h_source}\mbox{\hyperlink{user_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ USER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ USER\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_user_a1874a1f508db2d22044fd15e81af62e0}{User}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_user_a1874a1f508db2d22044fd15e81af62e0}{User}}(QString\ username);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_user_af9d73e636519fe654cb31d30ccebe28a}{getLevelscore}}(\textcolor{keywordtype}{int}\ level);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_user_aae7b88c8d47e622c2a8488c4947a3499}{getUserId}}();}
+\DoxyCodeLine{00048\ \ \ \ \ QString\ \mbox{\hyperlink{class_user_a07c6adb4eac801e7c808b44a617265d1}{getUsername}}();}
+\DoxyCodeLine{00054\ \ \ \ \ QString\ \mbox{\hyperlink{class_user_a07c6adb4eac801e7c808b44a617265d1}{getUsername}}(\textcolor{keywordtype}{int}\ user\_id);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_user_a2c6070a1c31020a6beae27e4fe4f4724}{getHighscore}}();}
+\DoxyCodeLine{00064\ \ \ \ \ std::map<int,\ int>\ \mbox{\hyperlink{class_user_ad7df153ef8614df019f99b3a47f5ac5b}{getLevels}}();}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_user_abf1a6b9aeaacb76b7a5e95d0c9bccc74}{insertHighscore}}(\textcolor{keywordtype}{int}\ highscore);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_user_ae5dd01dde4a92fd46e8a2ee5c32a5a25}{insertLevelscore}}(\textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{int}\ score);}
+\DoxyCodeLine{00077\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ user\_id;}
+\DoxyCodeLine{00079\ \ \ \ \ QString\ username;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ highScore;}
+\DoxyCodeLine{00081\ \ \ \ \ std::map<int,\ int>\ levelScores;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }UserFactory;}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ USER\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,75 @@
+\doxysection{soundadjtest.\+cpp}
+\hypertarget{soundadjtest_8cpp_source}{}\label{soundadjtest_8cpp_source}\mbox{\hyperlink{soundadjtest_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <QtTest/QtTest>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QSlider>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QSignalSpy>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QApplication>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsound_adj_test}{soundAdjTest}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Test\ accessing\ sound\ setting.}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsound_adj_test_aafd00843cf1268fbc76ef70c04dea1c6}{testVolumeButton}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Test\ adjusting\ music\ voume.}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsound_adj_test_a3f7f87e2e2690a36f2eb22a5442fff63}{testSlider}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsound_adj_test_aafd00843cf1268fbc76ef70c04dea1c6}{soundAdjTest::testVolumeButton}}()}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ QWidget\ widget;}
+\DoxyCodeLine{00037\ \ \ \ \ QPushButton\ volumeButton(\textcolor{stringliteral}{"{}Volume"{}},\ \&widget);}
+\DoxyCodeLine{00038\ \ \ \ \ QVERIFY(volumeButton.isVisible());}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ signal\ spy\ to\ monitor\ the\ signal\ emitted\ when\ the\ button\ is\ clicked}}
+\DoxyCodeLine{00041\ \ \ \ \ QSignalSpy\ spy(\&volumeButton,\ \&QPushButton::clicked);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Simulate\ a\ button\ click}}
+\DoxyCodeLine{00044\ \ \ \ \ QTest::mouseClick(\&volumeButton,\ Qt::LeftButton);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Verify\ the\ volume\ button}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (spy.count()\ ==\ 1)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Volume\ button\ test:\ Valid"{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Volume\ button\ test:\ Invalid"{}};}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsound_adj_test_a3f7f87e2e2690a36f2eb22a5442fff63}{soundAdjTest::testSlider}}()}
+\DoxyCodeLine{00060\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ QWidget\ widget;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ slider\ to\ simulate\ volume\ control}}
+\DoxyCodeLine{00064\ \ \ \ \ QSlider\ volumeSlider(Qt::Horizontal,\ \&widget);}
+\DoxyCodeLine{00065\ \ \ \ \ volumeSlider.setRange(0,\ 100);\ \ \textcolor{comment}{//\ Set\ volume\ range\ (0\ to\ 100)}}
+\DoxyCodeLine{00066\ \ \ \ \ volumeSlider.setValue(50);\ \ \textcolor{comment}{//\ Set\ initial\ value\ to\ 50}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ Verify\ the\ initial\ value\ is\ set\ correctly}}
+\DoxyCodeLine{00069\ \ \ \ \ QCOMPARE(volumeSlider.value(),\ 50);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ signal\ spy\ to\ monitor\ the\ valueChanged\ signal\ from\ the\ slider}}
+\DoxyCodeLine{00072\ \ \ \ \ QSignalSpy\ spy(\&volumeSlider,\ \&QSlider::valueChanged);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Simulate\ changing\ the\ slider\ value\ to\ 75}}
+\DoxyCodeLine{00075\ \ \ \ \ QTest::keyClicks(\&volumeSlider,\ \textcolor{stringliteral}{"{}75"{}});}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Verify\ that\ the\ slider\ value\ has\ changed\ and\ the\ signal\ was\ emitted}}
+\DoxyCodeLine{00078\ \ \ \ \ QCOMPARE(volumeSlider.value(),\ 75);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Verify\ that\ the\ slider\ value\ has\ changed}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (volumeSlider.value()\ ==\ 75\ \&\&\ spy.count()\ ==\ 1)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Slider\ test:\ Valid"{}};}
+\DoxyCodeLine{00083\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Slider\ test:\ Invalid"{}};}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#include\ "{}soundadjtest.moc"{}}}
+
+\end{DoxyCode}

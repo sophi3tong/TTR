@@ -1,0 +1,50 @@
+\doxysection{testdatabasemanager.\+cpp}
+\hypertarget{testdatabasemanager_8cpp_source}{}\label{testdatabasemanager_8cpp_source}\mbox{\hyperlink{testdatabasemanager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QtTest/QTest>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{databasemanager_8h}{databasemanager.h}}>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_test_database_manager}{TestDatabaseManager}}\ :\ \textcolor{keyword}{public}\ QObject\{}
+\DoxyCodeLine{00014\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_database_manager_a57ee2b9025b02cdf2b51bc84c1492237}{test\_checkDrivers}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_database_manager_aae464a47e17b2d38e746dfa302daa058}{test\_connectDatabase}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_database_manager_a57ee2b9025b02cdf2b51bc84c1492237}{TestDatabaseManager::test\_checkDrivers}}()\{}
+\DoxyCodeLine{00027\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Testing:\ checkDrivers()"{}};}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_database_manager}{DatabaseManager}}\ dbManager;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ checkDrivers()\ method\ to\ start\ test}}
+\DoxyCodeLine{00030\ \ \ \ \ dbManager.\mbox{\hyperlink{class_database_manager_adf3adf39e6435f236f6ec077c7898a1d}{checkDrivers}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ QStringList\ driverList\ =\ QSqlDatabase::drivers();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Verify\ that\ the\ driverList\ is\ not\ empty\ }}
+\DoxyCodeLine{00034\ \ \ \ \ QVERIFY2(!driverList.isEmpty(),\ \textcolor{stringliteral}{"{}Test\ Failed:\ driver\ list\ is\ empty"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Verify\ that\ QMYSQL\ is\ in\ driverList}}
+\DoxyCodeLine{00036\ \ \ \ \ QVERIFY2(driverList.contains(\textcolor{stringliteral}{"{}QMYSQL"{}}),\ \textcolor{stringliteral}{"{}Test\ Failed:\ driver\ list\ does\ not\ contain\ QMYSQL"{}});}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_database_manager_aae464a47e17b2d38e746dfa302daa058}{TestDatabaseManager::test\_connectDatabase}}()\{}
+\DoxyCodeLine{00044\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Testing:\ connectDatabase()"{}};}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{class_database_manager}{DatabaseManager}}\ dbManager;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ connectDatabase()\ method\ to\ start\ test}}
+\DoxyCodeLine{00047\ \ \ \ \ dbManager.\mbox{\hyperlink{class_database_manager_a1121ba8a90ead30d566bc58b62da0ca5}{connectDatabase}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ If\ the\ database\ is\ open\ then\ it\ was\ connected\ properly}}
+\DoxyCodeLine{00050\ \ \ \ \ QSqlDatabase\ sqldb\ =\ QSqlDatabase::database();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (sqldb.isOpen())\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Test\ Passed"{}};}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Test\ Failed:\ "{}}\ <<\ sqldb.lastError().text();\ \textcolor{comment}{//\ Print\ error\ specific\ to\ database\ connection\ failure}}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ "{}testdatabasemanager.moc"{}}}
+
+\end{DoxyCode}

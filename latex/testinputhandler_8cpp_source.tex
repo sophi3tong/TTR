@@ -1,0 +1,80 @@
+\doxysection{testinputhandler.\+cpp}
+\hypertarget{testinputhandler_8cpp_source}{}\label{testinputhandler_8cpp_source}\mbox{\hyperlink{testinputhandler_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{userfactory_8h}{userfactory.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{inputhandler_8h}{inputhandler.h}}>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QtTest/QTest>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_test_input_handler}{TestInputHandler}}\ :\ \textcolor{keyword}{public}\ QObject\{}
+\DoxyCodeLine{00015\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_input_handler_aacb1894274712cc01e3ddf87641c5c46}{initTestCase}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_input_handler_a3aa692d5f09a9ba4c810085d8be8b953}{testTimer}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_input_handler_aa57618fa763429298ac3468ab9ba8a9d}{testInput}}();}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_input_handler}{InputHandler}}\ *inputhandler;}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_input_handler_aacb1894274712cc01e3ddf87641c5c46}{TestInputHandler::initTestCase}}()\{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Test\ case:\ (TestUser)}}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_user_factory}{UserFactory}}\ uf;}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_user}{User}}\ testUser\ =\ \mbox{\hyperlink{class_user}{User}}(\textcolor{stringliteral}{"{}TestUser"{}});}
+\DoxyCodeLine{00032\ \ \ \ \ inputhandler\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_input_handler}{InputHandler}}(testUser.\mbox{\hyperlink{class_user_a07c6adb4eac801e7c808b44a617265d1}{getUsername}}());}
+\DoxyCodeLine{00033\ \ \ \ \ inputhandler-\/>show();\ \textcolor{comment}{//\ test\ display}}
+\DoxyCodeLine{00034\ \ \ \ \ inputhandler-\/>hide();}
+\DoxyCodeLine{00035\ \ \ \ \ inputhandler-\/>stopMusic();}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_input_handler_a3aa692d5f09a9ba4c810085d8be8b953}{TestInputHandler::testTimer}}()\{}
+\DoxyCodeLine{00043\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Testing:\ Timer\ functionalities"{}};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Launch\ game\ mode\ for\ testing\ }}
+\DoxyCodeLine{00045\ \ \ \ \ inputhandler-\/>launchEasyMode();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Save\ the\ initial\ allotted\ time\ to\ a\ variable}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ allottedTime\ =\ inputhandler-\/>timeLeft;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ wait\ for\ timer\ to\ countdown}}
+\DoxyCodeLine{00050\ \ \ \ \ QTest::qWait(3000);}
+\DoxyCodeLine{00051\ \ \ \ \ QVERIFY2(inputhandler-\/>timeLeft\ ==\ allottedTime\ -\/\ 3,\ \textcolor{stringliteral}{"{}Test\ Failed:\ Timer\ malfunction"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ inputhandler-\/>hide();}
+\DoxyCodeLine{00053\ \ \ \ \ inputhandler-\/>stopMusic();}
+\DoxyCodeLine{00054\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_test_input_handler_aa57618fa763429298ac3468ab9ba8a9d}{TestInputHandler::testInput}}()\{}
+\DoxyCodeLine{00061\ \ \ \ \ qDebug()\ <<\ \textcolor{stringliteral}{"{}Testing\ User\ Input\ functionalities"{}};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Generate\ random\ letters\ for\ testing}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_input_handler}{InputHandler}}\ ih(\textcolor{stringliteral}{"{}TestUser"{}});}
+\DoxyCodeLine{00064\ \ \ \ \ ih.\mbox{\hyperlink{class_input_handler_ace13529afae6d6abdf1d7062d5345106}{generateRandomLetters}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ when\ user\ uses\ correct\ input}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Check\ that\ the\ targetLetters\ are\ not\ empty}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (!ih.\mbox{\hyperlink{class_input_handler_a656402d6048cebd96bc702e22577eec7}{getTargetLetters}}().isEmpty())\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ correct\ input}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ QChar\ correctInput\ =\ ih.\mbox{\hyperlink{class_input_handler_a656402d6048cebd96bc702e22577eec7}{getTargetLetters}}().first();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ count\ number\ of\ target\ letters}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ origTargetLetters\ =\ ih.\mbox{\hyperlink{class_input_handler_a656402d6048cebd96bc702e22577eec7}{getTargetLetters}}().count();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ initial\ score}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ initialScore\ =\ ih.\mbox{\hyperlink{class_input_handler_a1d7de664bffb545dbd4cf0793d361ae5}{getScore}}();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ test\ processInput()\ function}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ ih.\mbox{\hyperlink{class_input_handler_aba4245d2eea4bce0a0691a8167f01dc0}{processInput}}(correctInput);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currTargetLetters\ =\ ih.\mbox{\hyperlink{class_input_handler_a656402d6048cebd96bc702e22577eec7}{getTargetLetters}}().count();}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ QVERIFY2(ih.\mbox{\hyperlink{class_input_handler_a1d7de664bffb545dbd4cf0793d361ae5}{getScore}}()\ ==\ initialScore\ +\ 1,\ \textcolor{stringliteral}{"{}Test\ Failed:\ score\ updated\ incorrectly"{}});}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ QVERIFY2(origTargetLetters\ ==\ currTargetLetters\ +\ 1,\ \textcolor{stringliteral}{"{}Test\ Failed:\ Letter\ not\ removed\ from\ list\ correctly"{}});}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ when\ user\ uses\ incorrect\ input}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ currLives\ =\ ih.\mbox{\hyperlink{class_input_handler_ab0a8f0b4742684e09188ae65227c401a}{getLives}}();}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Simulate\ incorrect\ key\ press}}
+\DoxyCodeLine{00086\ \ \ \ \ ih.\mbox{\hyperlink{class_input_handler_aba4245d2eea4bce0a0691a8167f01dc0}{processInput}}(\textcolor{charliteral}{'X'});}
+\DoxyCodeLine{00087\ \ \ \ \ QVERIFY2(ih.\mbox{\hyperlink{class_input_handler_ab0a8f0b4742684e09188ae65227c401a}{getLives}}()\ ==\ currLives\ -\/\ 1,\ \textcolor{stringliteral}{"{}Test\ Failed:\ Lives\ not\ updated\ correctly"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ ih.hide();}
+\DoxyCodeLine{00089\ \ \ \ \ inputhandler-\/>\mbox{\hyperlink{class_input_handler_a7020055c0641c3084ccbc41f909fedd7}{stopMusic}}();}
+\DoxyCodeLine{00090\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#include\ "{}testinputhandler.moc"{}}}
+
+\end{DoxyCode}

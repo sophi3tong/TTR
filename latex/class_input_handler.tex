@@ -1,0 +1,443 @@
+\doxysection{Input\+Handler Class Reference}
+\hypertarget{class_input_handler}{}\label{class_input_handler}\index{InputHandler@{InputHandler}}
+
+
+The \doxylink{class_input_handler}{Input\+Handler} class manages the user input and game logic.  
+
+
+
+
+{\ttfamily \#include $<$inputhandler.\+h$>$}
+
+Inheritance diagram for Input\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_input_handler}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_input_handler_a95fd4067e6a09a077484d88fe5107614}{back\+To\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em back\+To\+Menu \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_input_handler_a25657643e763ae668cf5250bc34b8a0f}{Input\+Handler}} (QString \mbox{\hyperlink{class_input_handler_af56b543b9b123d143dd4743dbc01e04b}{username}}, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_input_handler}{Input\+Handler}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a9944123d7e998f2a9bf736671818fe3d}{launch\+Easy\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em launch\+Easy\+Mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a442bd6071b39b8f6f522f60bf28d4a01}{launch\+Medium\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em launch\+Medium\+Mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_af64b3065789631eeb8978b5f6ed3047f}{launch\+Hard\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em launch\+Hard\+Mode Lauches the game in Hard mode. \end{DoxyCompactList}\item 
+\Hypertarget{class_input_handler_a1d7de664bffb545dbd4cf0793d361ae5}\label{class_input_handler_a1d7de664bffb545dbd4cf0793d361ae5} 
+int {\bfseries get\+Score} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_input_handler_a1d7de664bffb545dbd4cf0793d361ae5}{get\+Score()} Gets current Score \end{DoxyCompactList}\item 
+\Hypertarget{class_input_handler_ab0a8f0b4742684e09188ae65227c401a}\label{class_input_handler_ab0a8f0b4742684e09188ae65227c401a} 
+int {\bfseries get\+Lives} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_input_handler_ab0a8f0b4742684e09188ae65227c401a}{get\+Lives()} Gets current lives \end{DoxyCompactList}\item 
+\Hypertarget{class_input_handler_a656402d6048cebd96bc702e22577eec7}\label{class_input_handler_a656402d6048cebd96bc702e22577eec7} 
+QVector$<$ QChar $>$ {\bfseries get\+Target\+Letters} () const
+\begin{DoxyCompactList}\small\item\em \doxylink{class_input_handler_a656402d6048cebd96bc702e22577eec7}{get\+Target\+Letters()} Gets current Score \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_ace13529afae6d6abdf1d7062d5345106}{generate\+Random\+Letters}} ()
+\begin{DoxyCompactList}\small\item\em generate\+Random\+Letters \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_aba4245d2eea4bce0a0691a8167f01dc0}{process\+Input}} (QChar user\+Input)
+\begin{DoxyCompactList}\small\item\em process\+Input \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a550bf1400fa2b264a06afa5f79694092}{update\+Label}} ()
+\begin{DoxyCompactList}\small\item\em update\+Label \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a8ec3107eacbfeced3419c3bd2b078d14}{update\+Status}} ()
+\begin{DoxyCompactList}\small\item\em update\+Status \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_ad519ef4e4cc47e765d549b5d6ae059b4}{handle\+Mistake}} ()
+\begin{DoxyCompactList}\small\item\em handle\+Mistake \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a48281398e4cff5bbd82799de7cfd26f6}{restart\+Game}} ()
+\begin{DoxyCompactList}\small\item\em restart\+Game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a4b1f676ceb5e674ed620c9f99dd8dd9f}{pause\+Game}} ()
+\begin{DoxyCompactList}\small\item\em pause\+Game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_ad8258c38a78e98d0bfe4afc7d2b59e53}{resume\+Game}} ()
+\begin{DoxyCompactList}\small\item\em resume\+Game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a1822c98b0eebc9e0d952788fb09f5c83}{load\+High\+Score}} ()
+\begin{DoxyCompactList}\small\item\em load\+High\+Score \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a9780204e0d9f88d761d43e8617065ae6}{save\+High\+Score}} ()
+\begin{DoxyCompactList}\small\item\em save\+High\+Score \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_ade729473a42320ee3b25becb622d00f9}{initialize\+UI}} ()
+\begin{DoxyCompactList}\small\item\em initialize\+UI \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a7020055c0641c3084ccbc41f909fedd7}{stop\+Music}} ()
+\begin{DoxyCompactList}\small\item\em stop\+Music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_handler_a06b5d2d858c45c914c19139f32527f54}{show\+Warning}} (const QString \&message)
+\begin{DoxyCompactList}\small\item\em show\+Warning \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QString \mbox{\hyperlink{class_input_handler_af56b543b9b123d143dd4743dbc01e04b}{username}}
+\begin{DoxyCompactList}\small\item\em username \end{DoxyCompactList}\item 
+\Hypertarget{class_input_handler_af230227b4a74bf2ad61541002f090606}\label{class_input_handler_af230227b4a74bf2ad61541002f090606} 
+int {\bfseries time\+Left} = 5
+\item 
+\Hypertarget{class_input_handler_a58b79730594b5e3cc8ebb70b4ab3f7bd}\label{class_input_handler_a58b79730594b5e3cc8ebb70b4ab3f7bd} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries pause\+Button}
+\item 
+\Hypertarget{class_input_handler_a317db1fac3a6365986dd8c6c4267d07d}\label{class_input_handler_a317db1fac3a6365986dd8c6c4267d07d} 
+bool {\bfseries is\+Paused} = false
+\item 
+\Hypertarget{class_input_handler_a671c40d1f9308b4327eb41a171ad3b96}\label{class_input_handler_a671c40d1f9308b4327eb41a171ad3b96} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries resume\+Button}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_input_handler_a262cba8a3a84b87b53b37d307104228f}{key\+Press\+Event}} (QKey\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em key\+Press\+Event \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_input_handler_a4ead1b683f666e949774feddddf0ae56}\label{class_input_handler_a4ead1b683f666e949774feddddf0ae56} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries label}
+\item 
+\Hypertarget{class_input_handler_ace9221179c7a6e396c343b4512804d63}\label{class_input_handler_ace9221179c7a6e396c343b4512804d63} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries status\+Label}
+\item 
+\Hypertarget{class_input_handler_aeedbe6ef6c92a90a2a5b2667e3dbba63}\label{class_input_handler_aeedbe6ef6c92a90a2a5b2667e3dbba63} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries lives\+Label}
+\item 
+\Hypertarget{class_input_handler_a420870e952c25ed8af54b8b11d449a2e}\label{class_input_handler_a420870e952c25ed8af54b8b11d449a2e} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries timer\+Label}
+\item 
+\Hypertarget{class_input_handler_af27e85b78e8a810ce4e4396256f5f161}\label{class_input_handler_af27e85b78e8a810ce4e4396256f5f161} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries warning\+Label}
+\item 
+\Hypertarget{class_input_handler_a4e7a3fa0ee464c3ff614d3677844c48b}\label{class_input_handler_a4e7a3fa0ee464c3ff614d3677844c48b} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries score\+Label}
+\item 
+\Hypertarget{class_input_handler_a0eddbd7135a92a1e38dc5011d9266a99}\label{class_input_handler_a0eddbd7135a92a1e38dc5011d9266a99} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries highscore\+Label}
+\item 
+\Hypertarget{class_input_handler_aedf49192cff30ab1b98894292cdd5b7e}\label{class_input_handler_aedf49192cff30ab1b98894292cdd5b7e} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries restart\+Button}
+\item 
+\Hypertarget{class_input_handler_af62769af0275960c651d3a1cfea1ca0b}\label{class_input_handler_af62769af0275960c651d3a1cfea1ca0b} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries back\+Button}
+\item 
+\Hypertarget{class_input_handler_a7d5d6b687370fbf4f9ffaf434be3dade}\label{class_input_handler_a7d5d6b687370fbf4f9ffaf434be3dade} 
+QVector$<$ QChar $>$ {\bfseries target\+Letters}
+\item 
+\Hypertarget{class_input_handler_acf436759556127f3dc1d77f26d45809a}\label{class_input_handler_acf436759556127f3dc1d77f26d45809a} 
+int {\bfseries score} = 0
+\item 
+\Hypertarget{class_input_handler_aeda1567ec9d8cb285fc4844fd6b24410}\label{class_input_handler_aeda1567ec9d8cb285fc4844fd6b24410} 
+int {\bfseries lives} = 3
+\item 
+\Hypertarget{class_input_handler_a90db548d0ecea1a1a207fd4e87bffbcc}\label{class_input_handler_a90db548d0ecea1a1a207fd4e87bffbcc} 
+int {\bfseries high\+Score}
+\item 
+\Hypertarget{class_input_handler_aa24797ab99288e8831101c904fa32191}\label{class_input_handler_aa24797ab99288e8831101c904fa32191} 
+bool {\bfseries game\+Over} = false
+\item 
+\Hypertarget{class_input_handler_ab07b99ce33562ef2408b7a358d0d5e36}\label{class_input_handler_ab07b99ce33562ef2408b7a358d0d5e36} 
+QPair$<$ int, int $>$ {\bfseries difficulty\+Range}
+\item 
+\Hypertarget{class_input_handler_a0e86cb70bdca361b283acbae931454c1}\label{class_input_handler_a0e86cb70bdca361b283acbae931454c1} 
+bool {\bfseries is\+Hard\+Mode} = false
+\item 
+\Hypertarget{class_input_handler_a74d56189a77a9eae3183d78cd0c185a2}\label{class_input_handler_a74d56189a77a9eae3183d78cd0c185a2} 
+QTimer \texorpdfstring{$\ast$}{*} {\bfseries round\+Timer}
+\item 
+\Hypertarget{class_input_handler_ace82b6459d4f1beffb626a7cde260dd5}\label{class_input_handler_ace82b6459d4f1beffb626a7cde260dd5} 
+QMedia\+Player \texorpdfstring{$\ast$}{*} {\bfseries music\+Player}
+\item 
+\Hypertarget{class_input_handler_a380f4ba9f1adcabaa6c09ca3f4def965}\label{class_input_handler_a380f4ba9f1adcabaa6c09ca3f4def965} 
+QAudio\+Output \texorpdfstring{$\ast$}{*} {\bfseries audio\+Output}
+\item 
+\Hypertarget{class_input_handler_a714597575b6556d0f40a9806665ef811}\label{class_input_handler_a714597575b6556d0f40a9806665ef811} 
+QHBox\+Layout \texorpdfstring{$\ast$}{*} {\bfseries top\+Right\+Layout}
+\item 
+\Hypertarget{class_input_handler_acdac70d7696cffc9886fb8c05a98a854}\label{class_input_handler_acdac70d7696cffc9886fb8c05a98a854} 
+QSlider \texorpdfstring{$\ast$}{*} {\bfseries volume\+Slider}
+\item 
+\Hypertarget{class_input_handler_a65c63996d0303e6e0a86e375b8ae174b}\label{class_input_handler_a65c63996d0303e6e0a86e375b8ae174b} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries volume\+Button}
+\item 
+\Hypertarget{class_input_handler_aa2c107eb9e243584bab6d239ab3d7ba4}\label{class_input_handler_aa2c107eb9e243584bab6d239ab3d7ba4} 
+bool {\bfseries is\+Visible}
+\item 
+\Hypertarget{class_input_handler_a8de96ec3055d436f30432da2bdff2ff6}\label{class_input_handler_a8de96ec3055d436f30432da2bdff2ff6} 
+QWidget \texorpdfstring{$\ast$}{*} {\bfseries top\+Right\+Widget}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_input_handler}{Input\+Handler} class manages the user input and game logic. 
+
+The \doxylink{class_input_handler}{Input\+Handler} class is responsible for handling the user’s keyboard inputs, managing the game state (score, lives, difficulty), updating the UI, and managing the background music during the game. It provides three difficulty levels (Easy, Medium, Hard) and incorporates functionality to pause, resume, and restart the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_input_handler_a25657643e763ae668cf5250bc34b8a0f}\index{InputHandler@{InputHandler}!InputHandler@{InputHandler}}
+\index{InputHandler@{InputHandler}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{InputHandler()}{InputHandler()}}
+{\footnotesize\ttfamily \label{class_input_handler_a25657643e763ae668cf5250bc34b8a0f} 
+Input\+Handler\+::\+Input\+Handler (\begin{DoxyParamCaption}\item[{QString}]{username}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxylink{class_input_handler}{Input\+Handler}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+Initializes the \doxylink{class_input_handler}{Input\+Handler} class, sets up the UI components, and loads the current player\textquotesingle{}s high score. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_input_handler_a95fd4067e6a09a077484d88fe5107614}\index{InputHandler@{InputHandler}!backToMenu@{backToMenu}}
+\index{backToMenu@{backToMenu}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{backToMenu}{backToMenu}}
+{\footnotesize\ttfamily \label{class_input_handler_a95fd4067e6a09a077484d88fe5107614} 
+void Input\+Handler\+::back\+To\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+back\+To\+Menu 
+
+This signal is emitted when the player chooses to go back to the main menu. \Hypertarget{class_input_handler_ace13529afae6d6abdf1d7062d5345106}\index{InputHandler@{InputHandler}!generateRandomLetters@{generateRandomLetters}}
+\index{generateRandomLetters@{generateRandomLetters}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{generateRandomLetters()}{generateRandomLetters()}}
+{\footnotesize\ttfamily \label{class_input_handler_ace13529afae6d6abdf1d7062d5345106} 
+void Input\+Handler\+::generate\+Random\+Letters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+generate\+Random\+Letters 
+
+\doxylink{class_input_handler_ace13529afae6d6abdf1d7062d5345106}{Input\+Handler\+::generate\+Random\+Letters}.
+
+This generates random letters for the game. \Hypertarget{class_input_handler_ad519ef4e4cc47e765d549b5d6ae059b4}\index{InputHandler@{InputHandler}!handleMistake@{handleMistake}}
+\index{handleMistake@{handleMistake}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{handleMistake()}{handleMistake()}}
+{\footnotesize\ttfamily \label{class_input_handler_ad519ef4e4cc47e765d549b5d6ae059b4} 
+void Input\+Handler\+::handle\+Mistake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+handle\+Mistake 
+
+\doxylink{class_input_handler_ad519ef4e4cc47e765d549b5d6ae059b4}{Input\+Handler\+::handle\+Mistake} This handles a mistake that the user does when inputting the wrong letter.
+
+This handles a mistake that the user does when inputting the wrong letter. \Hypertarget{class_input_handler_ade729473a42320ee3b25becb622d00f9}\index{InputHandler@{InputHandler}!initializeUI@{initializeUI}}
+\index{initializeUI@{initializeUI}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{initializeUI()}{initializeUI()}}
+{\footnotesize\ttfamily \label{class_input_handler_ade729473a42320ee3b25becb622d00f9} 
+void Input\+Handler\+::initialize\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+initialize\+UI 
+
+This displays the ui for typing window game. \Hypertarget{class_input_handler_a262cba8a3a84b87b53b37d307104228f}\index{InputHandler@{InputHandler}!keyPressEvent@{keyPressEvent}}
+\index{keyPressEvent@{keyPressEvent}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{keyPressEvent()}{keyPressEvent()}}
+{\footnotesize\ttfamily \label{class_input_handler_a262cba8a3a84b87b53b37d307104228f} 
+void Input\+Handler\+::key\+Press\+Event (\begin{DoxyParamCaption}\item[{QKey\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+key\+Press\+Event 
+
+\doxylink{class_input_handler_a262cba8a3a84b87b53b37d307104228f}{Input\+Handler\+::key\+Press\+Event}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+Processes the user\textquotesingle{}s input and check if the entered letter matches the target letter. Updates the game state based on user input. \Hypertarget{class_input_handler_a9944123d7e998f2a9bf736671818fe3d}\index{InputHandler@{InputHandler}!launchEasyMode@{launchEasyMode}}
+\index{launchEasyMode@{launchEasyMode}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{launchEasyMode()}{launchEasyMode()}}
+{\footnotesize\ttfamily \label{class_input_handler_a9944123d7e998f2a9bf736671818fe3d} 
+void Input\+Handler\+::launch\+Easy\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+launch\+Easy\+Mode 
+
+\doxylink{class_input_handler_a9944123d7e998f2a9bf736671818fe3d}{Input\+Handler\+::launch\+Easy\+Mode()}
+
+Lauches the game in Easy mode. \Hypertarget{class_input_handler_af64b3065789631eeb8978b5f6ed3047f}\index{InputHandler@{InputHandler}!launchHardMode@{launchHardMode}}
+\index{launchHardMode@{launchHardMode}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{launchHardMode()}{launchHardMode()}}
+{\footnotesize\ttfamily \label{class_input_handler_af64b3065789631eeb8978b5f6ed3047f} 
+void Input\+Handler\+::launch\+Hard\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+launch\+Hard\+Mode Lauches the game in Hard mode. 
+
+\doxylink{class_input_handler_af64b3065789631eeb8978b5f6ed3047f}{Input\+Handler\+::launch\+Hard\+Mode}.
+
+Lauches the game in Medium mode. \Hypertarget{class_input_handler_a442bd6071b39b8f6f522f60bf28d4a01}\index{InputHandler@{InputHandler}!launchMediumMode@{launchMediumMode}}
+\index{launchMediumMode@{launchMediumMode}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{launchMediumMode()}{launchMediumMode()}}
+{\footnotesize\ttfamily \label{class_input_handler_a442bd6071b39b8f6f522f60bf28d4a01} 
+void Input\+Handler\+::launch\+Medium\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+launch\+Medium\+Mode 
+
+\doxylink{class_input_handler_a442bd6071b39b8f6f522f60bf28d4a01}{Input\+Handler\+::launch\+Medium\+Mode()}
+
+Lauches the game in Medium mode. \Hypertarget{class_input_handler_a1822c98b0eebc9e0d952788fb09f5c83}\index{InputHandler@{InputHandler}!loadHighScore@{loadHighScore}}
+\index{loadHighScore@{loadHighScore}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{loadHighScore()}{loadHighScore()}}
+{\footnotesize\ttfamily \label{class_input_handler_a1822c98b0eebc9e0d952788fb09f5c83} 
+void Input\+Handler\+::load\+High\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+load\+High\+Score 
+
+\doxylink{class_input_handler_a1822c98b0eebc9e0d952788fb09f5c83}{Input\+Handler\+::load\+High\+Score}.
+
+This loads high score.
+
+This loads the high score of current user. \Hypertarget{class_input_handler_a4b1f676ceb5e674ed620c9f99dd8dd9f}\index{InputHandler@{InputHandler}!pauseGame@{pauseGame}}
+\index{pauseGame@{pauseGame}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{pauseGame()}{pauseGame()}}
+{\footnotesize\ttfamily \label{class_input_handler_a4b1f676ceb5e674ed620c9f99dd8dd9f} 
+void Input\+Handler\+::pause\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+pause\+Game 
+
+\doxylink{class_input_handler_a4b1f676ceb5e674ed620c9f99dd8dd9f}{Input\+Handler\+::pause\+Game}.
+
+This pauses the game. \Hypertarget{class_input_handler_aba4245d2eea4bce0a0691a8167f01dc0}\index{InputHandler@{InputHandler}!processInput@{processInput}}
+\index{processInput@{processInput}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
+{\footnotesize\ttfamily \label{class_input_handler_aba4245d2eea4bce0a0691a8167f01dc0} 
+void Input\+Handler\+::process\+Input (\begin{DoxyParamCaption}\item[{QChar}]{user\+Input}{}\end{DoxyParamCaption})}
+
+
+
+process\+Input 
+
+\doxylink{class_input_handler_aba4245d2eea4bce0a0691a8167f01dc0}{Input\+Handler\+::process\+Input}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Input} & \\
+\hline
+\end{DoxyParams}
+This processes the input of the user when typing. \Hypertarget{class_input_handler_a48281398e4cff5bbd82799de7cfd26f6}\index{InputHandler@{InputHandler}!restartGame@{restartGame}}
+\index{restartGame@{restartGame}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{restartGame()}{restartGame()}}
+{\footnotesize\ttfamily \label{class_input_handler_a48281398e4cff5bbd82799de7cfd26f6} 
+void Input\+Handler\+::restart\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+restart\+Game 
+
+\doxylink{class_input_handler_a48281398e4cff5bbd82799de7cfd26f6}{Input\+Handler\+::restart\+Game}.
+
+This restarts the game. \Hypertarget{class_input_handler_ad8258c38a78e98d0bfe4afc7d2b59e53}\index{InputHandler@{InputHandler}!resumeGame@{resumeGame}}
+\index{resumeGame@{resumeGame}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{resumeGame()}{resumeGame()}}
+{\footnotesize\ttfamily \label{class_input_handler_ad8258c38a78e98d0bfe4afc7d2b59e53} 
+void Input\+Handler\+::resume\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+resume\+Game 
+
+\doxylink{class_input_handler_ad8258c38a78e98d0bfe4afc7d2b59e53}{Input\+Handler\+::resume\+Game}.
+
+This resumes the game. \Hypertarget{class_input_handler_a9780204e0d9f88d761d43e8617065ae6}\index{InputHandler@{InputHandler}!saveHighScore@{saveHighScore}}
+\index{saveHighScore@{saveHighScore}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{saveHighScore()}{saveHighScore()}}
+{\footnotesize\ttfamily \label{class_input_handler_a9780204e0d9f88d761d43e8617065ae6} 
+void Input\+Handler\+::save\+High\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+save\+High\+Score 
+
+\doxylink{class_input_handler_a9780204e0d9f88d761d43e8617065ae6}{Input\+Handler\+::save\+High\+Score}.
+
+This saves high score of current user.
+
+This saves the high score of current user. \Hypertarget{class_input_handler_a06b5d2d858c45c914c19139f32527f54}\index{InputHandler@{InputHandler}!showWarning@{showWarning}}
+\index{showWarning@{showWarning}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{showWarning()}{showWarning()}}
+{\footnotesize\ttfamily \label{class_input_handler_a06b5d2d858c45c914c19139f32527f54} 
+void Input\+Handler\+::show\+Warning (\begin{DoxyParamCaption}\item[{const QString \&}]{message}{}\end{DoxyParamCaption})}
+
+
+
+show\+Warning 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+This shows warning to the user such as a time\textquotesingle{}s up warning. \Hypertarget{class_input_handler_a7020055c0641c3084ccbc41f909fedd7}\index{InputHandler@{InputHandler}!stopMusic@{stopMusic}}
+\index{stopMusic@{stopMusic}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{stopMusic()}{stopMusic()}}
+{\footnotesize\ttfamily \label{class_input_handler_a7020055c0641c3084ccbc41f909fedd7} 
+void Input\+Handler\+::stop\+Music (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+stop\+Music 
+
+\doxylink{class_input_handler_a7020055c0641c3084ccbc41f909fedd7}{Input\+Handler\+::stop\+Music}.
+
+This stops the music when user preses pause.
+
+This stops the music \Hypertarget{class_input_handler_a550bf1400fa2b264a06afa5f79694092}\index{InputHandler@{InputHandler}!updateLabel@{updateLabel}}
+\index{updateLabel@{updateLabel}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{updateLabel()}{updateLabel()}}
+{\footnotesize\ttfamily \label{class_input_handler_a550bf1400fa2b264a06afa5f79694092} 
+void Input\+Handler\+::update\+Label (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+update\+Label 
+
+\doxylink{class_input_handler_a550bf1400fa2b264a06afa5f79694092}{Input\+Handler\+::update\+Label}.
+
+This updates the label by removing the letter on screen when user types it correctly. \Hypertarget{class_input_handler_a8ec3107eacbfeced3419c3bd2b078d14}\index{InputHandler@{InputHandler}!updateStatus@{updateStatus}}
+\index{updateStatus@{updateStatus}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{updateStatus()}{updateStatus()}}
+{\footnotesize\ttfamily \label{class_input_handler_a8ec3107eacbfeced3419c3bd2b078d14} 
+void Input\+Handler\+::update\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+update\+Status 
+
+\doxylink{class_input_handler_a8ec3107eacbfeced3419c3bd2b078d14}{Input\+Handler\+::update\+Status}.
+
+This updates the status of the game. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_input_handler_af56b543b9b123d143dd4743dbc01e04b}\index{InputHandler@{InputHandler}!username@{username}}
+\index{username@{username}!InputHandler@{InputHandler}}
+\doxysubsubsection{\texorpdfstring{username}{username}}
+{\footnotesize\ttfamily \label{class_input_handler_af56b543b9b123d143dd4743dbc01e04b} 
+QString Input\+Handler\+::username}
+
+
+
+username 
+
+Current player\textquotesingle{}s username. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{inputhandler_8h}{inputhandler.\+h}}\item 
+inputhandler.\+cpp\end{DoxyCompactItemize}

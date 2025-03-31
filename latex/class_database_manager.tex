@@ -1,0 +1,80 @@
+\doxysection{Database\+Manager Class Reference}
+\hypertarget{class_database_manager}{}\label{class_database_manager}\index{DatabaseManager@{DatabaseManager}}
+
+
+A database manager that represents the database used in the game.  
+
+
+
+
+{\ttfamily \#include $<$databasemanager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_database_manager_aa162d97472e6c31a4e873adda435dbb6}{Database\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_database_manager}{Database\+Manager} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_manager_a1121ba8a90ead30d566bc58b62da0ca5}{connect\+Database}} ()
+\begin{DoxyCompactList}\small\item\em Connects to the My\+SQL database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_manager_adf3adf39e6435f236f6ec077c7898a1d}{check\+Drivers}} ()
+\begin{DoxyCompactList}\small\item\em Prints the available SQL drivers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A database manager that represents the database used in the game. 
+
+This database manager class manages the database in the game and contains all the user\textquotesingle{}s informatino
+
+\begin{DoxyAuthor}{Author}
+Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_database_manager_aa162d97472e6c31a4e873adda435dbb6}\index{DatabaseManager@{DatabaseManager}!DatabaseManager@{DatabaseManager}}
+\index{DatabaseManager@{DatabaseManager}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{DatabaseManager()}{DatabaseManager()}}
+{\footnotesize\ttfamily \label{class_database_manager_aa162d97472e6c31a4e873adda435dbb6} 
+Database\+Manager\+::\+Database\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_database_manager}{Database\+Manager} object. 
+
+Default constructor for \doxylink{class_database_manager}{Database\+Manager}.
+
+Initializes a new instance of the \doxylink{class_database_manager}{Database\+Manager} class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_database_manager_adf3adf39e6435f236f6ec077c7898a1d}\index{DatabaseManager@{DatabaseManager}!checkDrivers@{checkDrivers}}
+\index{checkDrivers@{checkDrivers}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{checkDrivers()}{checkDrivers()}}
+{\footnotesize\ttfamily \label{class_database_manager_adf3adf39e6435f236f6ec077c7898a1d} 
+void Database\+Manager\+::check\+Drivers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints the available SQL drivers. 
+
+Displays the available database drivers.
+
+Displays the list of available database drivers to the debug console. This function is useful for ensuring that the necessary drivers for the database connection are available.
+
+This function prints out the list of available database drivers to the debug console, which helps in checking if the necessary drivers are present. \Hypertarget{class_database_manager_a1121ba8a90ead30d566bc58b62da0ca5}\index{DatabaseManager@{DatabaseManager}!connectDatabase@{connectDatabase}}
+\index{connectDatabase@{connectDatabase}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{connectDatabase()}{connectDatabase()}}
+{\footnotesize\ttfamily \label{class_database_manager_a1121ba8a90ead30d566bc58b62da0ca5} 
+void Database\+Manager\+::connect\+Database (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Connects to the My\+SQL database. 
+
+Establishes a connection to the My\+SQL database using predefined credentials and connection details (hostname, port, database name, username, and password).
+
+This function establishes a connection to the My\+SQL database using the provided connection details (hostname, port, database name, username, and password). It checks for available drivers and attempts to open the database connection. If successful, a success message is printed. Otherwise, an error message is logged. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{databasemanager_8h}{databasemanager.\+h}}\item 
+databasemanager.\+cpp\end{DoxyCompactItemize}

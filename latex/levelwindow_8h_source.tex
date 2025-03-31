@@ -1,0 +1,64 @@
+\doxysection{levelwindow.\+h}
+\hypertarget{levelwindow_8h_source}{}\label{levelwindow_8h_source}\mbox{\hyperlink{levelwindow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ LEVELWINDOW\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ LEVELWINDOW\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QMap>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QMediaPlayer>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QAudioOutput>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{inputhandler_8h}{inputhandler.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mainwindow_8h}{mainwindow.h}}"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_level_window_a3ed5b7a0923dc2b8f46be6717da05df4}{LevelWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_level_window_a3ed5b7a0923dc2b8f46be6717da05df4}{LevelWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_window_a807080ab523d32df0f4ea382b9d3341e}{playSong}}(QPushButton\ *item);\ \textcolor{comment}{//\ Play\ song\ when\ button\ is\ clicked}}
+\DoxyCodeLine{00055\ \ \ \ \ QString\ username;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Layout\ and\ UI}}
+\DoxyCodeLine{00060\ \ \ \ \ QVBoxLayout\ *layout;}
+\DoxyCodeLine{00061\ \ \ \ \ QLabel\ *title;}
+\DoxyCodeLine{00062\ \ \ \ \ QPushButton\ *levelButton1;}
+\DoxyCodeLine{00063\ \ \ \ \ QPushButton\ *levelButton2;}
+\DoxyCodeLine{00064\ \ \ \ \ QPushButton\ *levelButton3;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ QPushButton\ *pauseButton;}
+\DoxyCodeLine{00067\ \ \ \ \ QPushButton\ *stopButton;}
+\DoxyCodeLine{00068\ \ \ \ \ QPushButton\ *restartButton;}
+\DoxyCodeLine{00069\ \ \ \ \ QPushButton\ *backButton;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Music}}
+\DoxyCodeLine{00072\ \ \ \ \ QMap<QPushButton\ *,\ QString>\ songPaths;}
+\DoxyCodeLine{00073\ \ \ \ \ QString\ currentSongPath;}
+\DoxyCodeLine{00074\ \ \ \ \ sf::Music\ sfmlMusicPlayer;\ \textcolor{comment}{//\ For\ SFML-\/based\ playback}}
+\DoxyCodeLine{00075\ \ \ \ \ QMediaPlayer\ *musicPlayer;\ \textcolor{comment}{//\ For\ Qt-\/based\ playback}}
+\DoxyCodeLine{00076\ \ \ \ \ QAudioOutput\ *audioOutput;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Game\ window}}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{class_input_handler}{InputHandler}}\ *gameWindow\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Music\ playback\ logic\ functions}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_window_ab9c20565f30c43d07ec7de414955ca4d}{playPreview}}(QPushButton\ *button);}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_window_a3dea71be397b47160bd78b06b27bd2f0}{playFullSong}}(QPushButton\ *button);}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_window_acf89184acdabce95fe796573823cfaf8}{pausePlayback}}();}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_window_a9057ec4bb023ab883b806194103bc646}{stopPlayback}}();}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_window_ad683e4a08d41d2f146ba0cf25f72657f}{restartPlayback}}();}
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LEVELWINDOW\_H}}
+
+\end{DoxyCode}

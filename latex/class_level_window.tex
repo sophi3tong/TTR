@@ -1,0 +1,235 @@
+\doxysection{Level\+Window Class Reference}
+\hypertarget{class_level_window}{}\label{class_level_window}\index{LevelWindow@{LevelWindow}}
+
+
+A window that represents a level selection screen with music control.  
+
+
+
+
+{\ttfamily \#include $<$levelwindow.\+h$>$}
+
+Inheritance diagram for Level\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_level_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_level_window_a3ed5b7a0923dc2b8f46be6717da05df4}{Level\+Window}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_level_window}{Level\+Window} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_window_a807080ab523d32df0f4ea382b9d3341e}{play\+Song}} (QPush\+Button \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Plays the song associated with the button when clicked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_level_window_a1ea17d6803cf5f869fb9cfe9ad492a07}\label{class_level_window_a1ea17d6803cf5f869fb9cfe9ad492a07} 
+QString {\bfseries username}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_level_window_ab9c20565f30c43d07ec7de414955ca4d}{play\+Preview}} (QPush\+Button \texorpdfstring{$\ast$}{*}button)
+\begin{DoxyCompactList}\small\item\em Plays the preview of the song when a button is clicked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_window_a3dea71be397b47160bd78b06b27bd2f0}{play\+Full\+Song}} (QPush\+Button \texorpdfstring{$\ast$}{*}button)
+\begin{DoxyCompactList}\small\item\em Plays the full song when a button is clicked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_window_acf89184acdabce95fe796573823cfaf8}{pause\+Playback}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the current song playback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_window_a9057ec4bb023ab883b806194103bc646}{stop\+Playback}} ()
+\begin{DoxyCompactList}\small\item\em Stops the current song playback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_window_ad683e4a08d41d2f146ba0cf25f72657f}{restart\+Playback}} ()
+\begin{DoxyCompactList}\small\item\em Restarts the current song from the beginning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_level_window_a9d9b5058cd056633cf9f0db6f3cedb35}\label{class_level_window_a9d9b5058cd056633cf9f0db6f3cedb35} 
+QVBox\+Layout \texorpdfstring{$\ast$}{*} {\bfseries layout}
+\item 
+\Hypertarget{class_level_window_ac16e503a626d47d63d75a9bdf830ef2c}\label{class_level_window_ac16e503a626d47d63d75a9bdf830ef2c} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries title}
+\item 
+\Hypertarget{class_level_window_ae75bcb181daabdcf62621c0bd400cca2}\label{class_level_window_ae75bcb181daabdcf62621c0bd400cca2} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries level\+Button1}
+\item 
+\Hypertarget{class_level_window_a6f4028748bed1e916dbb68c078671540}\label{class_level_window_a6f4028748bed1e916dbb68c078671540} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries level\+Button2}
+\item 
+\Hypertarget{class_level_window_ad108cbac8576534dd8b948354d057483}\label{class_level_window_ad108cbac8576534dd8b948354d057483} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries level\+Button3}
+\item 
+\Hypertarget{class_level_window_ac0122dd62439abb50449fe8f4cdfc021}\label{class_level_window_ac0122dd62439abb50449fe8f4cdfc021} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries pause\+Button}
+\item 
+\Hypertarget{class_level_window_a514a59cd03c9d4447ea2f3f3bf8b9205}\label{class_level_window_a514a59cd03c9d4447ea2f3f3bf8b9205} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries stop\+Button}
+\item 
+\Hypertarget{class_level_window_a0198e7f92daca723af6452f3b4fd976c}\label{class_level_window_a0198e7f92daca723af6452f3b4fd976c} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries restart\+Button}
+\item 
+\Hypertarget{class_level_window_a5fcae5f0433d75bd7169ba5c511e0c8d}\label{class_level_window_a5fcae5f0433d75bd7169ba5c511e0c8d} 
+QPush\+Button \texorpdfstring{$\ast$}{*} {\bfseries back\+Button}
+\item 
+\Hypertarget{class_level_window_a2cf0eb8dca8629847d9c49b36c514af2}\label{class_level_window_a2cf0eb8dca8629847d9c49b36c514af2} 
+QMap$<$ QPush\+Button \texorpdfstring{$\ast$}{*}, QString $>$ {\bfseries song\+Paths}
+\item 
+\Hypertarget{class_level_window_a8fb8a377d93ecf91fbbb983f333c106c}\label{class_level_window_a8fb8a377d93ecf91fbbb983f333c106c} 
+QString {\bfseries current\+Song\+Path}
+\item 
+\Hypertarget{class_level_window_a952daa3c49b7952064562807f43325cf}\label{class_level_window_a952daa3c49b7952064562807f43325cf} 
+sf\+::\+Music {\bfseries sfml\+Music\+Player}
+\item 
+\Hypertarget{class_level_window_a13979500b335f333d84b2669f341b742}\label{class_level_window_a13979500b335f333d84b2669f341b742} 
+QMedia\+Player \texorpdfstring{$\ast$}{*} {\bfseries music\+Player}
+\item 
+\Hypertarget{class_level_window_a4eb4e76c20d70d044688bb0af04b1ee9}\label{class_level_window_a4eb4e76c20d70d044688bb0af04b1ee9} 
+QAudio\+Output \texorpdfstring{$\ast$}{*} {\bfseries audio\+Output}
+\item 
+\Hypertarget{class_level_window_afe88b5570a293213f56e04663b7dd3e5}\label{class_level_window_afe88b5570a293213f56e04663b7dd3e5} 
+\mbox{\hyperlink{class_input_handler}{Input\+Handler}} \texorpdfstring{$\ast$}{*} {\bfseries game\+Window} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A window that represents a level selection screen with music control. 
+
+The \doxylink{class_level_window}{Level\+Window} class provides functionality for selecting a game level, playing a preview of the song, and controlling music playback with play, pause, stop, and restart options.
+
+\begin{DoxyAuthor}{Author}
+Julie Vo 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_level_window_a3ed5b7a0923dc2b8f46be6717da05df4}\index{LevelWindow@{LevelWindow}!LevelWindow@{LevelWindow}}
+\index{LevelWindow@{LevelWindow}!LevelWindow@{LevelWindow}}
+\doxysubsubsection{\texorpdfstring{LevelWindow()}{LevelWindow()}}
+{\footnotesize\ttfamily \label{class_level_window_a3ed5b7a0923dc2b8f46be6717da05df4} 
+Level\+Window\+::\+Level\+Window (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{class_level_window}{Level\+Window} class. 
+
+Initializes the layout, buttons, and connects necessary signals and slots.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget that owns this window.\\
+\hline
+\end{DoxyParams}
+Initializes the window layout, buttons, and connects signals and slots for the music playback, level selection, and transitions to the game window.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget for the window. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_level_window_acf89184acdabce95fe796573823cfaf8}\index{LevelWindow@{LevelWindow}!pausePlayback@{pausePlayback}}
+\index{pausePlayback@{pausePlayback}!LevelWindow@{LevelWindow}}
+\doxysubsubsection{\texorpdfstring{pausePlayback()}{pausePlayback()}}
+{\footnotesize\ttfamily \label{class_level_window_acf89184acdabce95fe796573823cfaf8} 
+void Level\+Window\+::pause\+Playback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pauses the current song playback. 
+
+Pauses or resumes playback of the current song.
+
+This function will pause the playback of the current song.
+
+If the song is playing, it pauses. If it\textquotesingle{}s paused, it resumes playing. \Hypertarget{class_level_window_a3dea71be397b47160bd78b06b27bd2f0}\index{LevelWindow@{LevelWindow}!playFullSong@{playFullSong}}
+\index{playFullSong@{playFullSong}!LevelWindow@{LevelWindow}}
+\doxysubsubsection{\texorpdfstring{playFullSong()}{playFullSong()}}
+{\footnotesize\ttfamily \label{class_level_window_a3dea71be397b47160bd78b06b27bd2f0} 
+void Level\+Window\+::play\+Full\+Song (\begin{DoxyParamCaption}\item[{QPush\+Button \texorpdfstring{$\ast$}{*}}]{button}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Plays the full song when a button is clicked. 
+
+This function starts playback of the entire song associated with the button.
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The button clicked to play the full song. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_level_window_ab9c20565f30c43d07ec7de414955ca4d}\index{LevelWindow@{LevelWindow}!playPreview@{playPreview}}
+\index{playPreview@{playPreview}!LevelWindow@{LevelWindow}}
+\doxysubsubsection{\texorpdfstring{playPreview()}{playPreview()}}
+{\footnotesize\ttfamily \label{class_level_window_ab9c20565f30c43d07ec7de414955ca4d} 
+void Level\+Window\+::play\+Preview (\begin{DoxyParamCaption}\item[{QPush\+Button \texorpdfstring{$\ast$}{*}}]{button}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Plays the preview of the song when a button is clicked. 
+
+This function will play a short preview of the song associated with the button.
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The button clicked to play the preview. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_level_window_a807080ab523d32df0f4ea382b9d3341e}\index{LevelWindow@{LevelWindow}!playSong@{playSong}}
+\index{playSong@{playSong}!LevelWindow@{LevelWindow}}
+\doxysubsubsection{\texorpdfstring{playSong()}{playSong()}}
+{\footnotesize\ttfamily \label{class_level_window_a807080ab523d32df0f4ea382b9d3341e} 
+void Level\+Window\+::play\+Song (\begin{DoxyParamCaption}\item[{QPush\+Button \texorpdfstring{$\ast$}{*}}]{button}{}\end{DoxyParamCaption})}
+
+
+
+Plays the song associated with the button when clicked. 
+
+Plays the selected song when a button is clicked.
+
+This function will play the full song if the song is not already playing, or start a new song if another song is playing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & The button that corresponds to the song to be played.\\
+\hline
+\end{DoxyParams}
+Stops any current playback and plays the song associated with the button clicked.
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The button that corresponds to the selected level\textquotesingle{}s song. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_level_window_ad683e4a08d41d2f146ba0cf25f72657f}\index{LevelWindow@{LevelWindow}!restartPlayback@{restartPlayback}}
+\index{restartPlayback@{restartPlayback}!LevelWindow@{LevelWindow}}
+\doxysubsubsection{\texorpdfstring{restartPlayback()}{restartPlayback()}}
+{\footnotesize\ttfamily \label{class_level_window_ad683e4a08d41d2f146ba0cf25f72657f} 
+void Level\+Window\+::restart\+Playback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Restarts the current song from the beginning. 
+
+This function will stop and play the song from the start.
+
+This function will stop and play the song from the start again. \Hypertarget{class_level_window_a9057ec4bb023ab883b806194103bc646}\index{LevelWindow@{LevelWindow}!stopPlayback@{stopPlayback}}
+\index{stopPlayback@{stopPlayback}!LevelWindow@{LevelWindow}}
+\doxysubsubsection{\texorpdfstring{stopPlayback()}{stopPlayback()}}
+{\footnotesize\ttfamily \label{class_level_window_a9057ec4bb023ab883b806194103bc646} 
+void Level\+Window\+::stop\+Playback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stops the current song playback. 
+
+This function will stop the current song, resetting it to the beginning.
+
+This function will stop the song and reset the playback. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{levelwindow_8h}{levelwindow.\+h}}\item 
+\mbox{\hyperlink{levelwindow_8cpp}{levelwindow.\+cpp}}\end{DoxyCompactItemize}

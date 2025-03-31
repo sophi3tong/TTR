@@ -1,0 +1,51 @@
+\doxysection{loginwindow.\+h}
+\hypertarget{loginwindow_8h_source}{}\label{loginwindow_8h_source}\mbox{\hyperlink{loginwindow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ LOGINWINDOW\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ LOGINWINDOW\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QLineEdit>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{levelwindow_8h}{levelwindow.h}}>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{userfactory_8h}{userfactory.h}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{databasemanager_8h}{databasemanager.h}}>}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_login_window_aa4c04d26b299de00156bbf3c32b2a082}{LoginWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_login_window_aa4c04d26b299de00156bbf3c32b2a082}{LoginWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00042\ \ \ \ \ QString\ \mbox{\hyperlink{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107}{username}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_login_window_adad6fa8eb8a2c89152a5c6ceff308f3d}{setupUI}}(\textcolor{keywordtype}{int}\ isLogin);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_login_window_adbb2b07a1378bfb0032be4c70d7169f1}{handleRegister}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_login_window_abac71b650ea4931b02dd1508e9d22087}{handleBackToLogin}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_login_window_ac517fa6e0fef7c879f387fa56fa8ddc1}{handleLogin}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_login_window_a27f02c84129ce98b40b1297da260b335}{handleCreate}}();}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_login_window_a90c75303790c5f856292eba3dc759342}{insertUser}}(\textcolor{keyword}{const}\ QString\&\ firstname,\ \textcolor{keyword}{const}\ QString\&\ lastname,\ \textcolor{keyword}{const}\ QString\&\ \mbox{\hyperlink{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107}{username}},\ \textcolor{keyword}{const}\ QString\&\ password);}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_login_window_a832dfcb813eec2cfa9e7ef71528978ab}{authenticateUser}}(\textcolor{keyword}{const}\ QString\&\ \mbox{\hyperlink{class_login_window_a7be81e3e8cd913829b3e9b7837cbd107}{username}},\ \textcolor{keyword}{const}\ QString\&\ password);}
+\DoxyCodeLine{00096\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ QVBoxLayout\ *layout;}
+\DoxyCodeLine{00099\ \ \ \ \ QLabel\ *mainTitle;}
+\DoxyCodeLine{00100\ \ \ \ \ QLabel\ *mainSubtitle;}
+\DoxyCodeLine{00101\ \ \ \ \ QLineEdit\ *firstnameInput;}
+\DoxyCodeLine{00102\ \ \ \ \ QLineEdit\ *lastnameInput;}
+\DoxyCodeLine{00103\ \ \ \ \ QLineEdit\ *usernameInput;}
+\DoxyCodeLine{00104\ \ \ \ \ QLineEdit\ *passwordInput;}
+\DoxyCodeLine{00105\ \ \ \ \ QPushButton\ *btl\_button;}
+\DoxyCodeLine{00106\ \ \ \ \ QPushButton\ *create\_button;}
+\DoxyCodeLine{00107\ \ \ \ \ QPushButton\ *register\_button;}
+\DoxyCodeLine{00108\ \ \ \ \ QPushButton\ *login\_button;}
+\DoxyCodeLine{00109\ \ \ \ \ QLabel\ *login\_error;}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{class_level_window}{LevelWindow}}\ *levelScreen;}
+\DoxyCodeLine{00111\ \};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LOGINWINDOW\_H}}
+
+\end{DoxyCode}

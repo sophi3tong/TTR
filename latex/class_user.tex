@@ -1,0 +1,206 @@
+\doxysection{User Class Reference}
+\hypertarget{class_user}{}\label{class_user}\index{User@{User}}
+
+
+The \doxylink{class_user}{User} class.  
+
+
+
+
+{\ttfamily \#include $<$user.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_a1874a1f508db2d22044fd15e81af62e0}{User}} (QString username)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_user}{User}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_user_af9d73e636519fe654cb31d30ccebe28a}{get\+Levelscore}} (int level)
+\begin{DoxyCompactList}\small\item\em get\+Levelscore \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_user_aae7b88c8d47e622c2a8488c4947a3499}{get\+User\+Id}} ()
+\begin{DoxyCompactList}\small\item\em get\+User\+Id Queries database for user\+\_\+id. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{class_user_a07c6adb4eac801e7c808b44a617265d1}{get\+Username}} ()
+\begin{DoxyCompactList}\small\item\em get\+Username Returns user object stored username. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{class_user_a7c4ddb1fd75a02cdf1bee13b3b3e1cc1}{get\+Username}} (int user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em get\+Username \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_user_a2c6070a1c31020a6beae27e4fe4f4724}{get\+Highscore}} ()
+\begin{DoxyCompactList}\small\item\em get\+Highscore Queries database for user highscore. \end{DoxyCompactList}\item 
+std\+::map$<$ int, int $>$ \mbox{\hyperlink{class_user_ad7df153ef8614df019f99b3a47f5ac5b}{get\+Levels}} ()
+\begin{DoxyCompactList}\small\item\em get\+Levels Returns mapped list of pairs (level, score). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_user_abf1a6b9aeaacb76b7a5e95d0c9bccc74}{insert\+Highscore}} (int highscore)
+\begin{DoxyCompactList}\small\item\em insert\+Highscore \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_user_ae5dd01dde4a92fd46e8a2ee5c32a5a25}{insert\+Levelscore}} (int level, int score)
+\begin{DoxyCompactList}\small\item\em insert\+Levelscore \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_user_a7a79b415d7fdd56d11626ad10c2ac7e7}\label{class_user_a7a79b415d7fdd56d11626ad10c2ac7e7} 
+int {\bfseries user\+\_\+id}
+\item 
+\Hypertarget{class_user_ae4202de2b7974e92a55b913d20b03833}\label{class_user_ae4202de2b7974e92a55b913d20b03833} 
+QString {\bfseries username}
+\item 
+\Hypertarget{class_user_a91e18137e13f647988aa2d7d9a87012f}\label{class_user_a91e18137e13f647988aa2d7d9a87012f} 
+int {\bfseries high\+Score}
+\item 
+\Hypertarget{class_user_aa4f3ae9a018317a9f9af2bf1ea21e07b}\label{class_user_aa4f3ae9a018317a9f9af2bf1ea21e07b} 
+std\+::map$<$ int, int $>$ {\bfseries level\+Scores}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_user_a19aa22db5ba012b69513a51f674493e6}\label{class_user_a19aa22db5ba012b69513a51f674493e6} 
+class {\bfseries User\+Factory}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_user}{User} class. 
+
+The user class stores and manages user information like username, user\+\_\+id, highscore, and level scores. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_user_a1874a1f508db2d22044fd15e81af62e0}\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\doxysubsubsection{\texorpdfstring{User()}{User()}}
+{\footnotesize\ttfamily \label{class_user_a1874a1f508db2d22044fd15e81af62e0} 
+User\+::\+User (\begin{DoxyParamCaption}\item[{QString}]{username}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{class_user}{User}. 
+
+\doxylink{class_user}{User} constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+The \doxylink{class_user}{User} class is responsible for managing Users.
+
+\doxylink{class_user}{User} 
+\begin{DoxyParams}{Parameters}
+{\em username} & Constructor that requires a username.\\
+\hline
+{\em username} & Initializes user private variables. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_user_a2c6070a1c31020a6beae27e4fe4f4724}\index{User@{User}!getHighscore@{getHighscore}}
+\index{getHighscore@{getHighscore}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getHighscore()}{getHighscore()}}
+{\footnotesize\ttfamily \label{class_user_a2c6070a1c31020a6beae27e4fe4f4724} 
+int User\+::get\+Highscore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+get\+Highscore Queries database for user highscore. 
+
+\doxylink{class_user_a2c6070a1c31020a6beae27e4fe4f4724}{User\+::get\+Highscore} Queries database for user highscore. \Hypertarget{class_user_ad7df153ef8614df019f99b3a47f5ac5b}\index{User@{User}!getLevels@{getLevels}}
+\index{getLevels@{getLevels}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getLevels()}{getLevels()}}
+{\footnotesize\ttfamily \label{class_user_ad7df153ef8614df019f99b3a47f5ac5b} 
+std\+::map$<$ int, int $>$ User\+::get\+Levels (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+get\+Levels Returns mapped list of pairs (level, score). 
+
+\doxylink{class_user_ad7df153ef8614df019f99b3a47f5ac5b}{User\+::get\+Levels} Queries database for mapped list of pairs (level, score) otherwise returns empty map. \Hypertarget{class_user_af9d73e636519fe654cb31d30ccebe28a}\index{User@{User}!getLevelscore@{getLevelscore}}
+\index{getLevelscore@{getLevelscore}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getLevelscore()}{getLevelscore()}}
+{\footnotesize\ttfamily \label{class_user_af9d73e636519fe654cb31d30ccebe28a} 
+int User\+::get\+Levelscore (\begin{DoxyParamCaption}\item[{int}]{level}{}\end{DoxyParamCaption})}
+
+
+
+get\+Levelscore 
+
+\doxylink{class_user_af9d73e636519fe654cb31d30ccebe28a}{User\+::get\+Levelscore}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Returns score for given level.\\
+\hline
+{\em level} & Queries database for score for given level. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_user_aae7b88c8d47e622c2a8488c4947a3499}\index{User@{User}!getUserId@{getUserId}}
+\index{getUserId@{getUserId}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getUserId()}{getUserId()}}
+{\footnotesize\ttfamily \label{class_user_aae7b88c8d47e622c2a8488c4947a3499} 
+int User\+::get\+User\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+get\+User\+Id Queries database for user\+\_\+id. 
+
+\doxylink{class_user_aae7b88c8d47e622c2a8488c4947a3499}{User\+::get\+User\+Id} Queries database for user\+\_\+id. \Hypertarget{class_user_a07c6adb4eac801e7c808b44a617265d1}\index{User@{User}!getUsername@{getUsername}}
+\index{getUsername@{getUsername}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getUsername()}{getUsername()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_user_a07c6adb4eac801e7c808b44a617265d1} 
+QString User\+::get\+Username (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+get\+Username Returns user object stored username. 
+
+\doxylink{class_user_a07c6adb4eac801e7c808b44a617265d1}{User\+::get\+Username} Returns user object stored username. \Hypertarget{class_user_a7c4ddb1fd75a02cdf1bee13b3b3e1cc1}\index{User@{User}!getUsername@{getUsername}}
+\index{getUsername@{getUsername}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getUsername()}{getUsername()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_user_a7c4ddb1fd75a02cdf1bee13b3b3e1cc1} 
+QString User\+::get\+Username (\begin{DoxyParamCaption}\item[{int}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+get\+Username 
+
+\doxylink{class_user_a07c6adb4eac801e7c808b44a617265d1}{User\+::get\+Username}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Queries database for username with given user\+\_\+id. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_user_abf1a6b9aeaacb76b7a5e95d0c9bccc74}\index{User@{User}!insertHighscore@{insertHighscore}}
+\index{insertHighscore@{insertHighscore}!User@{User}}
+\doxysubsubsection{\texorpdfstring{insertHighscore()}{insertHighscore()}}
+{\footnotesize\ttfamily \label{class_user_abf1a6b9aeaacb76b7a5e95d0c9bccc74} 
+bool User\+::insert\+Highscore (\begin{DoxyParamCaption}\item[{int}]{highscore}{}\end{DoxyParamCaption})}
+
+
+
+insert\+Highscore 
+
+\doxylink{class_user_abf1a6b9aeaacb76b7a5e95d0c9bccc74}{User\+::insert\+Highscore}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em highscore} & Inserts or updates highscore in database. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_user_ae5dd01dde4a92fd46e8a2ee5c32a5a25}\index{User@{User}!insertLevelscore@{insertLevelscore}}
+\index{insertLevelscore@{insertLevelscore}!User@{User}}
+\doxysubsubsection{\texorpdfstring{insertLevelscore()}{insertLevelscore()}}
+{\footnotesize\ttfamily \label{class_user_ae5dd01dde4a92fd46e8a2ee5c32a5a25} 
+bool User\+::insert\+Levelscore (\begin{DoxyParamCaption}\item[{int}]{level}{, }\item[{int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+insert\+Levelscore 
+
+\doxylink{class_user_ae5dd01dde4a92fd46e8a2ee5c32a5a25}{User\+::insert\+Levelscore}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level,score} & Inserts or updates level score in database. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{user_8h}{user.\+h}}\item 
+\mbox{\hyperlink{user_8cpp}{user.\+cpp}}\end{DoxyCompactItemize}

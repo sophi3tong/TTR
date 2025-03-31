@@ -1,0 +1,35 @@
+\doxysection{tutorial.\+h}
+\hypertarget{tutorial_8h_source}{}\label{tutorial_8h_source}\mbox{\hyperlink{tutorial_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ TUTORIAL\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ TUTORIAL\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}};\ \ \textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tutorial_ac03915e52b5b2bcb4946da993b3a18a6}{Tutorial}}\ :\ \textcolor{keyword}{public}\ QWidget\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_tutorial_ac03915e52b5b2bcb4946da993b3a18a6}{Tutorial}}(\mbox{\hyperlink{class_main_window}{MainWindow}}\ *mainWindow,\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_tutorial_a6a7f12f75952c7d801c12aed8179f510}{\string~Tutorial}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ signals:}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tutorial_a7d1166b72956761d8cb4a7c1142a8b72}{backToMenu}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ QVBoxLayout\ *layout;}
+\DoxyCodeLine{00047\ \ \ \ \ QLabel\ *tutorialImage;}
+\DoxyCodeLine{00048\ \ \ \ \ QPushButton\ *closeButton;}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_main_window}{MainWindow}}\ *mainWindow;\ \ \textcolor{comment}{//\ Pointer\ to\ MainWindow}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TUTORIAL\_H}}
+
+\end{DoxyCode}
