@@ -1,3 +1,10 @@
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date March 30, 2025
+ * @brief File containing level window functions.
+ *
+ */
 #include "mainwindow.h"
 #include "levelwindow.h"
 #include "loginwindow.h"
@@ -6,6 +13,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     layout = new QVBoxLayout(this);
@@ -68,11 +76,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     logoutButton->setFont(buttonFont);
 
     connect(playButton, &QPushButton::clicked, this, [this]() {
+        QString username = this->username;
+        UserFactory uf;
+        User loginUser = uf.createUser(username);
+        qDebug() << "(Main Window Check) Username:" << loginUser.getUsername();
         //hide the Main Menu window
         this->hide();
 
         //show the LevelWindow
         LevelWindow *levelWindow = new LevelWindow(this);
+        levelWindow->username = this->username;
 
         connect(levelWindow, &QObject::destroyed, this, &MainWindow::show);
         levelWindow->showMaximized();

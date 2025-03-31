@@ -1,3 +1,10 @@
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date March 30, 2025
+ * @brief File containing level window functions.
+ *
+ */
 #include "loginwindow.h"
 #include <databasemanager.h>
 #include "mainwindow.h"
@@ -155,11 +162,13 @@ void LoginWindow::handleLogin(){
 
     if (authenticateUser(username, password)){
         qDebug() <<username <<" logged in successfully!";
-        UserFactory uf;
-        uf.createUser(username);
+        User loggedIn = User(username);
+        this->username=loggedIn.getUsername();
 
-        //go to main menu
         MainWindow *mainScreen = new MainWindow(this);
+
+        mainScreen->username = this->username;
+        qDebug() << "Check LoginWindow: " << mainScreen->username;
         mainScreen->showMaximized();
         this->hide();
     } else {
@@ -217,6 +226,19 @@ bool LoginWindow::insertUser(const QString& firstname, const QString& lastname, 
     }
 
     qDebug() <<"User registration successful!";
+
+    UserFactory uf;
+    User newUser = uf.createUser(username);
+    newUser.insertHighscore(0);
+    newUser.insertLevelscore(0, 0);
+    newUser.insertLevelscore(1, 0);
+    newUser.insertLevelscore(2, 0);
+
+    qDebug() << "Check: highscore - " << newUser.getHighscore();
+    qDebug() << "Check: level 0 - " << newUser.getLevelscore(0);
+    qDebug() << "Check: level 1 - " << newUser.getLevelscore(1);
+    qDebug() << "Check: level 2 - " << newUser.getLevelscore(2);
+
     login_error->setText("Success! Account created.");
     return true;
 }
@@ -238,10 +260,6 @@ bool LoginWindow::authenticateUser(const QString& username, const QString& passw
         if (dbPass==password){
             qDebug() << "Login successful!";
             login_error->setText("Success! You are logged in.");
-
-            // MainWindow w;
-            // w.showMaximized();
-            // this->hide();
         } else {
             qDebug() << "Login failed!";
             login_error->setText("Username and password do not match.");

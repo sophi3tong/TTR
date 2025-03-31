@@ -1,3 +1,10 @@
+/**
+ * @file levelwindow.cpp
+ * @author Julie Vo
+ * @date March 30, 2025
+ * @brief File containing level window functions.
+ *
+ */
 #ifndef USER_H
 #define USER_H
 
@@ -9,7 +16,11 @@ class User
 public:
     User(QString username);
     User(QString username, int score);
+    User getUser(int user_id);
+    int getLevelscore(int level);
+    int getUserId();
     QString getUsername();
+    QString getUsername(int user_id);
     int getHighscore();
     std::map<int, int> getLevels();
     void setHighscore(int score);
@@ -20,8 +31,7 @@ private:
     int user_id;
     QString username;
     int highScore;
-    int getLevelscore(int level);
-    int getUserId();
+    std::map<int, int> levelScores;
 
     friend class UserFactory;
 };
