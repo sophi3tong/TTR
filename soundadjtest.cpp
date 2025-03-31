@@ -1,7 +1,7 @@
 #include <QObject>
 #include <QtTest/QtTest>
 /**
- * @file levelwindow.cpp
+ * @file soundadjtest.cpp
  * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
  * @date March 30, 2025
  * @brief File containing the sound adjustment testing.
