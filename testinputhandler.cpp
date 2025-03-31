@@ -16,7 +16,10 @@ class TestInputHandler : public QObject{
 
 private slots:
     void initTestCase();
+    void testUI();
     void testTimer();
+    void testPauseandResume();
+    void testInput();
     void cleanUpTestCase();
 private:
     InputHandler *inputhandler;
@@ -35,11 +38,86 @@ void TestInputHandler::initTestCase(){
 
 /**
  * @test
+ * @brief testing all UI components
+*/
+void TestInputHandler::testUI(){
+    qDebug() << "Testing UI Components";
+    // test that all labels are not null
+    // if null, print fail message
+    QVERIFY2(inputHandler->findChild<QLabel *>("label") != nullptr, "Test Failed: label not found");
+    QVERIFY2(inputHandler->findChild<QLabel *>("statusLabel") != nullptr, "Test Failed: statusLabel not found");
+    QVERIFY2(inputHandler->findChild<QLabel *>("livesLabel") != nullptr, "Test Failed: livesLabel not found");
+    QVERIFY2(inputHandler->findChild<QLabel *>("timerLabel") != nullptr, "Test Failed: timerLabel not found");
+    QVERIFY2(inputHandler->findChild<QLabel *>("warningLabel") != nullptr, "Test Failed: warningLabel not found");
+    QVERIFY2(inputHandler->findChild<QLabel *>("scoreLabel") != nullptr, "Test Failed: scoreLabel not found");
+    QVERIFY2(inputHandler->findChild<QLabel *>("highscoreLabel") != nullptr, "Test Failed: highscoreLabel not found");
+
+    // test that all buttons are not null
+    // if null, print fail message
+    QVERIFY2(inputHandler->findChild<QPushButton *>("restartButton") != nullptr, "Test Failed: restartButton not found");
+    QVERIFY2(inputHandler->findChild<QPushButton *>("pauseButton") != nullptr, "Test Failed: pauseButton not found");
+    QVERIFY2(inputHandler->findChild<QPushButton *>("resumeButton") != nullptr, "Test Failed: resumeButton not found");
+    QVERIFY2(inputHandler->findChild<QPushButton *>("backButton") != nullptr, "Test Failed: backButton not found");
+}
+
+/**
+ * @test
  * @brief initialize an input handler for the test case
 */
 void TestInputHandler::testTimer(){
     std::cout << "Testing: Timer functionalities";
+    // Launch game mode for testing 
     inputhandler->launchEasyMode();
+    // Save the initial allotted time to a variable
+    int allottedTime = inputhandler->timeLeft;
+
+    // wait for timer to countdown
+    QTest::qWait(3000);
+    QVERIFY2(inputhandler->timeLeft == allottedTime - 3, "Test Failed: Timer malfunction");
+}
+
+/**
+ * @test
+ * @brief testing functionalities of pause and resume buttons
+*/
+void TestInputHandler::testPauseAndResume(){
+    qDebug() << "Testing the Pause and Resume Buttons";
+    // Test the pause button
+    QTest::mouseClick(inputHandler->pauseButton, Qt::LeftButton);
+    QVERIFY2(inputHandler->isPaused == true, "Test Failed: Pause button not working");
+    // Test the restart button
+    QTest::mouseClick(inputHandler->resumeButton, Qt::LeftButton);
+    QVERIFY2(inputHandler->isPaused == false, "Test Failed: Resume button not working");
+}
+
+/**
+ * @test
+ * @brief test that keyboard inputs are being read correctly
+*/
+void TestInputHandler::testInput(){
+    qDebug() << "Testing User Input functionalities";
+    // Generate random letters for testing
+    inputhandler->generateRandomLetters();
+
+    // when user uses correct input
+    // Check that the targetLetters are not empty
+    if (!inputhandler->targetLetters.isEmpty()){
+        // get correct input
+        QChar correctInput = inputhandler->targetLetters[0];
+        // get initial score
+        int initialScore = inputhandler->score;
+
+        // test processInput() function
+        inputhandler->processInput(correctInput);
+        QVERIFY2(inputhandler->score == initialScore + 1, "Test Failed: score updated incorrectly");
+        QVERIFY2(inputhandler->targetLetters.isEmpty(), "Test Failed: Letter not removed from list correctly");
+    }
+
+    // when user uses incorrect input
+    int currLives = inputhandler->lives;
+    // Simulate incorrect key press
+    inputhandler->processInput('1');
+    QVERIFY2(inputhandler->lives == currLives - 1, "Test Failed: Lives not updated correctly");
 }
 
 /**
