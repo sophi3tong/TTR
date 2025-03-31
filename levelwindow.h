@@ -1,5 +1,5 @@
 /**
- * @file levelwindow.cpp
+ * @file levelwindow.h
  * @author Samantha Chang, Fiona Luo, Allison So, Sophia Tong, Julie Vo
  * @date 29 March 2025
  * @brief File containing level window functions.

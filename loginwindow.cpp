@@ -1,19 +1,32 @@
 /**
- * @file levelwindow.cpp
- * @author Julie Vo
+ * @file loginwindow.cpp
+ * @author Allison So
  * @date March 30, 2025
- * @brief File containing level window functions.
+ * @brief File containing login window functions.
  *
  */
 #include "loginwindow.h"
 #include <databasemanager.h>
 #include "mainwindow.h"
 
-
+/**
+ * @brief LoginWindow::LoginWindow
+ * @param parent
+ *
+ * This constructor initializes the login window by calling the `setupUI()` method.
+ * It sets up the user interface for the login window.
+ * By default, it sets up the window in login mode (indicated by 0).
+ */
 LoginWindow::LoginWindow(QWidget *parent):QMainWindow{parent}{
     setupUI(0); //0 for Login setup, 1 for Register setup
 }
 
+/**
+ * @brief LoginWindow::setupUI
+ * @param isLogin
+ *
+ * This displays the login window to the user.
+ */
 void LoginWindow::setupUI(int isLogin){
     LoginWindow::setWindowTitle("Login/Register");
 
@@ -145,14 +158,29 @@ void LoginWindow::setupUI(int isLogin){
     connect(create_button, &QPushButton::released, this, &LoginWindow::handleCreate);
 }
 
+/**
+ * @brief LoginWindow::handleCreate
+ *
+ * This is triggered when the user clicks the Create button when making a new user.
+ */
 void LoginWindow::handleCreate(){
     setupUI(1);
 }
 
+/**
+ * @brief LoginWindow::handleBackToLogin
+ *
+ * This is triggered when the user clicks the Login button and thier user account already exists.
+ */
 void LoginWindow::handleBackToLogin(){
     setupUI(0);
 }
 
+/**
+ * @brief LoginWindow::handleLogin
+ *
+ * This is triggered when the user clicks the Back to Login button.
+ */
 void LoginWindow::handleLogin(){
     DatabaseManager dm;
     dm.connectDatabase();
@@ -177,6 +205,11 @@ void LoginWindow::handleLogin(){
     }
 }
 
+/**
+ * @brief LoginWindow::handleRegister
+ *
+ * This is triggered when the user clicks the Register button.
+ */
 void LoginWindow::handleRegister(){
     DatabaseManager dm;
     dm.connectDatabase();
@@ -199,6 +232,16 @@ void LoginWindow::handleRegister(){
     }
 }
 
+/**
+ * @brief LoginWindow::insertUser
+ * @param firstname
+ * @param lastname
+ * @param username
+ * @param password
+ * @return
+ *
+ * This inserts a new user with the provided informaiton in the database.
+ */
 bool LoginWindow::insertUser(const QString& firstname, const QString& lastname, const QString& username, const QString& password) {
     QSqlQuery query;
 
@@ -243,6 +286,14 @@ bool LoginWindow::insertUser(const QString& firstname, const QString& lastname, 
     return true;
 }
 
+/**
+ * @brief LoginWindow::authenticateUser
+ * @param username
+ * @param password
+ * @return
+ *
+ * This method checks the database for a matching username and password.
+ */
 bool LoginWindow::authenticateUser(const QString& username, const QString& password) {
     QSqlQuery query;
 

@@ -1,8 +1,8 @@
 /**
- * @file levelwindow.cpp
+ * @file user.h
  * @author Julie Vo
  * @date March 30, 2025
- * @brief File containing level window functions.
+ * @brief File containing user header.
  *
  */
 #ifndef USER_H
