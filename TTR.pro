@@ -1,4 +1,4 @@
-QT       += core gui sql multimedia widgets
+QT       += core gui sql multimedia widgets testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,11 +25,13 @@ SOURCES += \
     #song.cpp \
     #songfactory.cpp \
     #modeltest.cpp \
+    testdatabasemanager.cpp \
+    testinputhandler.cpp \
     user.cpp \
     userfactory.cpp \
     soundadjtest.cpp \
-    testdatabasemanager \
-    testinputhandler \
+    testdatabasemanager.cpp \
+    testinputhandler.cpp \
     modeltest.cpp
 
 
@@ -51,7 +53,7 @@ HEADERS += \
     #modeltest.h \
     user.h \
     userfactory.h \
-    soundadjtest. \
+    soundadjtest.h \
     testdatabasemanager.h \
     testinputhandler.h \
     modeltest.h

@@ -1,9 +1,15 @@
-// #include "modeltest.h"
+#include "modeltest.h"
 
-// bool ModelTest::testUserFactory(){
+bool ModelTest::testUserFactory(){
+    UserFactory uf;
+    if (!uf) {
+        qDebug() << "UserFactory creation test: Failed";
+        return false;
+    }
+    qDebug() << "UserFactory creation test: Success";
+    return true;
+}
 
-// }
+bool ModelTest::testUser(){
 
-// bool ModelTest::testUser(){
-
-// }
+}

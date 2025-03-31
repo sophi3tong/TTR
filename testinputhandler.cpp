@@ -6,8 +6,10 @@
  *
 */
 
+#include "userfactory.h"
 #include <inputhandler.h>
 #include <QtTest/QTest>
+#include <iostream>
 
 class TestInputHandler : public QObject{
     Q_OBJECT
@@ -18,13 +20,16 @@ private slots:
     void cleanUpTestCase();
 private:
     InputHandler *inputhandler;
-}
+};
 
 /**
  * @brief initialize an input handler for the test case
 */
 void TestInputHandler::initTestCase(){
-    inputhandler = new InputHandler();
+    // Test case: (Sophia)
+    UserFactory uf;
+    User testUser = User("sophia123");
+    inputhandler = new InputHandler(testUser.getUsername());
     inputhandler->show(); // display inputhandler to be used for testing
 }
 
@@ -33,10 +38,8 @@ void TestInputHandler::initTestCase(){
  * @brief initialize an input handler for the test case
 */
 void TestInputHandler::testTimer(){
-    cout << "Testing: Timer functionalities";
+    std::cout << "Testing: Timer functionalities";
     inputhandler->launchEasyMode();
-
-    int 
 }
 
 /**
@@ -47,5 +50,5 @@ void TestInputHandler::cleanUpTestCase(){
 }
 
 // register tests
-QTEST_MAIN(TestInputHandler)
-#include 'testinputhandler.moc'
+QTEST_MAIN(TestInputHandler);
+#include 'testinputhandler.moc';

@@ -8,6 +8,7 @@
 
 #include <QtTest/QTest>
 #include <databasemanager.h>
+#include <iostream>
 
 class TestDatabaseManager : public QObject{
     Q_OBJECT
@@ -16,21 +17,21 @@ private slots:
     void test_checkDrivers();
     void test_connectDatabase();
 
-}
+};
 
 /** @test
  * @brief checking if all necessary drivers are present
  *
  */
 void TestDatabaseManager::test_checkDrivers(){
-    cout << "Testing: checkDrivers()";
+    std::cout << "Testing: checkDrivers()";
     DatabaseManager dbManager;
     // Call the checkDrivers() method to start test
     dbManager.checkDrivers();
 
     QStringList driverList = QSqlDatabase::drivers();
     // Verify that the driverList is not empty 
-    QVERIFY2(!isEmpty(driverList), "Test Failed: driver list is empty");
+    QVERIFY2(!driverList.isEmpty(), "Test Failed: driver list is empty");
     // Verify that QMYSQL is in driverList
     QVERIFY2(driverList.contains("QMYSQL"), "Test Failed: driver list does not contain QMYSQL");
 }
@@ -40,7 +41,7 @@ void TestDatabaseManager::test_checkDrivers(){
  *
  */
 void TestDatabaseManager::test_connectDatabase(){
-    cout << "Testing: connectDatabase()"
+    std::cout << "Testing: connectDatabase()";
     DatabaseManager dbManager;
     // Call the connectDatabase() method to start test
     dbManager.connectDatabase();
@@ -57,4 +58,4 @@ void TestDatabaseManager::test_connectDatabase(){
 
 // register tests
 QTEST_MAIN(TestDatabaseManager)
-#include 'testdatabasemanager.moc'
+#include 'testdatabasemanager.moc';
