@@ -17,10 +17,18 @@ class soundAdjTest : public QObject {
     Q_OBJECT
 
 private slots:
-    // Test accessing sound setting.
+    /**
+     * @brief testVolumeButton
+     *
+     * This tests the volumem button.
+     */
     void testVolumeButton();
 
-    // Test adjusting music voume.
+    /**
+     * @brief testSlider
+     *
+     * This tests the volume slider.
+     */
     void testSlider();
 
 };
